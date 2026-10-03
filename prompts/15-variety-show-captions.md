@@ -1,25 +1,27 @@
 # 15 · 综艺花字 / Variety Show Captions
 
-> 多层描边弹跳花字,按情绪放大笑点
+**招牌(一眼认出的特征)**
+
+- 花字本体:超粗圆胖字形 + 亮色渐变字面 + 白/彩/深色多层描边 + 错位硬投影,厚得像贴纸
+- 万物贴纸化:任何主体都抠出包白色贴纸边,配爆炸框、集中线、闪星,铺在高饱和糖果色斜条纹或放射光芒上
+- 逐字弹跳砸落:字一个个蹦出过冲回弹,重点字从大处砸下配一帧白闪
 
 <img src="../images/15-1.webp" width="32%"> <img src="../images/15-2.webp" width="32%"> <img src="../images/15-3.webp" width="32%">
 
 ## 中文提示词
 
-风格:综艺花字,9:16;实拍垫底,每段情绪换一套花字。
-画面:#FFE14A #EC2580 #3ED3EE,#1C1D5D 描边;爆炸星、放射底、斜纹底,抠像加白贴纸边。
-字体:超粗圆体;渐变字面+白描边+彩色外描边+硬投影。
-动效:30fps;逐字弹出过冲 1.2→1,隔 2 帧;表情贴错落弹入;横幅斜甩带拖影;重拍 1 帧白闪;印章 1.6 倍砸落;彩条斜扫 6 帧转场。
-实现:DOM+SVG,多重描边,spring 缩放旋转,conic-gradient 放射底。
-不要:单层描边;线性匀速;全片一套字效;字挡主体。
+综艺花字风,9:16 竖屏。招牌:胖字裹多层描边成贴纸、万物贴纸化、逐字弹跳砸落。
+① 造型与材质:字用超粗圆胖字形,字面填亮色渐变,由内向外裹白边、彩边、深色最外边,再压错位硬投影,厚如贴纸;字身微斜、基线错落。任何主体抠出后都包一圈白色贴纸边,旁缀爆炸框、集中线、闪星。
+② 配色与背景:高明度高饱和糖果色,三四个亮色轮换做主,深色只作勾边;背景是素材或纯色上铺斜条纹、放射光芒。
+③ 运动规律:文字逐字蹦出,先放大过冲再回弹落定;重点字从大处砸下配一帧白闪;横幅和贴纸倾斜甩入带拖影,落定后轻颤;换段用彩色斜带一扫而过。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 
 ## English Prompt
 
-Style: variety-show captions, 9:16; full-bleed live footage underneath, a different caption kit per emotional beat.
-Look: #FFE14A #EC2580 #3ED3EE, #1C1D5D outlines; starbursts, rotating sunburst bg, diagonal-stripe bg, cutout subject with white sticker border.
-Type: extra-bold rounded; gradient fill + white stroke + colored outer stroke + hard drop shadow.
-Motion: 30fps; per-character pop-in overshoot 1.2→1, 2-frame stagger; emoji stickers pop in staggered; banners swing in tilted with motion smear; 1-frame white flash on hits; stamps slam from 1.6×; 6-frame diagonal color-band wipe transitions.
-Build: DOM+SVG, stacked strokes, spring-driven scale/rotate, conic-gradient sunburst.
-Avoid: single-layer stroke; linear easing; one caption kit for the whole piece; text covering the subject.
+Variety-show caption style, 9:16 vertical. Signature: chubby type wrapped in stacked outlines like a sticker, everything turned into a sticker, per-character bouncy pop and slam.
+1 Form & material: ultra-bold rounded chubby lettering, filled with a bright gradient, wrapped from inside out in a white stroke, a colored stroke and a dark outermost stroke, then a hard offset shadow, thick as a vinyl sticker; letters slightly tilted on a staggered baseline. Any subject is cut out and given a white sticker border, surrounded by comic burst shapes, focus lines and sparkles.
+2 Color & background: high-brightness, high-saturation candy colors, three or four brights rotating as the lead, dark used only for outlines to anchor; backgrounds are footage or flat color overlaid with diagonal stripes or radiating sunbursts, high contrast.
+3 Motion: text pops in character by character, overshooting then springing back to rest; key words slam down from large with a single-frame white flash; banners and stickers swing in tilted with motion smear and jitter slightly once landed; sections change with a colored diagonal band sweeping across.
+What appears on screen and how it is arranged is decided entirely by the content; the style only decides how things are drawn and how they move.
 Content: {your content here}

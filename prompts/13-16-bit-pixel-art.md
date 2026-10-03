@@ -1,25 +1,27 @@
 # 13 · 像素风 / 16-bit Pixel Art
 
-> 低分辨率逐点画,CRT 里的日夜换色
+**招牌(一眼认出的特征)**
+
+- 粗像素格:任何主体都在粗网格上逐格画、阶梯硬边,光影渐变用棋盘网点分档
+- 显像管外罩:整幅画面四边微鼓、圆角暗角、扫描线与亮处泛光
+- 整屏换色板:段落转换时整套调色板一次硬切(明亮→暖艳→冷暗),不渐变
 
 <img src="../images/13-1.webp" width="32%"> <img src="../images/13-2.webp" width="32%"> <img src="../images/13-3.webp" width="32%">
 
 ## 中文提示词
 
-风格:16位游戏机像素画,套CRT外壳。
-画面:320×180逐点画放大4倍;≤32色,渐变用Bayer抖动;多层视差;#1F1A30 #3D438B #BF2964 #F5C542 #339245。
-字体:点阵字;标题黄橙渐变+深红厚投影;正文入框逐字打。
-动效:只走整数像素;色表每2秒整套硬切;CRT开机进、关机出;推镜1×→2×硬切;高潮闪白1帧接抖动放射光;标题4帧砸落。
-实现:Canvas低分辨率绘制,关平滑放大;LUT换色;扫描线+桶形畸变+暗角。
-不要:亚像素移动、抗锯齿、淡入淡出、矢量字。
+16位像素画,透过CRT显像管看。招牌:粗像素格、棋盘网点过渡、整屏换色板。
+①造型与材质:任何主体都在粗网格上逐格画,阶梯硬边;光影渐变一律用棋盘网点分档。整幅画面罩在显像管里:四边微鼓、圆角暗角、横向扫描线、亮处泛光。
+②配色与背景:同屏少色高饱和,每色只分几档明暗;背景同一颗粒尺度,远处压暗。
+③运动规律:位移按整格跳,动作靠几张姿态轮换;换段落时整套色板一次硬切(明亮→暖艳→冷暗),不渐变;强调闪一帧白;开场亮线展开、收尾缩灭。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 
 ## English Prompt
 
-Style: 16-bit console pixel art, framed inside a CRT.
-Visuals: paint at 320×180, 4× nearest-neighbor upscale; ≤32 colors per screen, gradients only as Bayer dither bands; multi-layer parallax; #1F1A30 #3D438B #BF2964 #F5C542 #339245.
-Type: bitmap font; titles chunky, yellow→orange gradient + thick dark-red shadow; body text in a double-bordered box, typed per character.
-Motion: integer-pixel moves only, far layer 1px per 4 frames; hard whole-palette swap every ~2s (day→night); CRT power-on in, power-off out; push-in as hard 1×→2× cut; climax = 1 white frame, then dithered radial light burst; titles slam down in 4 frames.
-Build: Canvas low-res render + imageSmoothingEnabled=false; LUT palette swaps; scanlines + barrel distortion + vignette.
-Avoid: sub-pixel smooth motion, anti-aliasing, opacity fades, vector fonts.
+16-bit pixel art seen through a CRT tube. Signature: chunky pixel grid, checkerboard-dither transitions, whole-screen palette swaps.
+1) Form & material: draw every subject cell by cell on a coarse grid, stair-stepped hard edges, light, shadow and gradients are always stepped with checkerboard dither. The whole frame sits inside a picture tube: slightly bulging edges, rounded dark corners, horizontal scanlines, bloom on highlights.
+2) Color & background: few, saturated colors per screen, each with only a few value steps; background shares the same pixel scale, distance pushed darker.
+3) Motion: moves jump whole cells, actions are a few alternating poses; at section changes the entire palette hard-swaps at once (bright -> warm vivid -> cool dark), never blended; emphasis is a single white flash frame; open with a bright line unfolding, close by shrinking out.
+What appears on screen and how it is arranged is decided entirely by the content; the style only decides how things are drawn and how they move.
 Content: {your content here}

@@ -1,25 +1,27 @@
 # 05 · 3D渲染 / 3D Render
 
-> 粉彩充气质感,软糯落地有分量
+**招牌(一眼认出的特征)**
+
+- 充气糖果体积:任何主体都圆胖鼓胀、无棱角、表面釉亮如硬糖,在柔光里像能捏的实物。
+- 颗粒化表面:大块表面不做平板,由无数同款小圆粒密排而成,随手截帧都能看到这层软颗粒肌理。
+- 有分量的软接触:落下必压扁回弹并在周围颗粒里压出涟漪,变化从接触点向外扩散。
 
 <img src="../images/05-1.webp" width="32%"> <img src="../images/05-2.webp" width="32%"> <img src="../images/05-3.webp" width="32%">
 
 ## 中文提示词
 
-风格:粉彩3D棚拍,充气糖果感,软糯有分量
-画面:#E8336F主体/#F0CDBA地/#DDB8D2天/#A48BE8换色;釉面鼓胀;数千小球铺地;柔光、低机位浅景深、远景雾化
-字体:主标做充气3D圆胖字;副标极小全大写、宽字距,末淡入
-动效:24fps;元素逐个落入隔0.45s,触地压扁20%回弹、压坑;一镜缓推环绕;高潮镜面重物砸入,小球溅飞、自落点波纹换色;末1.5s定版。
-实现:Blender Cycles+Python;实例化+刚体;运动模糊。
-不要:扁平假3D;黑底霓虹;硬切;匀速。
+风格:充气糖果三维棚拍。招牌:万物圆胖鼓胀、釉亮如硬糖;大块表面由密排同款小圆粒构成;落点必压陷回弹。
+①造型与材质:任何主体都做成充气般圆胖、无棱角的实心体,表面釉亮,反光柔而大块。承托面与大块面不做平板,由无数同款小圆粒密排成软颗粒肌理,受压下陷、被撞弹散。
+②配色与背景:整体高明度低饱和的邻近色粉彩,天地同色系靠明暗分层;只有主角用一个高饱和色;可点缀镜面金属;无纯黑。柔和棚光包裹,焦外虚化,远处发雾。
+③运动规律:物体从空中落下,触地压扁再弹回,把周围颗粒压出涟漪;元素逐个错拍进场;镜头一镜到底缓推缓绕;换色从接触点向外扩散。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 
 ## English Prompt
 
-Style: pastel 3D studio render, inflated candy-gloss, soft yet weighty.
-Look: #E8336F hero / #F0CDBA ground / #DDB8D2 sky / #A48BE8 takeover; glossy puffy forms; ground tiled with thousands of small spheres; soft key light, low camera, shallow DOF, hazy distance.
-Type: headline as chubby inflated 3D letters; tiny all-caps subline, wide tracking, fades in last.
-Motion: 24fps feel; elements drop in one by one ~0.45s apart, squash ~20% on landing, rebound, dent the ground; one continuous take, slow dolly-orbit; climax: a chrome heavy object slams in, spheres splash, color ripples outward from impact to the takeover hue; hold final 1.5s.
-Build: Blender Cycles + Python; instancing + rigid-body sim; motion blur on.
-Avoid: flat fake 3D; dark neon; hard cuts; linear motion.
+Style: inflated candy 3D studio render. Signatures: every form is chubby, puffed and glossy like hard candy; large surfaces are built from densely packed identical tiny round beads; every landing dents and rebounds.
+1 Form & material: render any subject as a balloon-plump solid with no sharp edges, a glazed skin and broad soft reflections. Supporting and large surfaces are never flat slabs but a soft granular field of countless identical beads that sink under pressure and scatter on impact.
+2 Color & background: high-lightness, low-saturation analogous pastels overall; ground and sky share one hue family, separated by value; only the hero carries one saturated color; mirror chrome may accent; no pure black. Wrapped in soft studio light, defocused background, hazy distance.
+3 Motion: objects drop from above, squash on contact and spring back, pressing ripples into the surrounding beads; elements enter one by one, staggered; the camera holds one continuous take with a slow push and orbit; color changes spread outward from the point of contact.
+What appears on screen and how it is arranged is entirely decided by the content; the style only decides how things are drawn and how they move.
 Content: {your content here}

@@ -1,25 +1,27 @@
 # 09 · 拼贴剪贴 / Collage Cut-Out
 
-> 剪报网点纸片,12帧逐格拍上
+**招牌(一眼认出的特征)**
+
+- 万物皆剪片:任何主体都做成从印刷品上剪下的纸片——照片压成粗网点黑白,外缘留不规整白边或撕毛边,带薄投影、略歪斜地叠在牛皮纸上。
+- 牛皮纸底 + 报纸米白/油墨黑的高反差灰阶,唯一的强色是一种印刷红,以整块平涂纸片出现。
+- 一拍二到一拍三的逐格步进:纸片被一下一下拍上去,冲大、回弹、定死;换场靠剪开、撕开、掀起纸层。
 
 <img src="../images/09-1.webp" width="32%"> <img src="../images/09-2.webp" width="32%"> <img src="../images/09-3.webp" width="32%">
 
 ## 中文提示词
 
-风格:剪报纸片拼贴,逐格跳动。
-画面:牛皮纸#8A7258+纸纹暗角;米白#ECE6D6、印刷红#A2131A、墨黑#100F0A。照片转黑白粗网点,抠图留白边+软投影;撕边、胶带。
-字体:粗压缩大写;单字纸片红黑白交替各歪±8°。
-动效:2/3帧交替保持=12fps。元素拍上140%→97%→100%,4步落定;剪刀沿虚线剪开掀出下层;撕纸卷开转场;约2秒一个高潮。
-实现:Remotion时间量化12fps;SVG噪声clipPath撕边;spring。
-不要:平滑补间;扁平矢量;干净直边;发光。
+剪报拼贴风:万物都是剪下的纸片,照片一律粗网点黑白,在牛皮纸上逐格拍上去。
+① 造型与材质:任何主体都做成实物剪片——照片转粗网点灰阶,插图取老版画线刻;外缘留不规整白边或撕成毛边,带薄投影、略歪斜,可用胶带固定;纸片层层压叠,不靠透视出纵深。
+② 配色与背景:牛皮纸底,带纤维与暗角;主体为报纸米白与油墨黑的高反差灰阶,彩图也压成褪色网点;唯一强色是一种印刷红,只以整块平涂纸片出现。
+③ 运动规律:一拍二到一拍三逐格步进,不做顺滑补间;纸片被一下拍上,冲大、回弹、定死;揭示与换场靠剪开、撕开、掀起纸层。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 
 ## English Prompt
 
-Style: paper collage; everything is a clipped scrap, animated in 12fps steps.
-Look: kraft #8A7258 with grain+vignette; cream #ECE6D6, print red #A2131A, ink #100F0A. Photos as coarse B/W halftone with white cut border + soft shadow; torn edges, tape.
-Type: heavy condensed caps; ransom-note letter chips alternating red/black/cream, each tilted ±8°.
-Motion: alternating 2/3-frame holds at 30fps = 12fps. Items slap on 140%→97%→100% in 4 steps; scissors cut a dashed line, then a paper flap opens to reveal the layer below; paper-tear-and-curl transitions. One big event every ~2s.
-Build: Remotion, quantize time to 12fps; SVG-noise clipPath torn edges; overshoot spring.
-Avoid: smooth tweening; flat vector art; clean straight edges; glows/gradients.
+Cut-and-paste newsprint collage: everything is a scrap of paper, every photo is coarse black-and-white halftone, slapped onto kraft paper one stepped frame at a time.
+1) Form and material: treat any subject as a physical cutting — photos become grainy halftone greyscale, drawings look like old engraved line art; give each piece a ragged white cut border or a torn fibrous edge, a thin drop shadow and a slight tilt, optionally taped down. Scraps pile on top of each other; depth comes from stacking, never perspective.
+2) Color and ground: the ground is fibrous kraft paper with a vignette; subjects sit in high-contrast newsprint cream and ink black, and any color imagery is pressed into faded halftone. The single strong color is one printing red, used only as solid flat paper pieces and never dominant.
+3) Motion: stepped animation on twos to threes, no smooth tweening; pieces land as if slapped down by hand — overshoot, bounce back, then lock dead still. Reveals and scene changes happen by cutting, tearing or peeling a paper layer to expose the one beneath.
+What appears on screen and how it is arranged is decided entirely by the content; the style only decides how things are drawn and how they move.
 Content: {your content here}

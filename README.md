@@ -15,24 +15,22 @@
 <img src="images/01-1.webp" width="32%"> <img src="images/01-2.webp" width="32%"> <img src="images/01-3.webp" width="32%">
 
 ```text
-风格:逐帧手绘,线条沸腾。
-画面:纸纹米底#EEE1BE;红#D33631黄#F2C429平涂,墨黑#1D1512粗描边;主体后柔光晕#ECDA98;排线阴影。
-字体:如需文字:圆胖手写粗体逐笔写出。
-动效:默认on 2s,快动作on 1s,定格on 3s;每张新图线抖±2px;挤压拉伸、残影、速度线;高潮插1-2帧满屏星爆冲击;景别硬切不推拉。
-实现:Canvas笔刷;以floor(frame/step)为种子抖路径与线宽,位置按step取整。
-不要:丝滑缓动;矢量死线;渐变;定格内乱抖。
+逐帧手绘复古漫画动画。招牌:一拍二重绘、不停抖的墨黑粗描边;暖米白纸底上只用两种饱和暖色加墨黑平涂;最猛一下砸满屏漫画星爆。
+① 造型与材质:任何主体都画成圆胖夸张的平涂,墨黑描边粗细不匀,暗面用手绘排线;整幅画像一张动画纸,角落带手写场号与张数小签。
+② 配色与背景:纸纹铺满画面;一主一辅两种暖色加墨黑,不添色、无渐变;主体背后垫一团淡柔圆光晕。
+③ 运动规律:默认一拍二,快动作一拍一;每换一张线条整体轻颤;动作靠挤压拉伸、残影、速度线;最强节拍插满屏星爆,底色在纸、墨、主色间硬闪;只硬切,不推拉。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 ```
 
 <details><summary>English prompt</summary>
 
 ```text
-Style: frame-by-frame hand-drawn cartoon, boiling lines.
-Look: grainy cream paper #EEE1BE; flat red #D33631 and yellow #F2C429 fills, thick ink #1D1512 outlines, soft glow #ECDA98 behind the subject; hatched shadows.
-Type: if text is needed: chunky rounded hand-lettering written on stroke by stroke.
-Motion: on 2s by default, fast actions on 1s, holds on 3s; each new drawing jitters lines ±2px; squash & stretch, smears, speed lines; climax gets 1-2 full-screen starburst impact frames; hard cuts between shot sizes, no zooms.
-Build: Canvas brush; floor(frame/step) seeds path and stroke-width jitter; positions quantized to the step.
-Avoid: silky easing; dead vector lines; gradients; jitter within one held drawing.
+Frame-by-frame hand-drawn retro comic animation. Signature: thick ink-black outlines redrawn on twos so the lines never stop boiling; only two saturated warm colors plus ink black, flat-filled on warm off-white paper; the biggest hit lands as a full-screen comic starburst.
+1) Form & material: render any subject as chubby, exaggerated flat shapes wrapped in uneven ink outlines, shadows done with hand hatching; the whole frame reads as a sheet of animation paper, with small handwritten scene and drawing-number tags in the corners.
+2) Color & ground: paper grain covers the entire frame; one main and one secondary saturated warm color plus ink black, nothing more, no gradients; a pale, soft-edged round glow sits behind the subject.
+3) Motion: on twos by default, fast actions on ones; every new drawing makes all lines tremble slightly; actions are sold with squash and stretch, smears and speed lines; the strongest beat gets full-screen starburst frames, the ground flashing hard between paper, ink black and the main color; hard cuts only, no push-ins or zooms.
+What appears on screen and how it is arranged is decided entirely by the content; the style only decides how things are drawn and how they move.
 Content: {your content here}
 ```
 
@@ -45,24 +43,22 @@ Content: {your content here}
 <img src="images/02-1.webp" width="32%"> <img src="images/02-2.webp" width="32%"> <img src="images/02-3.webp" width="32%">
 
 ```text
-风格:等轴2.5D桌面微缩模型,逐格自己长出来
-画面:正交等轴无透视;万物落在方格地块+厚底座;先素白#EDE8F5配深靛#1B1650,高潮从中心一波上色#A4EDC4/#9F86DF/#62EFF1;圆角块、软阴影
-字体:粗圆3D挤出字平贴地面;等宽小字注释;白底数据卡+引线
-动效:30fps连续带运动模糊,相机慢漂。地块由中心逐环错峰飞入(2s);物件逐格拔高,先线框后实体,轻过冲(3s);光环脉冲0.5s内上色;末尾拉远,字母逐个弹落
-实现:Three.js正交相机+InstancedMesh
-不要:透视、写实材质、满屏霓虹、同时出现
+等轴微缩积木风。招牌：锁死正交等轴视角；万物拆成圆角哑光黏土小块；逐格错峰拼出来。
+① 造型与材质：无透视，平行线不汇聚；任何主体按同一方格单元切成圆角小块拼成，顶亮侧暗，像桌面微缩模型；哑光黏土，柔和漫射光，贴地软阴影，细节极简。
+② 配色与背景：浅薰衣草紫柔雾渐变底；主体以素白和低饱和粉彩为主，同色系明暗分面；一小块深靛压重心。
+③ 运动规律：形体逐格错峰落位或拔高，短促缓出带轻回弹，连续顺滑带运动模糊；镜头保持等轴角度，只缓慢平移或推拉。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 ```
 
 <details><summary>English prompt</summary>
 
 ```text
-Style: isometric 2.5D tabletop miniature that builds itself tile by tile
-Look: orthographic iso, no perspective; everything sits on a tile grid over a thick base slab; start white clay #EDE8F5 with deep indigo #1B1650, then a color wave spreads from center at the climax (mint #A4EDC4 / violet #9F86DF / cyan glow #62EFF1); rounded blocks, soft shadows
-Type: chunky rounded 3D-extruded letters lying flat on the ground; small monospace notes; white data cards with leader lines
-Motion: continuous 30fps with motion blur, slow camera drift. Tiles fly in ring by ring from center (2s); objects rise per cell, wireframe first then solid, slight overshoot (3s); a ring pulse recolors all within 0.5s; finally pull back, letters drop in one by one with a bounce
-Build: Three.js orthographic camera + InstancedMesh
-Avoid: perspective, realistic materials, neon everywhere, everything at once
+Isometric clay-block miniature. Signatures: a locked orthographic isometric view; everything broken into rounded matte clay cubes; it assembles cell by cell, staggered.
+1 Form & material: no perspective, parallel lines never converge; any subject is cut into rounded blocks on one shared square unit, bright tops and darker sides, like a tabletop miniature; matte clay surface, soft diffuse light, soft contact shadows, minimal detail.
+2 Color & background: a soft lavender haze background that deepens toward the bottom; subjects mostly off-white and low-saturation pastels, faces separated by lighter/darker tones of the same hue; one small deep-indigo mass anchors the eye.
+3 Motion: forms drop into place or rise cell by cell in a staggered cascade, quick ease-out with a slight bounce, continuous and smooth with motion blur; the camera keeps the isometric angle and only slowly pans or dollies.
+What appears on screen and how it is arranged is decided entirely by the content; the style only decides how it is drawn and how it moves.
 Content: {your content here}
 ```
 
@@ -75,24 +71,22 @@ Content: {your content here}
 <img src="images/03-1.webp" width="32%"> <img src="images/03-2.webp" width="32%"> <img src="images/03-3.webp" width="32%">
 
 ```text
-风格:扁平矢量,纯色几何零阴影,主色圆点贯穿全片。
-画面:钴蓝#2B1EF4底,珊瑚#F14B4F主色,薄荷#3DFDA7/明黄#F7CC30点缀,奶油#FDF7E9留白;只用圆、圆角矩形、胶囊。
-字体:圆润粗体小写,宽字距副标逐字弹出。
-动效:30fps+方向模糊;下落拉伸1.2,落地压扁1.5×0.6停2帧,回弹过冲10%+放射线;错开3帧弹出;每场2秒,0.4秒推镜穿框或圆点扩张擦除换场。
-实现:SVG+GSAP,scaleX/Y,clip-path。
-不要:投影渐变;匀速;一拍二;超5色。
+电光蓝弹跳扁平风：电光蓝铺底撞珊瑚红、薄荷绿、明黄纯色块；一颗珊瑚红圆点串起画面；落位必压扁回弹、迸放射短线。
+① 造型与材质：主体拆成圆、圆角矩形、胶囊的无描边纯色块，零阴影零渐变；细节用同色小圆点阵列，纵深靠浅一档同色剪影叠层。
+② 配色与背景：电光蓝占大半，红只点焦点，绿、黄、奶油白作次要块面，深藏青压暗部；背景纯色平铺。
+③ 运动规律：下落拉长、触地压扁、过冲回弹，落点迸短线和涟漪；元素错开弹入；快移带方向模糊；换场由红点胀成满屏圆擦入。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 ```
 
 <details><summary>English prompt</summary>
 
 ```text
-Style: flat vector, solid geometry, zero shadows; one accent dot runs through the whole piece.
-Look: cobalt #2B1EF4 ground, coral #F14B4F lead, mint #3DFDA7 / yellow #F7CC30 accents, cream #FDF7E9 negative space; only circles, rounded rects, pills.
-Type: rounded heavy lowercase; wide-tracked subline, letters pop in one by one.
-Motion: 30fps + directional blur; falls stretch 1.2x, lands squash 1.5x0.6 held 2 frames, 10% rebound overshoot with radial tick lines; 3-frame stagger pop-ins; ~2s per beat, change scenes with a 0.4s push-in through a small frame or the dot swelling into a circle wipe.
-Build: SVG + GSAP, scaleX/Y, clip-path circle.
-Avoid: shadows/gradients; linear easing; on-twos; more than 5 colors on screen.
+Electric-blue bouncy flat style: an electric-blue field dominating the frame with solid coral-red, mint-green and sunflower-yellow blocks; one solid coral-red dot threads every shot together; every landing squashes, rebounds and bursts short radial ticks.
+1) Form & material: break any subject into outline-free solid blocks built only from circles, rounded rectangles and pills, zero shadow, zero gradient; detail is arrays of small same-color dots, depth is layered silhouettes one shade lighter in the same hue.
+2) Color & background: electric blue covers most of the frame, coral red is reserved for the focal point, mint, yellow and cream share secondary blocks, deep navy carries the darks; backgrounds are flat solid fields.
+3) Motion: falling elements stretch, squash on contact and overshoot back, the impact point bursts radial ticks and a flat elliptical ripple; groups pop in with staggered timing; fast moves carry directional motion blur; scene changes happen as the red dot swells into a full-screen circle of color that wipes into the next frame.
+What appears on screen and how it is arranged is decided entirely by the content; the style only decides how things are drawn and how they move.
 Content: {your content here}
 ```
 
@@ -105,24 +99,22 @@ Content: {your content here}
 <img src="images/04-1.webp" width="32%"> <img src="images/04-2.webp" width="32%"> <img src="images/04-3.webp" width="32%">
 
 ```text
-风格:一根金线一笔画到底,大留白
-画面:底 #151E2D→#070E16 暗角;线 #C9B27E 2px;笔尖 #FFF8E8 光点;末个闭合形填金 #E4D3A0
-字体:如需文字:宽字距细衬线,定版后淡入
-动效:30fps 连续;笔尖匀速,拐角停 5 帧;镜头跟笔;新线亮白 1s 退成金;闭合时3帧由外向内填满+光环外扩;再 0.8s 拉远定版
-实现:SVG单path+stroke-dashoffset;getPointAtLength 定光点与相机
-不要:多条线;断笔;提前填色;快切
+单线金描风:一根不断的金线一笔画出一切,笔尖拖着白热光点,暗蓝底上只有金线。
+① 造型与材质:任何物体只勾外形,由同一根细线连续画成,物与物之间也被这根线串起;不提笔、不铺块面,只在要强调处让一个闭合形填成实金。
+② 配色与背景:深海军蓝近黑底,四角压暗;线是低饱和暖金,刚画的一段偏白发亮;大半留空。
+③ 运动规律:笔尖持续前进,线永远在被画出来,折角略收一拍;镜头平移跟住笔尖;线一闭合,金色由外向内瞬间灌满并荡出一圈光;要看全貌时才缓缓拉远。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 ```
 
 <details><summary>English prompt</summary>
 
 ```text
-Style: one gold line drawn without lifting, lots of negative space
-Look: radial bg #151E2D→#070E16 vignette; line #C9B27E 2–3px round caps; white-hot tip #FFF8E8; only the final closed shape fills gold #E4D3A0
-Type: if text is needed: after lockup, wide-tracked thin serif caps centered below, blur-fade in
-Motion: smooth 30fps; tip near-constant speed, holds 4–6 frames at corners; camera pans with tip; fresh line glows white, fades to gold over 1s; on closure, 3-frame outside-in fill + expanding glow ring; then 0.8s ease-in-out pull-back to lockup
-Build: single SVG path + stroke-dashoffset; getPointAtLength drives tip glow and camera
-Avoid: multiple lines; breaks or jumps; early fills; hard cuts or shake
+Single-Line Gold style: one unbroken gold line draws everything in a single stroke, its tip trailing a white-hot spark; on a dark navy ground there is nothing but gold line.
+① Form & material: every subject is outline only, drawn by the same thin continuous line, which also travels from one subject to the next to join them; never lift the pen or split into separate strokes. No filled areas, except one closed shape at a moment of emphasis that fills solid gold with a soft halo.
+② Color & background: deep navy, near-black ground, darkened toward the corners; the line is a desaturated warm gold, with the freshly drawn stretch glowing whitish before settling back to gold; most of the frame stays empty.
+③ Motion: the tip keeps moving, so the line always reads as being drawn right now, easing for a beat at sharp corners; the camera pans to stay with the tip; when the line closes a shape, gold floods in from the edge inward in an instant and a ring of light ripples out; the camera slowly pulls back only when the whole picture needs to be seen.
+What appears on screen and how it is arranged is decided entirely by the content; the style only decides how things are drawn and how they move.
 Content: {your content here}
 ```
 
@@ -135,24 +127,22 @@ Content: {your content here}
 <img src="images/05-1.webp" width="32%"> <img src="images/05-2.webp" width="32%"> <img src="images/05-3.webp" width="32%">
 
 ```text
-风格:粉彩3D棚拍,充气糖果感,软糯有分量
-画面:#E8336F主体/#F0CDBA地/#DDB8D2天/#A48BE8换色;釉面鼓胀;数千小球铺地;柔光、低机位浅景深、远景雾化
-字体:主标做充气3D圆胖字;副标极小全大写、宽字距,末淡入
-动效:24fps;元素逐个落入隔0.45s,触地压扁20%回弹、压坑;一镜缓推环绕;高潮镜面重物砸入,小球溅飞、自落点波纹换色;末1.5s定版。
-实现:Blender Cycles+Python;实例化+刚体;运动模糊。
-不要:扁平假3D;黑底霓虹;硬切;匀速。
+风格:充气糖果三维棚拍。招牌:万物圆胖鼓胀、釉亮如硬糖;大块表面由密排同款小圆粒构成;落点必压陷回弹。
+①造型与材质:任何主体都做成充气般圆胖、无棱角的实心体,表面釉亮,反光柔而大块。承托面与大块面不做平板,由无数同款小圆粒密排成软颗粒肌理,受压下陷、被撞弹散。
+②配色与背景:整体高明度低饱和的邻近色粉彩,天地同色系靠明暗分层;只有主角用一个高饱和色;可点缀镜面金属;无纯黑。柔和棚光包裹,焦外虚化,远处发雾。
+③运动规律:物体从空中落下,触地压扁再弹回,把周围颗粒压出涟漪;元素逐个错拍进场;镜头一镜到底缓推缓绕;换色从接触点向外扩散。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 ```
 
 <details><summary>English prompt</summary>
 
 ```text
-Style: pastel 3D studio render, inflated candy-gloss, soft yet weighty.
-Look: #E8336F hero / #F0CDBA ground / #DDB8D2 sky / #A48BE8 takeover; glossy puffy forms; ground tiled with thousands of small spheres; soft key light, low camera, shallow DOF, hazy distance.
-Type: headline as chubby inflated 3D letters; tiny all-caps subline, wide tracking, fades in last.
-Motion: 24fps feel; elements drop in one by one ~0.45s apart, squash ~20% on landing, rebound, dent the ground; one continuous take, slow dolly-orbit; climax: a chrome heavy object slams in, spheres splash, color ripples outward from impact to the takeover hue; hold final 1.5s.
-Build: Blender Cycles + Python; instancing + rigid-body sim; motion blur on.
-Avoid: flat fake 3D; dark neon; hard cuts; linear motion.
+Style: inflated candy 3D studio render. Signatures: every form is chubby, puffed and glossy like hard candy; large surfaces are built from densely packed identical tiny round beads; every landing dents and rebounds.
+1 Form & material: render any subject as a balloon-plump solid with no sharp edges, a glazed skin and broad soft reflections. Supporting and large surfaces are never flat slabs but a soft granular field of countless identical beads that sink under pressure and scatter on impact.
+2 Color & background: high-lightness, low-saturation analogous pastels overall; ground and sky share one hue family, separated by value; only the hero carries one saturated color; mirror chrome may accent; no pure black. Wrapped in soft studio light, defocused background, hazy distance.
+3 Motion: objects drop from above, squash on contact and spring back, pressing ripples into the surrounding beads; elements enter one by one, staggered; the camera holds one continuous take with a slow push and orbit; color changes spread outward from the point of contact.
+What appears on screen and how it is arranged is entirely decided by the content; the style only decides how things are drawn and how they move.
 Content: {your content here}
 ```
 
@@ -165,24 +155,22 @@ Content: {your content here}
 <img src="images/06-1.webp" width="32%"> <img src="images/06-2.webp" width="32%"> <img src="images/06-3.webp" width="32%">
 
 ```text
-风格:单一形状连续变形串起全片,扁平图标极简。
-画面:#F3EFE4 纸白、#15141A 墨黑、#E8422C 红、#F4BF35 黄、#262ED7 钴蓝大色块;居中单主体,实心填充+一道斜向浅色折面;全屏纸纹+轻暗角。
-字体:如需文字:粗几何无衬线;角落小号等宽章节号,换段上下滚动替换。
-动效:30fps 全帧不抽帧;每形停 1–1.5s,形变 8–12 帧 ease-in-out,落地挤压回弹约 10%;快移带方向模糊;换段时新底色从主体中心以软边圆 5–8 帧加速扩满屏;形内换色用斜向擦除。
-实现:flubber 插值 SVG path d;底色 clip-path circle+blur。
-不要:交叉淡化换形;多主体并排;线稿描边;渐变光。
+形变动画:全片只有一个居中实心剪影,从不切走,轮廓一路变身成下一个形状;换段时新底色从剪影处软边圆晕开铺满。
+① 造型与材质:任何主体都概括成圆角粗实心剪影,无描边无细节,带一道斜向浅色折面;整屏覆细纸纹。
+② 配色与背景:底永远是满屏高饱和纯色,与剪影明度反差强;三四个鲜艳色轮流当底,间或回到米白或近黑。
+③ 运动规律:形与形靠轮廓连续变形衔接,可拉长、分裂、融合,不淡化不硬切;每形定住片刻再变,到位时压扁再弹回,快移带方向模糊。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 ```
 
 <details><summary>English prompt</summary>
 
 ```text
-Style: one shape continuously morphs to carry the whole piece; flat, iconic minimalism.
-Visual: #F3EFE4 paper white, #15141A ink, #E8422C red, #F4BF35 yellow, #262ED7 cobalt as big flat fields; one centered subject, solid fill plus one diagonal lighter fold facet; full-frame paper grain, light vignette.
-Type (if needed): bold geometric sans; small mono chapter index in a corner, rolls vertically on section change.
-Motion: 30fps, no stepping; hold each form 1–1.5s, morph in 8–12 frames ease-in-out, ~10% squash-rebound on landing; directional blur on fast moves; on section change the new background grows from the subject's center as a soft-edged circle filling the screen in 5–8 accelerating frames; recolor inside the shape with a diagonal wipe.
-Build: flubber-interpolated SVG path d; background via clip-path circle + blur.
-Avoid: crossfading between shapes; multiple subjects side by side; outline line-art; gradient glows.
+Shape Morph: the whole piece has only one centered solid silhouette; it is never cut away, its outline keeps transforming into the next shape; at each section change the new background color blooms out from the silhouette as a soft-edged circle until it fills the frame.
+1 Form & material: reduce any subject to a bold, round-cornered solid silhouette, no outlines, no inner detail, just one diagonal lighter fold facet; fine paper grain over the whole frame.
+2 Color & background: the background is always one full-bleed saturated flat color with strong value contrast against the silhouette; three or four vivid colors take turns as the ground, occasionally returning to off-white paper or near-black.
+3 Motion: shapes become one another through continuous outline interpolation—stretching, splitting, merging—never crossfading or hard-cutting; each form holds briefly before changing, squashes and rebounds as it lands, fast moves carry directional blur.
+What appears on screen and how it is arranged is entirely decided by the content; the style only decides how it is drawn and how it moves.
 Content: {your content here}
 ```
 
@@ -195,24 +183,22 @@ Content: {your content here}
 <img src="images/07-1.webp" width="32%"> <img src="images/07-2.webp" width="32%"> <img src="images/07-3.webp" width="32%">
 
 ```text
-风格:贴纸风科普,一张超长画布,镜头一路推下去。
-画面:浅灰点阵底#EAEFF2,墨#26313A,红#EE4A3C点重点,收尾转深底#1F2A31;抠图套粗白描边+软投影;数据用墨色圆角小方块。
-字体:粗黑体标题+宽字距英文小副标,关键词下红条划出;角落固定章节进度条。
-动效:30fps;换章镜头0.5s急推+强运动模糊;同批方块错峰飞向新布局,旋转落定;元素5帧弹出微过冲;数字滚动。收尾拉远,画布缩进白边容器,关键数字贴纸弹出。
-实现:Remotion超高画布+camera;方块同key做FLIP变形;多帧采样运动模糊;SVG feMorphology描边。
-不要:硬切/淡入换页;无描边扁平图标;多色;匀速漂移。
+实物贴纸信息图,招牌:粗白边照片贴纸、深色圆角方块、带拖影的急速运镜。
+① 造型与材质:任何主体都抠成真实照片,包粗白边、落短软投影,可微斜;数量与类别拆成大小一致的深色圆角方块,一块一单位,靠堆叠表达多少与归属。
+② 配色与背景:高明度冷灰底,极淡点阵;近黑画方块与字;只留一个高饱和强调色,只点重点;其余近乎无彩。
+③ 运动规律:元素弹入微过冲;方块错峰飞起、边飞边歪、落成新排列;换段不切不淡,整屏急推急摇带强方向运动模糊,随即近乎静止。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 ```
 
 <details><summary>English prompt</summary>
 
 ```text
-Style: sticker explainer — one extra-tall canvas, the camera keeps pushing down through it.
-Look: light gray dot-grid bg #EAEFF2, ink #26313A, red #EE4A3C for emphasis only, finale on dark #1F2A31; cutouts get a thick white sticker outline + soft shadow; data as small rounded ink chips.
-Type: heavy sans headlines + wide-tracked small English subtitle; red marker bar wipes under key words; fixed corner chapter progress bar.
-Motion: smooth 30fps; chapter change = 0.5s fast camera push with strong directional motion blur; the same chips fly staggered into each new layout and settle with rotation; elements pop in ~5 frames with slight overshoot; numbers count up. Finale pulls back: whole canvas shrinks into a white-outlined container, key number pops out as a sticker.
-Build: Remotion tall canvas + camera transform; same-key chips FLIP between layouts; multi-sample motion blur; SVG feMorphology outline.
-Avoid: hard cuts/fades between pages; flat outline-less icons; many colors; constant-speed drifting camera.
+Photo-sticker infographic. Signatures: thick-white-bordered photo stickers, dark rounded tiles, smeared fast camera whips.
+(1) Form & material: cut any subject out as a real photo, wrap it in a thick white border with a short soft shadow, optionally slightly tilted; break quantities and categories into identical dark rounded tiles, one tile per unit, so stacking shows how many and what belongs where.
+(2) Color & ground: bright cool-gray ground with a very faint dot grid; near-black for tiles and type; exactly one saturated accent, only on key points; everything else nearly colorless.
+(3) Motion: elements pop in with slight overshoot; tiles lift off in a stagger, tilt in flight and land in a new arrangement; no hard cuts or fades - between sections the whole frame whips or pushes with strong directional motion blur, then settles almost still.
+What appears on screen and how it is arranged is decided entirely by the content; the style only decides how things are drawn and how they move.
 Content: {your content here}
 ```
 
@@ -225,24 +211,22 @@ Content: {your content here}
 <img src="images/08-1.webp" width="32%"> <img src="images/08-2.webp" width="32%"> <img src="images/08-3.webp" width="32%">
 
 ```text
-风格:科幻FUI发光细线仪表盘。
-画面:#03080A底,#2EE6E6主线,#0F4F55暗线,#EAFBFF数字,高潮转#FF9A1F。主体套分段刻度环+准星,两侧数据栏+角括号,蜂窝底纹+辉光。
-字体:等宽全大写,小标签配大数字。
-动效:30fps连续。CRT开机进、压线成点出(各0.3s);弧段描边,逐行打字;数字乱跳后落定。转折2帧切片+RGB分离;高潮白闪1帧→3帧转琥珀→推镜后硬切回。
-实现:Three.js线框+Bloom;SVG描边;种子随机乱码。
-不要:无辉光;多色;实心块;圆体字。
+FUI瞄准仪表风。招牌:主体被分段刻度圆环加准星锁在中央;四周细线框读数,一个大数字始终跳动;近黑底只亮青色细线,关键时整屏转琥珀。
+①造型与材质:全用发光细线、刻度、点线勾出,不填实色;主体成线框轮廓,如被测量;读数带角括号。
+②配色与背景:底近黑带冷暗角;单一青色靠亮度分主次,近白点焦点;琥珀表警示,来时取代青色。
+③运动规律:入场如开机,亮线拉开成准星,圆弧沿刻度描出,字逐行打出;圆环缓转、扫描掠过、数字滚动;转态先闪切片错位再换色。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 ```
 
 <details><summary>English prompt</summary>
 
 ```text
-Style: sci-fi film FUI — glowing hairline instrument panels on near-black.
-Visual: bg #03080A, lines #2EE6E6, dim #0F4F55, big numerals #EAFBFF, climax shifts to #FF9A1F. Subject wrapped in segmented tick rings + crosshair; side data columns, corner brackets, faint hex grid, bloom.
-Type: monospace, uppercase, wide tracking; tiny labels vs big numerals.
-Motion: smooth 30fps. CRT power-on in, power-off squeeze-to-dot out (0.3s each); arcs draw on, lines type with cursor; numbers scramble then settle and tick. Beat change: 2-frame slice offset + RGB split. Climax: 1-frame white flash → shockwave → amber in 3 frames → push-in, hard snap back.
-Build: Three.js wireframe + bloom pass; SVG stroke draw; seeded-random glyph scramble.
-Avoid: no glow; many hues; big solid fills; rounded fonts.
+FUI targeting-instrument style. Signatures: the subject is locked dead-center by segmented tick rings and a crosshair; it is surrounded by hairline-framed readouts with one big number always ticking; only cyan glowing hairlines on near-black, and at the critical moment the whole screen turns amber.
+1. Form & material: everything drawn in glowing hairlines, ticks and dotted strokes, no solid fills; the subject becomes a wireframe or dot-matrix outline, as if scanned by an instrument; readouts carry corner brackets, small labels beside one big number.
+2. Color & background: near-black with a cool vignette; a single cyan ranked only by brightness, rare near-white for focus; amber means alert, and when it arrives it replaces the cyan.
+3. Motion: entrances feel like a device powering on — a bright line opens into the crosshair, arcs draw along their ticks, text types out line by line; while running, rings turn slowly, scans sweep, numbers roll; a state change is preceded by a quick slice-offset glitch, then the color switches.
+What appears on screen and how it is arranged is decided entirely by the content; the style only decides how things are drawn and how they move.
 Content: {your content here}
 ```
 
@@ -255,24 +239,22 @@ Content: {your content here}
 <img src="images/09-1.webp" width="32%"> <img src="images/09-2.webp" width="32%"> <img src="images/09-3.webp" width="32%">
 
 ```text
-风格:剪报纸片拼贴,逐格跳动。
-画面:牛皮纸#8A7258+纸纹暗角;米白#ECE6D6、印刷红#A2131A、墨黑#100F0A。照片转黑白粗网点,抠图留白边+软投影;撕边、胶带。
-字体:粗压缩大写;单字纸片红黑白交替各歪±8°。
-动效:2/3帧交替保持=12fps。元素拍上140%→97%→100%,4步落定;剪刀沿虚线剪开掀出下层;撕纸卷开转场;约2秒一个高潮。
-实现:Remotion时间量化12fps;SVG噪声clipPath撕边;spring。
-不要:平滑补间;扁平矢量;干净直边;发光。
+剪报拼贴风:万物都是剪下的纸片,照片一律粗网点黑白,在牛皮纸上逐格拍上去。
+① 造型与材质:任何主体都做成实物剪片——照片转粗网点灰阶,插图取老版画线刻;外缘留不规整白边或撕成毛边,带薄投影、略歪斜,可用胶带固定;纸片层层压叠,不靠透视出纵深。
+② 配色与背景:牛皮纸底,带纤维与暗角;主体为报纸米白与油墨黑的高反差灰阶,彩图也压成褪色网点;唯一强色是一种印刷红,只以整块平涂纸片出现。
+③ 运动规律:一拍二到一拍三逐格步进,不做顺滑补间;纸片被一下拍上,冲大、回弹、定死;揭示与换场靠剪开、撕开、掀起纸层。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 ```
 
 <details><summary>English prompt</summary>
 
 ```text
-Style: paper collage; everything is a clipped scrap, animated in 12fps steps.
-Look: kraft #8A7258 with grain+vignette; cream #ECE6D6, print red #A2131A, ink #100F0A. Photos as coarse B/W halftone with white cut border + soft shadow; torn edges, tape.
-Type: heavy condensed caps; ransom-note letter chips alternating red/black/cream, each tilted ±8°.
-Motion: alternating 2/3-frame holds at 30fps = 12fps. Items slap on 140%→97%→100% in 4 steps; scissors cut a dashed line, then a paper flap opens to reveal the layer below; paper-tear-and-curl transitions. One big event every ~2s.
-Build: Remotion, quantize time to 12fps; SVG-noise clipPath torn edges; overshoot spring.
-Avoid: smooth tweening; flat vector art; clean straight edges; glows/gradients.
+Cut-and-paste newsprint collage: everything is a scrap of paper, every photo is coarse black-and-white halftone, slapped onto kraft paper one stepped frame at a time.
+1) Form and material: treat any subject as a physical cutting — photos become grainy halftone greyscale, drawings look like old engraved line art; give each piece a ragged white cut border or a torn fibrous edge, a thin drop shadow and a slight tilt, optionally taped down. Scraps pile on top of each other; depth comes from stacking, never perspective.
+2) Color and ground: the ground is fibrous kraft paper with a vignette; subjects sit in high-contrast newsprint cream and ink black, and any color imagery is pressed into faded halftone. The single strong color is one printing red, used only as solid flat paper pieces and never dominant.
+3) Motion: stepped animation on twos to threes, no smooth tweening; pieces land as if slapped down by hand — overshoot, bounce back, then lock dead still. Reveals and scene changes happen by cutting, tearing or peeling a paper layer to expose the one beneath.
+What appears on screen and how it is arranged is decided entirely by the content; the style only decides how things are drawn and how they move.
 Content: {your content here}
 ```
 
@@ -285,24 +267,22 @@ Content: {your content here}
 <img src="images/10-1.webp" width="32%"> <img src="images/10-2.webp" width="32%"> <img src="images/10-3.webp" width="32%">
 
 ```text
-风格:暗色极光上的磨砂玻璃与液态透镜。
-画面:#060316底+暗角;#923EDA/#4558F4/#74D8FC柔光斑缓流;2-3张圆角玻璃卡错层,亮描边、柔投影、高光扫过。
-字体:细无衬线,白/半透明两级,标题宽字距。
-动效:30fps顺滑;镜头慢推+3D倾斜视差;卡片错峰0.5s入场;文字逐行0.4s由糊变清;透镜游走放大1.3倍带色散;收尾卡片虚焦,光环0.6s扩散后静持。
-实现:WebGL噪声渐变+折射着色器;backdrop-filter。
-不要:白底扁平;实心卡;硬切。
+「极光玻璃」:暗场蓝紫青极光,万物皆磨砂玻璃,液态透镜滑过放大扭弯。
+① 造型与材质:任何主体都是大圆角磨砂玻璃片,背光晕染进片内,轮廓一线白亮高光;多片前后错层、微透视倾斜。透明厚玻璃透镜经过处,形与字鼓起放大,边缘泛彩虹色散。
+② 配色与背景:近黑冷底压暗角;几团巨大柔焦光互相晕染,蓝主、紫青辅,无色带;前景只用白与半透明白。
+③ 运动规律:全程顺滑;背景光如极光缓缓变形;玻璃片轻浮漂移带层间视差;元素由虚到实浮现,失焦后退离场;透镜缓慢游走。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 ```
 
 <details><summary>English prompt</summary>
 
 ```text
-Style: frosted-glass cards floating over a dark aurora; a liquid lens refracts content.
-Visuals: #060316 base + vignette; soft drifting blobs of #923EDA/#4558F4/#74D8FC; 2-3 large-radius translucent glass cards layered in depth, bright rim, soft shadow, diagonal specular sweep.
-Type: light sans, white + translucent tier; closing title ultra-light, wide tracking.
-Motion: smooth full 30fps; slow push-in with 3D tilt parallax; cards stagger in 0.5s apart; text lines resolve blur-to-sharp, 0.4s each; lens glides, magnifying 1.3x with chromatic fringing; outro: cards defocus, lens lands on title, halo expands 0.6s, then 1s hold.
-Build: WebGL noise gradient + refraction shader; backdrop-filter blur; perspective.
-Avoid: flat white; opaque cards; hard cuts; neon outlines.
+"Aurora Glass" style, three signatures: a blue-violet-cyan aurora glowing in a dark void; every subject rendered as translucent frosted glass; a liquid-glass lens that glides over things, magnifying and bending whatever lies beneath.
+1 Form & material: turn any subject into large-radius frosted glass panes; the light behind them diffuses and tints into the pane, leaving only a hairline bright highlight on the outline. Panes sit in staggered depth with a slight perspective tilt. The lens is thick clear glass: shapes and text under it bulge and enlarge, edges fringed with rainbow dispersion.
+2 Color & background: near-black cool ground with darkened corners; a few huge soft-focus glows bleed into each other, blue dominant, violet and cyan secondary, no banding. Foreground uses only white and translucent white, never solid color.
+3 Motion: smooth and continuous throughout; background light shifts and morphs slowly like an aurora; panes float gently with parallax between layers; elements resolve from blur to sharp, and exit by defocusing and receding; the lens wanders slowly.
+What appears on screen and how it is arranged is decided entirely by the content; the style only decides how it is drawn and how it moves.
 Content: {your content here}
 ```
 
@@ -315,24 +295,22 @@ Content: {your content here}
 <img src="images/11-1.webp" width="32%"> <img src="images/11-2.webp" width="32%"> <img src="images/11-3.webp" width="32%">
 
 ```text
-风格:包豪斯几何构成,按网格逐拍搭成海报
-画面:米纸#F7F1E3淡网格;红#DC2F35黄#F6C60C蓝#2552A3黑#111111平涂;只用圆/扇形/方/三角/粗条,吸附120px模块
-字体:粗黑几何无衬线大写,可竖排;注释小字宽距
-动效:120BPM,15帧一拍,每拍一个动作;缓入缓出,落定无回弹,带运动模糊;新形先现对位十字再展开;可整组绕支点转动重排;转场=逐格翻转散开再拼新构图
-实现:帧号÷15查拍号状态表;坐标取模块整数倍
-不要:渐变阴影圆角;多处同动;离网格
+包豪斯几何构成。招牌:任何主体都用圆、半圆、扇形、方块、三角、粗黑条拼出;只用红黄蓝加黑,落在暖米白纸上;形间露着细黑构图线、对位十字和支点圆点。
+① 造型与材质:边缘锐利,纯平涂,无渐变阴影圆角;纸面只带极淡模块网格。
+② 配色与背景:三原色高饱和不混色,黑色压重量,米白留白占大半,非对称平衡。
+③ 运动规律:踩稳节拍一次只动一件,先现对位十字,再从该点展开、滑入或绕支点转;快起快停带运动模糊,落定不回弹;换段时整幅碎成小格翻转散开再重拼。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 ```
 
 <details><summary>English prompt</summary>
 
 ```text
-Style: Bauhaus geometric construction; a poster assembled on a grid, one beat at a time
-Visual: cream paper #F7F1E3 with faint grid; flat red #DC2F35, yellow #F6C60C, blue #2552A3, black #111111; only circles, quarter-circles, squares, triangles, thick bars, snapped to a 120px module
-Type: heavy geometric sans caps, may run vertical; small wide-tracked captions
-Motion: 120 BPM, 15 frames per beat, one action per beat; ease-in-out, settle with no bounce, motion blur on moves; a registration crosshair appears first, then the shape unfolds from it; whole cluster may rotate about a pivot to re-compose; transition = cells flip and scatter, then reassemble into a new layout
-Build: beat = floor(frame/15) indexes a state table; coordinates are integer multiples of the module
-Avoid: gradients, shadows, rounded corners; several things moving at once; off-grid placement
+Bauhaus geometric construction. Signature: every subject is broken down and rebuilt only from flat circles, semicircles, quarter-circles, squares, triangles and thick black bars; only the red-yellow-blue primaries plus black, on warm off-white paper; thin black construction lines, registration crosshairs and pivot dots stay visible between the shapes, like a poster caught mid-construction.
+1 Form & material: razor-sharp edges, perfectly flat, no gradients, shadows or rounded corners; the paper carries only a very faint module grid.
+2 Color & background: saturated primaries that never blend; black adds weight; off-white space dominates; asymmetric balance.
+3 Motion: on a steady beat, one piece moves at a time — a crosshair or hairline appears first, then the shape unfolds from that point, slides in, or swings about a pivot; fast start, fast stop, directional motion blur, settles with no bounce; between sections the whole composition shatters into small tiles that flip, scatter and reassemble.
+What appears on screen and how it is arranged is decided entirely by the content; the style only decides how it is drawn and how it moves.
 Content: {your content here}
 ```
 
@@ -345,24 +323,22 @@ Content: {your content here}
 <img src="images/12-1.webp" width="32%"> <img src="images/12-2.webp" width="32%"> <img src="images/12-3.webp" width="32%">
 
 ```text
-风格:80年代Synthwave+VHS回放
-画面:夜空#190A21;洋红网格#FF3CC8一点透视;条纹落日#FFE27A→#EC5655;青线框山#82EAFF;对称,强bloom
-字体:粗宽铬字(蓝金镜面+星芒扫光);副行霓虹草书
-动效:30fps连续;网格匀速滚向镜头;开场4:3噪点画框撑满;标题巨大推入7帧落定+闪白1帧;霓虹字闪2-3下点亮;每2-3s撕裂2帧;结尾CRT关机→光点
-实现:Three.js网格+着色器落日;Bloom+扫描线+色差+噪点;角落VHS时间码
-不要:无辉光;网格静止;噪点糊主体
+风格:八十年代合成器浪潮录像带。招牌:暗底霓虹发光线、流向镜头的发光透视线、整帧录像带质感。
+① 造型与材质:任何主体都画成强辉光细线框;实体用水平条纹切开的暖渐变,或上冷下暖的镜面铬,高光起星芒。纵深一律由朝远处消失点收束的发光透视线组织。
+② 配色与背景:近黑深紫大面积压底,洋红为主、青为辅,暖金到珊瑚渐变是唯一暖点;亮色只占小面积。整帧叠扫描线、色差、细噪点和角落录像屏显。
+③ 运动规律:连续平滑不抽帧;透视线匀速流向镜头;元素从镜头前推入急停,伴一闪白光;霓虹闪几下才亮;偶发横向撕裂。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 ```
 
 <details><summary>English prompt</summary>
 
 ```text
-Style: 80s synthwave via VHS playback
-Look: night #190A21; magenta grid #FF3CC8, one-point perspective; striped sun #FFE27A→#EC5655; cyan wireframe hills #82EAFF; symmetric, strong bloom
-Type: wide heavy chrome letters (blue-gold mirror + star-glint sweep); secondary line in neon script
-Motion: smooth 30fps; grid scrolls toward camera at constant speed; open on noisy 4:3 frame expanding to full; headline flies in huge, settles in 7 frames + 1-frame white flash; neon text flickers 2-3x to power on; 2-frame horizontal tear every 2-3s; end with CRT power-off to line → dot
-Build: Three.js grid + shader sun; bloom + scanlines + chromatic aberration + noise; corner VHS timecode
-Avoid: no glow; static grid; noise smearing the subject
+Style: 80s synthwave on VHS. Signatures: neon glow lines on a dark base, glowing perspective lines streaming toward the camera, full-frame videotape texture.
+1) Form & material: draw every subject as thin wireframe with heavy bloom; solids become warm gradients sliced by horizontal stripes, or mirror chrome split cool-top / warm-bottom, with star glints on highlights. Always build depth with glowing perspective lines converging to a distant vanishing point.
+2) Color & background: near-black deep purple dominates; magenta leads, cyan supports; a gold-to-coral gradient is the only warm focal point; glowing color stays small in area. Overlay the whole frame with scanlines, chromatic aberration, fine noise and a corner VCR on-screen display.
+3) Motion: smooth and continuous, never stepped; perspective lines flow toward the camera at constant speed; elements push in from in front of the lens and stop hard with a white flash; neon flickers a few times before it stays lit; occasional horizontal tape tears.
+What appears on screen and how it is arranged is entirely decided by the content; the style only decides how things are drawn and how they move.
 Content: {your content here}
 ```
 
@@ -375,24 +351,22 @@ Content: {your content here}
 <img src="images/13-1.webp" width="32%"> <img src="images/13-2.webp" width="32%"> <img src="images/13-3.webp" width="32%">
 
 ```text
-风格:16位游戏机像素画,套CRT外壳。
-画面:320×180逐点画放大4倍;≤32色,渐变用Bayer抖动;多层视差;#1F1A30 #3D438B #BF2964 #F5C542 #339245。
-字体:点阵字;标题黄橙渐变+深红厚投影;正文入框逐字打。
-动效:只走整数像素;色表每2秒整套硬切;CRT开机进、关机出;推镜1×→2×硬切;高潮闪白1帧接抖动放射光;标题4帧砸落。
-实现:Canvas低分辨率绘制,关平滑放大;LUT换色;扫描线+桶形畸变+暗角。
-不要:亚像素移动、抗锯齿、淡入淡出、矢量字。
+16位像素画,透过CRT显像管看。招牌:粗像素格、棋盘网点过渡、整屏换色板。
+①造型与材质:任何主体都在粗网格上逐格画,阶梯硬边;光影渐变一律用棋盘网点分档。整幅画面罩在显像管里:四边微鼓、圆角暗角、横向扫描线、亮处泛光。
+②配色与背景:同屏少色高饱和,每色只分几档明暗;背景同一颗粒尺度,远处压暗。
+③运动规律:位移按整格跳,动作靠几张姿态轮换;换段落时整套色板一次硬切(明亮→暖艳→冷暗),不渐变;强调闪一帧白;开场亮线展开、收尾缩灭。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 ```
 
 <details><summary>English prompt</summary>
 
 ```text
-Style: 16-bit console pixel art, framed inside a CRT.
-Visuals: paint at 320×180, 4× nearest-neighbor upscale; ≤32 colors per screen, gradients only as Bayer dither bands; multi-layer parallax; #1F1A30 #3D438B #BF2964 #F5C542 #339245.
-Type: bitmap font; titles chunky, yellow→orange gradient + thick dark-red shadow; body text in a double-bordered box, typed per character.
-Motion: integer-pixel moves only, far layer 1px per 4 frames; hard whole-palette swap every ~2s (day→night); CRT power-on in, power-off out; push-in as hard 1×→2× cut; climax = 1 white frame, then dithered radial light burst; titles slam down in 4 frames.
-Build: Canvas low-res render + imageSmoothingEnabled=false; LUT palette swaps; scanlines + barrel distortion + vignette.
-Avoid: sub-pixel smooth motion, anti-aliasing, opacity fades, vector fonts.
+16-bit pixel art seen through a CRT tube. Signature: chunky pixel grid, checkerboard-dither transitions, whole-screen palette swaps.
+1) Form & material: draw every subject cell by cell on a coarse grid, stair-stepped hard edges, light, shadow and gradients are always stepped with checkerboard dither. The whole frame sits inside a picture tube: slightly bulging edges, rounded dark corners, horizontal scanlines, bloom on highlights.
+2) Color & background: few, saturated colors per screen, each with only a few value steps; background shares the same pixel scale, distance pushed darker.
+3) Motion: moves jump whole cells, actions are a few alternating poses; at section changes the entire palette hard-swaps at once (bright -> warm vivid -> cool dark), never blended; emphasis is a single white flash frame; open with a bright line unfolding, close by shrinking out.
+What appears on screen and how it is arranged is decided entirely by the content; the style only decides how things are drawn and how they move.
 Content: {your content here}
 ```
 
@@ -405,24 +379,22 @@ Content: {your content here}
 <img src="images/14-1.webp" width="32%"> <img src="images/14-2.webp" width="32%"> <img src="images/14-3.webp" width="32%">
 
 ```text
-风格:SDF 融球液态,一切都是可捏的高光果冻
-画面:李子紫底#3F1142压暗角;液体橙#E8582E→洋红#E0146E→紫#9B1FD6;半透明+强高光+菲涅尔边光;镜面地面倒影
-字体:粗衬线小写,同材质果冻字挂液滴
-动效:流畅30fps;拉丝断颈坠落,落地冠状飞溅;相邻形状平滑融合、交界混色;弹簧过冲约15%、0.5s收住,静止仍微颤;转场=液浪擦屏约4帧,或聚团爆开+冲击环
-实现:WebGL raymarch SDF+smin,算高光/折射/倒影
-不要:扁平填色;硬边不相融;线性匀速;冷色
+液态果冻风:一切都是会相融、拉丝、溅开的高光果冻液体。
+① 造型与材质:任何主体连同文字都做成饱满圆润、有厚度的半透明液体,带锐利白高光和边缘反光,下方映出模糊倒影;无硬边,无平涂。
+② 配色与背景:低明度深紫暗底,中间略亮、四角压暗;液体取暖橙、洋红到紫的相邻高饱和色,相接处渐混。
+③ 运动规律:始终连续流畅;形体靠近就鼓颈相融,分开时拉丝再断开;撞击即冠状溅开、甩出小液滴;形变都弹性过冲、颤着收住,静止也微晃;转场由液体涌过整屏完成。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 ```
 
 <details><summary>English prompt</summary>
 
 ```text
-Style: SDF metaball liquid; everything is glossy, squeezable jelly
-Look: plum bg #3F1142 with dark vignette; liquids orange #E8582E → magenta #E0146E → violet #9B1FD6; translucent, hard specular, fresnel rim; mirror floor reflections, centered
-Type: bold lowercase serif in the same jelly material, drips on the baseline
-Motion: smooth 30fps; stretch, pinch-off and fall, crown splash on landing; neighbours smooth-merge with blended seams; spring ~15% overshoot settling in 0.5s, idle wobble; transitions = liquid surge wipe (~4 frames) or fuse into one blob, burst + shockwave ring
-Build: WebGL raymarched SDF + smin, normals for specular/refraction/floor reflection
-Avoid: flat fills; hard shapes that never merge; linear motion; cold palette
+Liquid jelly style: everything is glossy jelly liquid that fuses, strings and splashes.
+1 Form & material: every subject, text included, is a plump, rounded, thick translucent liquid with sharp white specular highlights and rim light, and a soft blurred reflection beneath it; no hard edges, no flat fills.
+2 Color & background: a low-key deep violet background, slightly lighter in the middle and darkened at the corners; liquids use adjacent saturated hues running warm orange, magenta to violet, blending where they touch.
+3 Motion: always continuous and smooth; shapes that approach swell a neck and fuse into one blob, and when parting they string out and pinch off; impacts burst into a crown splash flinging small droplets; every deformation overshoots elastically and settles with a damped wobble, and even at rest it jiggles slightly; transitions are a wave of liquid surging across the whole frame.
+What appears on screen and how it is arranged is decided entirely by the content; the style only decides how things are drawn and how they move.
 Content: {your content here}
 ```
 
@@ -435,24 +407,22 @@ Content: {your content here}
 <img src="images/15-1.webp" width="32%"> <img src="images/15-2.webp" width="32%"> <img src="images/15-3.webp" width="32%">
 
 ```text
-风格:综艺花字,9:16;实拍垫底,每段情绪换一套花字。
-画面:#FFE14A #EC2580 #3ED3EE,#1C1D5D 描边;爆炸星、放射底、斜纹底,抠像加白贴纸边。
-字体:超粗圆体;渐变字面+白描边+彩色外描边+硬投影。
-动效:30fps;逐字弹出过冲 1.2→1,隔 2 帧;表情贴错落弹入;横幅斜甩带拖影;重拍 1 帧白闪;印章 1.6 倍砸落;彩条斜扫 6 帧转场。
-实现:DOM+SVG,多重描边,spring 缩放旋转,conic-gradient 放射底。
-不要:单层描边;线性匀速;全片一套字效;字挡主体。
+综艺花字风,9:16 竖屏。招牌:胖字裹多层描边成贴纸、万物贴纸化、逐字弹跳砸落。
+① 造型与材质:字用超粗圆胖字形,字面填亮色渐变,由内向外裹白边、彩边、深色最外边,再压错位硬投影,厚如贴纸;字身微斜、基线错落。任何主体抠出后都包一圈白色贴纸边,旁缀爆炸框、集中线、闪星。
+② 配色与背景:高明度高饱和糖果色,三四个亮色轮换做主,深色只作勾边;背景是素材或纯色上铺斜条纹、放射光芒。
+③ 运动规律:文字逐字蹦出,先放大过冲再回弹落定;重点字从大处砸下配一帧白闪;横幅和贴纸倾斜甩入带拖影,落定后轻颤;换段用彩色斜带一扫而过。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 ```
 
 <details><summary>English prompt</summary>
 
 ```text
-Style: variety-show captions, 9:16; full-bleed live footage underneath, a different caption kit per emotional beat.
-Look: #FFE14A #EC2580 #3ED3EE, #1C1D5D outlines; starbursts, rotating sunburst bg, diagonal-stripe bg, cutout subject with white sticker border.
-Type: extra-bold rounded; gradient fill + white stroke + colored outer stroke + hard drop shadow.
-Motion: 30fps; per-character pop-in overshoot 1.2→1, 2-frame stagger; emoji stickers pop in staggered; banners swing in tilted with motion smear; 1-frame white flash on hits; stamps slam from 1.6×; 6-frame diagonal color-band wipe transitions.
-Build: DOM+SVG, stacked strokes, spring-driven scale/rotate, conic-gradient sunburst.
-Avoid: single-layer stroke; linear easing; one caption kit for the whole piece; text covering the subject.
+Variety-show caption style, 9:16 vertical. Signature: chubby type wrapped in stacked outlines like a sticker, everything turned into a sticker, per-character bouncy pop and slam.
+1 Form & material: ultra-bold rounded chubby lettering, filled with a bright gradient, wrapped from inside out in a white stroke, a colored stroke and a dark outermost stroke, then a hard offset shadow, thick as a vinyl sticker; letters slightly tilted on a staggered baseline. Any subject is cut out and given a white sticker border, surrounded by comic burst shapes, focus lines and sparkles.
+2 Color & background: high-brightness, high-saturation candy colors, three or four brights rotating as the lead, dark used only for outlines to anchor; backgrounds are footage or flat color overlaid with diagonal stripes or radiating sunbursts, high contrast.
+3 Motion: text pops in character by character, overshooting then springing back to rest; key words slam down from large with a single-frame white flash; banners and stickers swing in tilted with motion smear and jitter slightly once landed; sections change with a colored diagonal band sweeping across.
+What appears on screen and how it is arranged is decided entirely by the content; the style only decides how things are drawn and how they move.
 Content: {your content here}
 ```
 

@@ -1,25 +1,27 @@
 # 07 · 贴纸风科普 / Sticker Explainer
 
-> 白描边贴纸,一镜推到底的长画布科普
+**招牌(一眼认出的特征)**
+
+- 实物一律抠成照片贴纸:粗白边加柔和短投影,略带倾斜
+- 抽象信息拆成大小统一的深色圆角小方块,同一批方块会飞起重排成新结构
+- 不切不淡,换段是整画面急推急摇,带强烈方向运动模糊,落定后近乎静止
 
 <img src="../images/07-1.webp" width="32%"> <img src="../images/07-2.webp" width="32%"> <img src="../images/07-3.webp" width="32%">
 
 ## 中文提示词
 
-风格:贴纸风科普,一张超长画布,镜头一路推下去。
-画面:浅灰点阵底#EAEFF2,墨#26313A,红#EE4A3C点重点,收尾转深底#1F2A31;抠图套粗白描边+软投影;数据用墨色圆角小方块。
-字体:粗黑体标题+宽字距英文小副标,关键词下红条划出;角落固定章节进度条。
-动效:30fps;换章镜头0.5s急推+强运动模糊;同批方块错峰飞向新布局,旋转落定;元素5帧弹出微过冲;数字滚动。收尾拉远,画布缩进白边容器,关键数字贴纸弹出。
-实现:Remotion超高画布+camera;方块同key做FLIP变形;多帧采样运动模糊;SVG feMorphology描边。
-不要:硬切/淡入换页;无描边扁平图标;多色;匀速漂移。
+实物贴纸信息图,招牌:粗白边照片贴纸、深色圆角方块、带拖影的急速运镜。
+① 造型与材质:任何主体都抠成真实照片,包粗白边、落短软投影,可微斜;数量与类别拆成大小一致的深色圆角方块,一块一单位,靠堆叠表达多少与归属。
+② 配色与背景:高明度冷灰底,极淡点阵;近黑画方块与字;只留一个高饱和强调色,只点重点;其余近乎无彩。
+③ 运动规律:元素弹入微过冲;方块错峰飞起、边飞边歪、落成新排列;换段不切不淡,整屏急推急摇带强方向运动模糊,随即近乎静止。
+画面里出现什么、怎么编排,全部由内容决定;风格只决定它们怎么被画出来、怎么动。
 内容:{在这里写你的内容}
 
 ## English Prompt
 
-Style: sticker explainer — one extra-tall canvas, the camera keeps pushing down through it.
-Look: light gray dot-grid bg #EAEFF2, ink #26313A, red #EE4A3C for emphasis only, finale on dark #1F2A31; cutouts get a thick white sticker outline + soft shadow; data as small rounded ink chips.
-Type: heavy sans headlines + wide-tracked small English subtitle; red marker bar wipes under key words; fixed corner chapter progress bar.
-Motion: smooth 30fps; chapter change = 0.5s fast camera push with strong directional motion blur; the same chips fly staggered into each new layout and settle with rotation; elements pop in ~5 frames with slight overshoot; numbers count up. Finale pulls back: whole canvas shrinks into a white-outlined container, key number pops out as a sticker.
-Build: Remotion tall canvas + camera transform; same-key chips FLIP between layouts; multi-sample motion blur; SVG feMorphology outline.
-Avoid: hard cuts/fades between pages; flat outline-less icons; many colors; constant-speed drifting camera.
+Photo-sticker infographic. Signatures: thick-white-bordered photo stickers, dark rounded tiles, smeared fast camera whips.
+(1) Form & material: cut any subject out as a real photo, wrap it in a thick white border with a short soft shadow, optionally slightly tilted; break quantities and categories into identical dark rounded tiles, one tile per unit, so stacking shows how many and what belongs where.
+(2) Color & ground: bright cool-gray ground with a very faint dot grid; near-black for tiles and type; exactly one saturated accent, only on key points; everything else nearly colorless.
+(3) Motion: elements pop in with slight overshoot; tiles lift off in a stagger, tilt in flight and land in a new arrangement; no hard cuts or fades - between sections the whole frame whips or pushes with strong directional motion blur, then settles almost still.
+What appears on screen and how it is arranged is decided entirely by the content; the style only decides how things are drawn and how they move.
 Content: {your content here}
