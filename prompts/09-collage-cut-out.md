@@ -2,6 +2,8 @@
 
 > 剪报网点纸片,12帧逐格拍上
 
+<img src="../images/09-1.webp" width="32%"> <img src="../images/09-2.webp" width="32%"> <img src="../images/09-3.webp" width="32%">
+
 ## 中文提示词
 
 风格:剪报纸片拼贴,逐格跳动。

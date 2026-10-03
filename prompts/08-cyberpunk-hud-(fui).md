@@ -2,6 +2,8 @@
 
 > 暗底青光细线界面,高潮一瞬转琥珀
 
+<img src="../images/08-1.webp" width="32%"> <img src="../images/08-2.webp" width="32%"> <img src="../images/08-3.webp" width="32%">
+
 ## 中文提示词
 
 风格:科幻FUI发光细线仪表盘。

@@ -2,6 +2,8 @@
 
 > 一个形状连续变身,底色随形翻页
 
+<img src="../images/06-1.webp" width="32%"> <img src="../images/06-2.webp" width="32%"> <img src="../images/06-3.webp" width="32%">
+
 ## 中文提示词
 
 风格:单一形状连续变形串起全片,扁平图标极简。

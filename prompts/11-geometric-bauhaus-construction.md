@@ -2,6 +2,8 @@
 
 > 三原色几何块踩着节拍在网格上搭建
 
+<img src="../images/11-1.webp" width="32%"> <img src="../images/11-2.webp" width="32%"> <img src="../images/11-3.webp" width="32%">
+
 ## 中文提示词
 
 风格:包豪斯几何构成,按网格逐拍搭成海报

@@ -2,6 +2,8 @@
 
 > 多层描边弹跳花字,按情绪放大笑点
 
+<img src="../images/15-1.webp" width="32%"> <img src="../images/15-2.webp" width="32%"> <img src="../images/15-3.webp" width="32%">
+
 ## 中文提示词
 
 风格:综艺花字,9:16;实拍垫底,每段情绪换一套花字。

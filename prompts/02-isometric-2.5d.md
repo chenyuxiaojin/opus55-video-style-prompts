@@ -2,6 +2,8 @@
 
 > 桌面微缩模型,一格一格自己长出来
 
+<img src="../images/02-1.webp" width="32%"> <img src="../images/02-2.webp" width="32%"> <img src="../images/02-3.webp" width="32%">
+
 ## 中文提示词
 
 风格:等轴2.5D桌面微缩模型,逐格自己长出来

@@ -2,6 +2,8 @@
 
 > 白描边贴纸,一镜推到底的长画布科普
 
+<img src="../images/07-1.webp" width="32%"> <img src="../images/07-2.webp" width="32%"> <img src="../images/07-3.webp" width="32%">
+
 ## 中文提示词
 
 风格:贴纸风科普,一张超长画布,镜头一路推下去。

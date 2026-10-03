@@ -2,6 +2,8 @@
 
 > 粉彩充气质感,软糯落地有分量
 
+<img src="../images/05-1.webp" width="32%"> <img src="../images/05-2.webp" width="32%"> <img src="../images/05-3.webp" width="32%">
+
 ## 中文提示词
 
 风格:粉彩3D棚拍,充气糖果感,软糯有分量

@@ -2,6 +2,8 @@
 
 > 低分辨率逐点画,CRT 里的日夜换色
 
+<img src="../images/13-1.webp" width="32%"> <img src="../images/13-2.webp" width="32%"> <img src="../images/13-3.webp" width="32%">
+
 ## 中文提示词
 
 风格:16位游戏机像素画,套CRT外壳。

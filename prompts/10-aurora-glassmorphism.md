@@ -2,6 +2,8 @@
 
 > 极光暗场上浮磨砂玻璃,液态透镜折光
 
+<img src="../images/10-1.webp" width="32%"> <img src="../images/10-2.webp" width="32%"> <img src="../images/10-3.webp" width="32%">
+
 ## 中文提示词
 
 风格:暗色极光上的磨砂玻璃与液态透镜。

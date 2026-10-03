@@ -2,6 +2,8 @@
 
 > 霓虹网格落日,录像带回放
 
+<img src="../images/12-1.webp" width="32%"> <img src="../images/12-2.webp" width="32%"> <img src="../images/12-3.webp" width="32%">
+
 ## 中文提示词
 
 风格:80年代Synthwave+VHS回放

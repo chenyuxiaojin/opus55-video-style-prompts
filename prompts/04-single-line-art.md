@@ -2,6 +2,8 @@
 
 > 一根金线不离纸,留白即画面
 
+<img src="../images/04-1.webp" width="32%"> <img src="../images/04-2.webp" width="32%"> <img src="../images/04-3.webp" width="32%">
+
 ## 中文提示词
 
 风格:一根金线一笔画到底,大留白

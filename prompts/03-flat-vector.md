@@ -2,6 +2,8 @@
 
 > 纯色几何零阴影,一颗圆点弹出全片节奏
 
+<img src="../images/03-1.webp" width="32%"> <img src="../images/03-2.webp" width="32%"> <img src="../images/03-3.webp" width="32%">
+
 ## 中文提示词
 
 风格:扁平矢量,纯色几何零阴影,主色圆点贯穿全片。

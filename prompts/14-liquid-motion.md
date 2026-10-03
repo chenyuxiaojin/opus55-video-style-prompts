@@ -2,6 +2,8 @@
 
 > 果冻般可捏的液体,粘连拉丝融合弹跳
 
+<img src="../images/14-1.webp" width="32%"> <img src="../images/14-2.webp" width="32%"> <img src="../images/14-3.webp" width="32%">
+
 ## 中文提示词
 
 风格:SDF 融球液态,一切都是可捏的高光果冻

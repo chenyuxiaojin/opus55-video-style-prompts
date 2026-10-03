@@ -2,6 +2,8 @@
 
 > 一拍二线条沸腾,纸上的手温
 
+<img src="../images/01-1.webp" width="32%"> <img src="../images/01-2.webp" width="32%"> <img src="../images/01-3.webp" width="32%">
+
 ## 中文提示词
 
 风格:逐帧手绘,线条沸腾。
