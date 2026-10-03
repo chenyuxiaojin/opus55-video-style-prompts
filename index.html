@@ -43,6 +43,9 @@ h2 small{display:block;font-size:13px;font-weight:500;color:var(--mute);margin-t
 .copy{color:var(--acc)}
 pre{margin:0;padding:14px;max-height:420px;overflow:auto;white-space:pre-wrap;word-break:break-word;font:13px/1.7 ui-monospace,Menlo,"PingFang SC",monospace;background:var(--code)}
 details{margin-top:12px}summary{cursor:pointer;color:var(--mute)}
+.gones{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.gone{font-size:12px;color:var(--mute);text-decoration:line-through;border:1px dashed var(--line);border-radius:6px;padding:2px 8px}
+.motion{display:block;width:100%;margin-top:10px;border-radius:8px;background:#fff}
+.vert .hero,.vert .th img{object-fit:contain;background:#0b0b0c}
 details ul{margin:8px 0 0;padding-left:20px;color:var(--mute);font-size:14px}
 .md{display:inline-block;margin-top:10px;font-size:13px;color:var(--acc);text-decoration:none}
 footer{color:var(--mute);font-size:13px;padding:30px 0 60px;border-top:1px solid var(--line);margin-top:30px}
@@ -51,1262 +54,534 @@ footer a{color:var(--acc)}
 <section class=top>
 <h1>15 种视频风格<br>与内容无关的提示词图鉴</h1>
 <p>样片来自 <a href="https://x.com/VincentWei93/status/2104957548797604116">@VincentWei93 的展示视频</a>:15 种风格全部由 Claude Opus 5.5 写代码做出。</p>
-<p>这里每种风格交给一个独立的 AI 子 agent 逐帧观察,只提取<b>配色、形状、材质、排版、动效节奏、实现手法</b>这类和具体内容无关的东西,换成你自己的主题就能直接用。</p>
-<p>用法:点「复制提示词」→ 贴给 Claude Code 等编程 agent → 把 <code>{主题}</code> 这类占位符换成你的内容。</p>
-<nav class=nav><a href="#s01"><img loading=lazy src="images/01-1.webp" alt=""><span>01 逐帧手绘</span></a><a href="#s02"><img loading=lazy src="images/02-1.webp" alt=""><span>02 等轴 2.5D 微缩沙盘</span></a><a href="#s03"><img loading=lazy src="images/03-1.webp" alt=""><span>03 扁平矢量</span></a><a href="#s04"><img loading=lazy src="images/04-1.webp" alt=""><span>04 线条动画(一笔画)</span></a><a href="#s05"><img loading=lazy src="images/05-1.webp" alt=""><span>05 3D 渲染·软糯物理</span></a><a href="#s06"><img loading=lazy src="images/06-1.webp" alt=""><span>06 形变动画</span></a><a href="#s07"><img loading=lazy src="images/07-1.webp" alt=""><span>07 贴纸风科普</span></a><a href="#s08"><img loading=lazy src="images/08-1.webp" alt=""><span>08 赛博朋克 HUD</span></a><a href="#s09"><img loading=lazy src="images/09-1.webp" alt=""><span>09 拼贴剪贴</span></a><a href="#s10"><img loading=lazy src="images/10-1.webp" alt=""><span>10 弥散渐变玻璃拟态</span></a><a href="#s11"><img loading=lazy src="images/11-1.webp" alt=""><span>11 几何构成包豪斯</span></a><a href="#s12"><img loading=lazy src="images/12-1.webp" alt=""><span>12 复古 Synthwave</span></a><a href="#s13"><img loading=lazy src="images/13-1.webp" alt=""><span>13 像素风</span></a><a href="#s14"><img loading=lazy src="images/14-1.webp" alt=""><span>14 液态流动</span></a><a href="#s15"><img loading=lazy src="images/15-1.webp" alt=""><span>15 综艺花字</span></a></nav>
+<p>每种风格 10 秒、30fps 共约 300 帧,交给一个独立的 AI 子 agent <b>逐帧全部过目</b>,再配合帧差曲线判断缓动与抽帧节奏。</p>
+<p>提示词只留<b>技巧层</b>(配色、形状、材质、排版、动效、实现手法),样片讲的具体内容已全部剥离,并且压到最短。</p>
+<p>用法:点「复制提示词」→ 贴给 Claude Code 等编程 agent → 把最后一行 <code>{在这里写你的内容}</code> 换成你的内容。</p>
+<nav class=nav><a href="#s01"><img loading=lazy src="images/01-1.webp" alt=""><span>01 逐帧手绘</span></a><a href="#s02"><img loading=lazy src="images/02-1.webp" alt=""><span>02 等轴2.5D</span></a><a href="#s03"><img loading=lazy src="images/03-1.webp" alt=""><span>03 扁平矢量</span></a><a href="#s04"><img loading=lazy src="images/04-1.webp" alt=""><span>04 线条动画</span></a><a href="#s05"><img loading=lazy src="images/05-1.webp" alt=""><span>05 3D渲染</span></a><a href="#s06"><img loading=lazy src="images/06-1.webp" alt=""><span>06 形变动画</span></a><a href="#s07"><img loading=lazy src="images/07-1.webp" alt=""><span>07 贴纸风科普</span></a><a href="#s08"><img loading=lazy src="images/08-1.webp" alt=""><span>08 赛博朋克HUD</span></a><a href="#s09"><img loading=lazy src="images/09-1.webp" alt=""><span>09 拼贴剪贴</span></a><a href="#s10"><img loading=lazy src="images/10-1.webp" alt=""><span>10 弥散渐变玻璃拟态</span></a><a href="#s11"><img loading=lazy src="images/11-1.webp" alt=""><span>11 几何构成包豪斯</span></a><a href="#s12"><img loading=lazy src="images/12-1.webp" alt=""><span>12 复古Synthwave</span></a><a href="#s13"><img loading=lazy src="images/13-1.webp" alt=""><span>13 像素风</span></a><a href="#s14"><img loading=lazy src="images/14-1.webp" alt=""><span>14 液态流动</span></a><a href="#s15"><img loading=lazy src="images/15-1.webp" alt=""><span>15 综艺花字</span></a></nav>
 </section>
 
-<article class=card id="s01">
+<article class="card" id="s01">
   <div class=media>
     <img class=hero loading=lazy src="images/01-1.webp" alt="逐帧手绘 样片截图">
     <div class=thumbs><button class=th data-src="images/01-1.webp"><img loading=lazy src="images/01-1.webp" alt=""></button><button class=th data-src="images/01-2.webp"><img loading=lazy src="images/01-2.webp" alt=""></button><button class=th data-src="images/01-3.webp"><img loading=lazy src="images/01-3.webp" alt=""></button></div>
   </div>
   <div class=body>
     <header><span class=no>01</span><h2>逐帧手绘<small>Frame-by-Frame Hand-Drawn</small></h2></header>
-    <p class=tagline>纸上线条在沸腾,一拍二的卡通手作温度</p>
-    <div class=pal><span class="sw" style="--c:#ECE6CE" title="主背景:米黄纸张,叠细颗粒纸纹"><i></i>#ECE6CE</span><span class="sw" style="--c:#1A120B" title="描线墨色:暖调近黑,所有轮廓与速度线"><i></i>#1A120B</span><span class="sw" style="--c:#D12F2C" title="主色:朱红平涂(主体、徽章底)"><i></i>#D12F2C</span><span class="sw" style="--c:#F2C429" title="强调色:明黄平涂(角色面、标题字、星芒)"><i></i>#F2C429</span><span class="sw" style="--c:#EDDA96" title="背景光晕:水彩感淡黄晕斑,外圈更淡 #EEDDA5"><i></i>#EDDA96</span><span class="sw" style="--c:#FFF9E3" title="高光/冲击帧奶白:爆炸芯、云团、手套"><i></i>#FFF9E3</span><span class="sw" style="--c:#251C17" title="开场暗场与冲击闪帧底色(暖黑褐)"><i></i>#251C17</span><span class="sw" style="--c:#C94A3E" title="HUD 与批注红:手写场记、圈注(推测,细线采样偏淡)"><i></i>#C94A3E</span><span class="sw" style="--c:#6E6853" title="收尾拉远后的桌面/灯台橄榄灰(推测)"><i></i>#6E6853</span></div>
-    <div class=tags><span class=tag>逐帧手绘</span><span class=tag>线条沸腾</span><span class=tag>一拍二</span><span class=tag>橡皮管卡通</span><span class=tag>纸纹平涂</span><span class=tag>漫画冲击帧</span><span class=tag>手写场记</span><span class=tag>拉远揭底</span></div>
+    <p class=tagline>一拍二线条沸腾,纸上的手温</p>
+    <div class=pal><span class="sw" style="--c:#EEE1BE" title="米黄纸底(带纸纹)"><i></i>#EEE1BE</span><span class="sw" style="--c:#D33631" title="主色平涂/冲击帧底"><i></i>#D33631</span><span class="sw" style="--c:#F2C429" title="辅色平涂/星爆"><i></i>#F2C429</span><span class="sw" style="--c:#1D1512" title="墨黑粗描边与排线"><i></i>#1D1512</span><span class="sw" style="--c:#ECDA98" title="主体后柔边光晕"><i></i>#ECDA98</span><span class="sw" style="--c:#251C17" title="暗场开场底(可选)"><i></i>#251C17</span></div>
+    <div class=tags><span class=tag>一拍二/混合步进</span><span class=tag>线条沸腾</span><span class=tag>纸纹平涂粗描边</span><span class=tag>冲击帧星爆</span><span class=tag>残影与速度线</span><span class=tag>Canvas笔刷抖动</span></div>
     <div class=prompt>
       <div class=bar>
         <div class=seg role=tablist><button class=on data-l=zh>中文</button><button data-l=en>English</button></div>
         <button class=copy>复制提示词</button>
       </div>
-      <pre data-l=zh># 风格:逐帧手绘(Frame-by-Frame Hand-Drawn)
-
-用代码做一条约 10 秒、1920×1080 的 {主题} 动画,看起来像动画师在纸上一张张画出来的。
-
-## 视觉语言
-- 底:米黄纸 #ECE6CE + 细颗粒纸纹(噪点叠 multiply),整片不出现纯白和纯黑。
-- 墨线:暖近黑 #1A120B,线宽随笔压粗细变化,尖头收笔,转角略过冲出头。
-- 平涂只用三色:朱红 #D12F2C、明黄 #F2C429、奶白 #FFF9E3。色块与描线故意错位 3-6px(套色不准),边缘出头。
-- 阴影不用渐变,用 45° 斜排线;主体背后放一块不规则水彩淡黄晕斑(#EDDA96,外圈更淡),边缘毛糙。
-- {角色} 用橡皮管卡通:圆头白手套、细线手臂、两点黑眼 + 一笔高光,脸上可加红晕。
-
-## 线条沸腾(招牌)
-每张画都重算一遍路径:所有顶点加 1-3px 随机抖动,种子随「张数」变化,同一张保持不变。静止镜头也要轻微颤动,永远不完全静止。
-
-## 帧率与节奏
-- 以 24fps 为基准,默认一拍二(每张停 2 帧),快动作切一拍一,定格表情一拍三;实现:`drawIndex = floor(frame / hold)`,位置和抖动都只按 drawIndex 更新,禁止平滑插值。
-- 动作用传统原画手法:预备—挤压拉伸—冲出—落地扬尘,配弧线动作轨迹(实线弧 + 红色点线弧)、速度线、旋转环线、汗滴/火星小符号。
-- 镜头之间全硬切,机位在推近特写与稍远中景之间跳;冲击点插 1-2 张暖黑底星芒闪帧,接漫画爆炸(锯齿星芒 + 奶白云团 + 飞溅碎点)。
-
-## 字幕排印
-- {标题文字}:粗圆体中文、明黄填色 + 黑描边 + 向右下偏移的深色厚投影 + 一道白色高光,放在描边的波浪云形红徽章上;按笔画逐笔写出,笔尖带一颗小火花星。
-- 英文副标:手写马克笔大写,奶白填 + 黑描边,逐字母蹦出;说明行用宽字距细黑体,中间用四角星分隔。
-- 画面角落常驻手写场记 HUD(红色斜体):左上「SC. xx」,右下「on 2s / No. 0xx」张数计数,贴在半透明小纸签上,数字随张数跳。
-
-## 结构建议
-暗场预备(红线画在暖黑底上,椭圆聚光)→ 闪帧点亮切到纸面 → {角色} 表演 2-3 个动作 → 冲击闪帧 + 爆炸 → 标题逐笔写出 → 最后镜头拉远,揭示整张画其实是钉在定位尺上的动画纸(两长孔一圆孔、胶带、纸叠边),一支卡通手握铅笔在角落圈注「第 N 张」。
-
-## 实现提示
-Canvas 2D 或 SVG + Remotion:用 roughjs 或自写 jitter 路径;笔触用变宽 polygon;纸纹用预生成噪点图;所有随机值用 seeded random(frame→drawIndex),保证渲染确定。
-
-## 不要
-不要矢量光滑缓动、渐变、发光滤镜、投影模糊;不要 60fps 丝滑运动;不要超过三种填色;不要干净的几何直线。</pre>
-      <pre data-l=en hidden># Style: Frame-by-Frame Hand-Drawn
-
-Build a ~10 s, 1920×1080 animation about {topic} in code that looks like an animator drew every sheet by hand.
-
-## Visual language
-- Ground: cream paper #ECE6CE with fine grain paper texture (noise on multiply). No pure white or pure black anywhere.
-- Ink: warm near-black #1A120B, pressure-varying stroke width, tapered ends, corners that slightly overshoot.
-- Flat fills from only three colors: vermilion #D12F2C, sunny yellow #F2C429, cream white #FFF9E3. Offset fills 3-6 px from the outline (misregistered print look).
-- No gradient shading: use 45° hatching for shadows. Put an irregular watercolor-like pale-yellow glow blob (#EDDA96, lighter outer ring) behind the subject, ragged edges.
-- {character} in rubber-hose cartoon style: round white gloves, thin-line arms, dot eyes with one highlight stroke, optional blush.
-
-## Line boil (signature)
-Redraw every drawing: jitter every vertex by 1-3 px with a seed tied to the drawing index, fixed within a drawing. Even held shots keep a subtle shimmer; nothing is ever perfectly still.
-
-## Frame rate &amp; timing
-- 24 fps base. Default on twos (each drawing held 2 frames), switch to ones for fast action, threes for held expressions: `drawIndex = floor(frame / hold)`; update position and jitter only per drawIndex, never smooth-interpolate.
-- Classic key-animation acting: anticipation, squash &amp; stretch, smear, landing with dust puffs. Add motion arcs (solid ink arc + red dotted arc), speed lines, spin rings, little sweat/spark symbols.
-- All shot changes are hard cuts, jumping between punchy close-ups and medium-wides. On impacts insert 1-2 warm-black starburst flash frames, then a comic explosion (jagged star burst, cream cloud puffs, flying debris).
-
-## Typography
-- {title}: heavy rounded Chinese/display font, yellow fill + black outline + thick dark drop shadow offset down-right + one white specular streak, sitting on an outlined scalloped cloud-shaped red badge. Write it on stroke by stroke with a tiny spark at the pen tip.
-- English sub-title: hand-lettered marker caps, cream fill + black outline, popping in letter by letter. Caption line in wide-tracked thin sans, separated by a four-point star.
-- A persistent handwritten production HUD in red italic: top-left &quot;SC. xx&quot;, bottom-right &quot;on 2s / No. 0xx&quot; drawing counter on a small translucent paper tag, ticking with the drawings.
-
-## Suggested structure
-Dark anticipation (red line art on warm black, elliptical spotlight) → flash frame ignites to paper → {character} performs 2-3 actions → impact flash + explosion → title written on → final pull-back revealing the whole thing is an animation sheet on a peg bar (two slots and a round hole, tape, stacked paper edges) while a cartoon hand with a pencil circles &quot;sheet No. N&quot; in the corner.
-
-## Implementation hints
-Canvas 2D or SVG inside Remotion; roughjs or a custom jittered-path helper; variable-width strokes as polygons; a pre-baked noise image for paper; seeded random keyed on drawIndex for deterministic renders.
-
-## Don&#x27;t
-No smooth vector easing, gradients, glow filters or blurred shadows; no 60 fps silkiness; no more than three fill colors; no clean geometric lines.</pre>
+      <pre data-l=zh>风格:逐帧手绘,线条沸腾。
+画面:纸纹米底#EEE1BE;红#D33631黄#F2C429平涂,墨黑#1D1512粗描边;主体后柔光晕#ECDA98;排线阴影。
+字体:如需文字:圆胖手写粗体逐笔写出。
+动效:默认on 2s,快动作on 1s,定格on 3s;每张新图线抖±2px;挤压拉伸、残影、速度线;高潮插1-2帧满屏星爆冲击;景别硬切不推拉。
+实现:Canvas笔刷;以floor(frame/step)为种子抖路径与线宽,位置按step取整。
+不要:丝滑缓动;矢量死线;渐变;定格内乱抖。
+内容:{在这里写你的内容}</pre>
+      <pre data-l=en hidden>Style: frame-by-frame hand-drawn cartoon, boiling lines.
+Look: grainy cream paper #EEE1BE; flat red #D33631 and yellow #F2C429 fills, thick ink #1D1512 outlines, soft glow #ECDA98 behind the subject; hatched shadows.
+Type: if text is needed: chunky rounded hand-lettering written on stroke by stroke.
+Motion: on 2s by default, fast actions on 1s, holds on 3s; each new drawing jitters lines ±2px; squash &amp; stretch, smears, speed lines; climax gets 1-2 full-screen starburst impact frames; hard cuts between shot sizes, no zooms.
+Build: Canvas brush; floor(frame/step) seeds path and stroke-width jitter; positions quantized to the step.
+Avoid: silky easing; dead vector lines; gradients; jitter within one held drawing.
+Content: {your content here}</pre>
     </div>
-    <details><summary>拆解要点</summary><ul><li>右下角 HUD 直接标注了拍数:常规是 on 2s(006、013、036),冲击/快动作切 on 1s(003、009、023、028),定格表情 on 3s(020),说明节奏是按动作切换一拍几。</li><li>红/黄色块与黑描线刻意错位、溢出轮廓(007、032 的边缘红边),加米黄纸纹和斜排线阴影(006 盒侧、009 地面),是「手工套色」质感的来源。</li><li>运动靠传统原画符号而非补间:009 下落拉伸 + 竖向速度线,013/015 实线弧 + 红点线弧轨迹,014 落地扬尘,023/024 旋转环线。</li><li>镜头间全是硬切和景别跳变(020 特写 → 023 中景),冲击点插暖黑底星芒闪帧(027)再接漫画爆炸云团(028-029)。</li><li>标题按笔画逐笔写出、笔尖带火花(031-035),最后拉远揭示是定位尺上的动画纸 + 铅笔手圈注张数(038-040),把『逐帧手绘』本身做成了收尾梗。</li></ul></details>
+    <details><summary>已剥离的内容层(提示词里不含这些)</summary><div class=gones><span class=gone>火柴与火柴盒</span><span class=gone>拟人火苗角色</span><span class=gone>星火牌包装字样</span><span class=gone>划火柴点燃情节</span><span class=gone>角色跳舞旋转</span><span class=gone>「手作 HAND MADE」标题</span><span class=gone>「一帧一帧亲手点亮」标语</span></div></details>
+    <details><summary>逐帧证据 + 运动曲线</summary><ul><li>f089→090帧差0.06、f090→091帧差32,角标No.每2帧+1→默认一拍二(motion.txt交替率1.09)</li><li>f033角标写on 1s(快速弹射段),f140写on 3s(定格欢呼),其余on 2s→混合步进</li><li>静止角落(纸纹区)换图时帧差≈4-5、同图≈0.1→每张图整帧重绘含纸纹/线条抖动</li><li>f016、f196-201硬切:1-2帧满屏星爆冲击帧(红/黄/米三色)后接卡通烟团爆炸</li><li>f061、f136、f271景别硬切不推拉;f271起拉出成定位钉动画纸,f277-283拇指翻页闪回旧画面</li></ul><img class=motion loading=lazy src="images/01-motion.webp" alt="相邻帧变化量曲线"></details>
     <a class=md href="prompts/01-frame-by-frame-hand-drawn.md">Markdown 版 →</a>
   </div>
 </article>
-<article class=card id="s02">
+<article class="card" id="s02">
   <div class=media>
-    <img class=hero loading=lazy src="images/02-1.webp" alt="等轴 2.5D 微缩沙盘 样片截图">
+    <img class=hero loading=lazy src="images/02-1.webp" alt="等轴2.5D 样片截图">
     <div class=thumbs><button class=th data-src="images/02-1.webp"><img loading=lazy src="images/02-1.webp" alt=""></button><button class=th data-src="images/02-2.webp"><img loading=lazy src="images/02-2.webp" alt=""></button><button class=th data-src="images/02-3.webp"><img loading=lazy src="images/02-3.webp" alt=""></button></div>
   </div>
   <div class=body>
-    <header><span class=no>02</span><h2>等轴 2.5D 微缩沙盘<small>Isometric 2.5D Diorama</small></h2></header>
-    <p class=tagline>正交俯视的桌面微缩沙盘,一格格长出、先白后彩</p>
-    <div class=pal><span class="sw" style="--c:#E4E2EE" title="前半段背景:灰白淡紫"><i></i>#E4E2EE</span><span class="sw" style="--c:#ECE8F4" title="白模瓦片与建筑主色"><i></i>#ECE8F4</span><span class="sw" style="--c:#D6CCF0" title="中心区域渐深的淡紫瓦片/阴影"><i></i>#D6CCF0</span><span class="sw" style="--c:#221C66" title="唯一重色:主角物件、标题挤出字、数字"><i></i>#221C66</span><span class="sw" style="--c:#9F84E2" title="后半段背景渐变底部/底座分层"><i></i>#9F84E2</span><span class="sw" style="--c:#5CE6E0" title="能量青:蓝图网格、光环、缝隙光线"><i></i>#5CE6E0</span><span class="sw" style="--c:#7ED9A0" title="薄荷绿:树/上色后的地块"><i></i>#7ED9A0</span><span class="sw" style="--c:#E98A6E" title="珊瑚:上色后的屋顶/墙/数据卡色条"><i></i>#E98A6E</span><span class="sw" style="--c:#F2D98A" title="奶黄:上色后的墙面/窗光"><i></i>#F2D98A</span><span class="sw" style="--c:#8FBDF0" title="天蓝:水面块"><i></i>#8FBDF0</span><span class="sw" style="--c:#6B5BC8" title="道路紫"><i></i>#6B5BC8</span></div>
-    <div class=tags><span class=tag>等轴正交相机</span><span class=tag>桌面微缩沙盘</span><span class=tag>黏土哑光</span><span class=tag>落砖波</span><span class=tag>先白模后上色</span><span class=tag>立体挤出标题</span><span class=tag>3D数据卡</span><span class=tag>Three.js</span></div>
+    <header><span class=no>02</span><h2>等轴2.5D<small>Isometric 2.5D</small></h2></header>
+    <p class=tagline>桌面微缩模型,一格一格自己长出来</p>
+    <div class=pal><span class="sw" style="--c:#EDE8F5" title="素白黏土主体/地块"><i></i>#EDE8F5</span><span class="sw" style="--c:#1B1650" title="深靛重点块与挤出标题"><i></i>#1B1650</span><span class="sw" style="--c:#9F86DF" title="背景渐变底部/底座侧面"><i></i>#9F86DF</span><span class="sw" style="--c:#A4EDC4" title="上色后主色(薄荷)"><i></i>#A4EDC4</span><span class="sw" style="--c:#62EFF1" title="青色光环/发光线/引线点"><i></i>#62EFF1</span><span class="sw" style="--c:#E8806A" title="小面积暖色点缀"><i></i>#E8806A</span></div>
+    <div class=tags><span class=tag>正交等轴相机</span><span class=tag>逐格错峰生长</span><span class=tag>素白→中心上色波</span><span class=tag>3D挤出字贴地</span><span class=tag>InstancedMesh</span></div>
     <div class=prompt>
       <div class=bar>
         <div class=seg role=tablist><button class=on data-l=zh>中文</button><button data-l=en>English</button></div>
         <button class=copy>复制提示词</button>
       </div>
-      <pre data-l=zh># 风格:等轴 2.5D 桌面微缩模型(Isometric Diorama)
-
-把 {主题} 做成一块摆在桌上的等轴微缩沙盘,约 10 秒,一格一格&quot;长&quot;出来。
-
-## 视觉语言
-- 机位:Three.js 正交相机(OrthographicCamera),经典等轴角(绕 Y 轴 45°、俯角约 35.26°),全程不换角度、没有透视;只做平移和缩放。
-- 地基:N×N 方块瓦片(建议 12×12),每块是小圆角倒角的方砖,缝隙 2-3px 深色;沙盘下有 2-3 层淡紫厚底座(蛋糕分层)和柔和接触阴影,像浮在桌面上。
-- 材质:哑光黏土感(MeshStandardMaterial,roughness≈0.8),柔光 + 环境光遮蔽,影子软而偏紫。
-- 配色分两幕:前半段&quot;白模&quot;——全场几乎只有淡紫白 #ECE8F4,只留 {核心物件} 用深靛 #221C66 当唯一重色,点缀少量薄荷绿 #7ED9A0、钴蓝 #4A5BD0;后半段&quot;上色&quot;——马卡龙色铺满:薄荷绿地块、珊瑚 #E98A6E、奶黄 #F2D98A、天蓝 #8FBDF0、道路紫 #6B5BC8,背景从灰白 #E4E2EE 变成上浅下深的紫色渐变(#D9C8F0→#9F84E2)。
-- 能量色:青色 #5CE6E0 只用于发光——开场的蓝图网格线、{核心物件} 上的光环、瓦片缝里流动的光线。
-
-## 字体排印
-- 标题 {标题文字}:超粗、偏宽的几何无衬线,做成深靛色立体挤出字,平躺在等轴地面上,沿等轴斜线排列。
-- 辅助行:中文副标题 + 全大写等宽英文,字距拉开,用&quot;·&quot;分隔,前面一个青色状态点。
-- 数据卡:白色卡片放在 3D 空间里(跟随等轴面倾斜),左边一条彩色竖条,中文标签 + 等宽英文小标,超粗大号数字 + 小单位,旁边一组迷你柱状图;用细引线 + 圆点锚定到场景里的物件上。
-
-## 动效与节奏(10 秒五幕)
-1. 0-0.5s 青色蓝图网格淡入,中心 2×2 深色&quot;种子&quot;方块翻滚落下。
-2. 0.5-2s 瓦片按&quot;一圈一圈从中心向外&quot;的顺序从高处砸下,带竖向运动模糊,落地轻微回弹(推测 easeOutBack);相机同时从特写拉远到整块沙盘。
-3. 2-5.5s 白模阶段:{次要物件} 逐个弹出(scale 0→1),高楼分段伸缩式长高,先立脚手架再长实体;相机缓慢平移跟拍,节奏卡拍(推测按固定 BPM 量化)。
-4. 5.5-8s 高潮:{核心物件} 冒出光环脉冲和向上光柱 → 一圈颜色波从中心向外扩散,把白模一格格染成彩色,背景同步变饱和紫;随后 2-3 张数据卡依次弹出,数字滚动递增。
-5. 8-10s 数据卡收走,相机拉远,沙盘移到右侧;标题字母一个个从空中落到地面(先见影子后见字),最后画出下划线、打出副标题。
-
-## 招牌手法 / 实现提示
-- 落砖波:每块瓦片延迟 = 到中心的切比雪夫距离 × 40-60ms,y 从 +8 落到 0。
-- 运动模糊:Remotion 的 &lt;Trails&gt;/多次采样,或在 Three.js 里对位移画半透明残影。
-- 上色波:着色器里按 distance(uv, center) &lt; progress 混合白模色与目标色,波前加一圈青色描边。
-- 数字滚动:interpolate 帧数 → toFixed。
-
-## 该做 / 不该做
-- 该做:一切对齐网格;重色只给一个主角;先白后彩讲&quot;从草图到活过来&quot;。
-- 不该做:透视相机、写实贴图、硬阴影;青色只用于发光;字不要贴在屏幕平面上,要&quot;躺&quot;在等轴世界里。</pre>
-      <pre data-l=en hidden># Style: Isometric 2.5D Desktop Diorama
-
-Make a ~10s animation about {topic}: {topic} is shown as a tiny isometric model sitting on a desk, growing tile by tile.
-
-## Visual language
-- Camera: Three.js OrthographicCamera at the classic isometric angle (45° yaw, ~35.26° pitch). Never change the angle, no perspective; only pan and zoom.
-- Base: an N×N grid of tiles (suggest 12×12), each a small rounded-bevel block with dark 2-3px seams. Under the board, 2-3 layered lavender slabs (like a layer cake) and a soft contact shadow so it floats above the floor.
-- Material: matte clay/plastic (MeshStandardMaterial, roughness ~0.8), soft light + ambient occlusion, short soft violet-tinted shadows, no hard specular.
-- Two-act palette. Act 1 &quot;white clay&quot;: almost everything lavender-white #ECE8F4; only {core object} gets deep indigo #221C66 as the single heavy color; tiny accents of mint #7ED9A0 and cobalt #4A5BD0. Act 2 &quot;colored&quot;: macaron colors everywhere - mint ground, coral #E98A6E, butter #F2D98A, sky blue #8FBDF0, road violet #6B5BC8; background shifts from pale grey-lavender #E4E2EE to a vertical violet gradient (#D9C8F0 → #9F84E2).
-- Energy color: cyan #5CE6E0, used only for light - the intro blueprint grid, rings around {core object}, light flowing along tile seams.
-
-## Typography
-- Title {title text}: ultra-bold, wide geometric sans, extruded in deep indigo, lying flat on the isometric ground and running along an iso axis.
-- Support line: a Chinese/primary-language subtitle + uppercase monospaced English with wide tracking, &quot;·&quot; separators, a cyan status dot in front.
-- Data cards: white cards placed in 3D (tilted with the iso plane), a colored vertical stripe on the left, a label + small mono caption, a huge ultra-bold number + small unit, a mini bar chart; tied to objects in the scene with a thin leader line and dot anchor.
-
-## Motion &amp; rhythm (10s, five beats)
-1. 0-0.5s cyan blueprint grid fades in; a dark 2×2 &quot;seed&quot; of tiles tumbles down at the center.
-2. 0.5-2s tiles slam down ring by ring from the center outward, with vertical motion blur and a slight landing bounce (guess: easeOutBack); the camera pulls back from a close-up to the whole board.
-3. 2-5.5s white-clay stage: small houses, trees, {secondary objects} pop in (scale 0→1); towers grow telescopically floor by floor, scaffolding first, then solids; slow camera pan; timing locked to a beat (guess: quantized to a fixed BPM).
-4. 5.5-8s climax: {core object} emits ring pulses and an upward light beam → a color wave spreads from the center, dyeing the white model tile by tile, background saturates to violet; then 2-3 data cards pop in one after another with counting-up numbers.
-5. 8-10s cards leave, camera pulls back, the diorama slides right; title letters drop one by one from the air onto the ground (shadow first, then letter), then an underline draws and the subtitle types on.
-
-## Signature techniques / implementation hints
-- Drop wave: per-tile delay = Chebyshev distance to center × 40-60ms, y from +8 to 0.
-- Motion blur: Remotion &lt;Trails&gt;/multi-sample, or semi-transparent afterimages of displacement in Three.js.
-- Color wave: in a shader, mix clay color and target color where distance(uv, center) &lt; progress, with a cyan rim on the wavefront.
-- Counting numbers: interpolate frame → toFixed.
-
-## Do / Don&#x27;t
-- Do: snap everything to the grid; give the heavy color to one hero only; tell a &quot;sketch → comes alive&quot; story via white-then-color.
-- Don&#x27;t: perspective camera, realistic textures, hard shadows, random neon; never use cyan for anything except light; don&#x27;t stand text upright on the screen plane - lay it in the isometric world.</pre>
+      <pre data-l=zh>风格:等轴2.5D桌面微缩模型,逐格自己长出来
+画面:正交等轴无透视;万物落在方格地块+厚底座;先素白#EDE8F5配深靛#1B1650,高潮从中心一波上色#A4EDC4/#9F86DF/#62EFF1;圆角块、软阴影
+字体:粗圆3D挤出字平贴地面;等宽小字注释;白底数据卡+引线
+动效:30fps连续带运动模糊,相机慢漂。地块由中心逐环错峰飞入(2s);物件逐格拔高,先线框后实体,轻过冲(3s);光环脉冲0.5s内上色;末尾拉远,字母逐个弹落
+实现:Three.js正交相机+InstancedMesh
+不要:透视、写实材质、满屏霓虹、同时出现
+内容:{在这里写你的内容}</pre>
+      <pre data-l=en hidden>Style: isometric 2.5D tabletop miniature that builds itself tile by tile
+Look: orthographic iso, no perspective; everything sits on a tile grid over a thick base slab; start white clay #EDE8F5 with deep indigo #1B1650, then a color wave spreads from center at the climax (mint #A4EDC4 / violet #9F86DF / cyan glow #62EFF1); rounded blocks, soft shadows
+Type: chunky rounded 3D-extruded letters lying flat on the ground; small monospace notes; white data cards with leader lines
+Motion: continuous 30fps with motion blur, slow camera drift. Tiles fly in ring by ring from center (2s); objects rise per cell, wireframe first then solid, slight overshoot (3s); a ring pulse recolors all within 0.5s; finally pull back, letters drop in one by one with a bounce
+Build: Three.js orthographic camera + InstancedMesh
+Avoid: perspective, realistic materials, neon everywhere, everything at once
+Content: {your content here}</pre>
     </div>
-    <details><summary>拆解要点</summary><ul><li>开场 002-008:青色蓝图网格上,中心 2×2 深靛种子块先落,其余瓦片一圈圈从中心向外砸下,005/007 可见竖向运动模糊残影,008 相机已拉远并露出分层淡紫底座。</li><li>白模阶段 012-022:全场淡紫白黏土质感,只有主角物件用深靛,建筑先立细杆脚手架(012/014)再长实体,主塔分段伸缩式长高(021→022→024),相机只平移不换角。</li><li>上色转折 025-027:主塔光环脉冲 + 向上光柱 + 紫色光晕(026),颜色从中心向外染开,背景同步从灰白变饱和紫渐变,瓦片缝里出现青色流光。</li><li>数据卡 028-033:白卡在 3D 空间随等轴面倾斜,左侧彩色竖条、等宽大写英文小标、超粗大号数字滚动递增(030→032 数值变化),细引线+圆点锚到场景物件。</li><li>收尾 036-041:沙盘拉远浮在紫地上靠右,标题挤出字母从空中逐个落到地面(036 字母与地面影子分离),最后加下划线、副标题和等宽状态行;042 起为转场,忽略。</li></ul></details>
-    <a class=md href="prompts/02-isometric-2.5d-diorama.md">Markdown 版 →</a>
+    <details><summary>已剥离的内容层(提示词里不含这些)</summary><div class=gones><span class=gone>城市</span><span class=gone>摩天塔</span><span class=gone>风车</span><span class=gone>房屋与树</span><span class=gone>道路与水面</span><span class=gone>通勤/能源/数据指标</span><span class=gone>ISOPOLIS片名</span><span class=gone>让城市自己生长</span></div></details>
+    <details><summary>逐帧证据 + 运动曲线</summary><ul><li>motion.txt:运动内静止帧0、交替率0.01→30fps连续动画,非一拍二;f008飞入块有明显运动模糊</li><li>f001-060 中心2×2深靛块先落,外圈地块逐环飞入落位,地面有青色网格引导线;f061-070 帧差降到≈2→落定</li><li>f075/f115 物件逐格从地面升起,先出半透明线框/细杆再变实体,整体保持素白单色</li><li>f181-182 帧差尖峰≈24:青色光环脉冲后从中心向外上色,背景由浅灰紫加深为饱和紫(f178 vs f192)</li><li>f241-270 相机拉远+模型右移,3D挤出字母逐个落下带投影(f264);f271-300 帧差≈0.3 静置收尾</li></ul><img class=motion loading=lazy src="images/02-motion.webp" alt="相邻帧变化量曲线"></details>
+    <a class=md href="prompts/02-isometric-2.5d.md">Markdown 版 →</a>
   </div>
 </article>
-<article class=card id="s03">
+<article class="card" id="s03">
   <div class=media>
     <img class=hero loading=lazy src="images/03-1.webp" alt="扁平矢量 样片截图">
     <div class=thumbs><button class=th data-src="images/03-1.webp"><img loading=lazy src="images/03-1.webp" alt=""></button><button class=th data-src="images/03-2.webp"><img loading=lazy src="images/03-2.webp" alt=""></button><button class=th data-src="images/03-3.webp"><img loading=lazy src="images/03-3.webp" alt=""></button></div>
   </div>
   <div class=body>
     <header><span class=no>03</span><h2>扁平矢量<small>Flat Vector</small></h2></header>
-    <p class=tagline>纯色几何满屏回弹,一颗珊瑚圆点串起全片</p>
-    <div class=pal><span class="sw" style="--c:#2B1EF4" title="电光蓝主背景,也做桌面/面板底色"><i></i>#2B1EF4</span><span class="sw" style="--c:#F14B50" title="珊瑚红主角圆点、太阳、强调物"><i></i>#F14B50</span><span class="sw" style="--c:#F8CA33" title="向日葵黄,室内墙面/建筑/面板"><i></i>#F8CA33</span><span class="sw" style="--c:#40FDAA" title="薄荷绿,植物/建筑/面板/画框"><i></i>#40FDAA</span><span class="sw" style="--c:#FDF7E9" title="奶油白,地面、标题文字、浅色物件"><i></i>#FDF7E9</span><span class="sw" style="--c:#ECE4CB" title="沙色,地面道路带、空面板的暗格"><i></i>#ECE4CB</span><span class="sw" style="--c:#121434" title="墨蓝,细节线、深色物件(唯一的&#x27;黑&#x27;)"><i></i>#121434</span><span class="sw" style="--c:#4B44F6" title="提亮蓝,远景剪影与背景装饰"><i></i>#4B44F6</span><span class="sw" style="--c:#E6B01C" title="黄色的暗面,双色平涂的体积条"><i></i>#E6B01C</span></div>
-    <div class=tags><span class=tag>扁平矢量</span><span class=tag>纯色几何</span><span class=tag>零阴影</span><span class=tag>弹性回弹</span><span class=tag>压扁拉伸</span><span class=tag>一镜到底</span><span class=tag>形状呼应</span><span class=tag>SVG+GSAP</span></div>
+    <p class=tagline>纯色几何零阴影,一颗圆点弹出全片节奏</p>
+    <div class=pal><span class="sw" style="--c:#2B1EF4" title="主背景钴蓝"><i></i>#2B1EF4</span><span class="sw" style="--c:#F14B4F" title="珊瑚红主角圆点/强调"><i></i>#F14B4F</span><span class="sw" style="--c:#3DFDA7" title="薄荷绿辅色块"><i></i>#3DFDA7</span><span class="sw" style="--c:#F7CC30" title="明黄辅色块/冲击短线"><i></i>#F7CC30</span><span class="sw" style="--c:#12132F" title="墨蓝深色块/线稿"><i></i>#12132F</span><span class="sw" style="--c:#FDF7E9" title="奶油白地面/留白/字"><i></i>#FDF7E9</span></div>
+    <div class=tags><span class=tag>纯色几何零阴影</span><span class=tag>挤压拉伸回弹</span><span class=tag>圆点贯穿转场</span><span class=tag>圆形擦除</span><span class=tag>推镜穿框</span><span class=tag>全帧+运动模糊</span></div>
     <div class=prompt>
       <div class=bar>
         <div class=seg role=tablist><button class=on data-l=zh>中文</button><button data-l=en>English</button></div>
         <button class=copy>复制提示词</button>
       </div>
-      <pre data-l=zh># 风格:扁平矢量 MG(一颗圆点一镜到底)
-
-用代码(SVG + GSAP,或 Remotion)做一条约 10 秒、1920×1080 的扁平矢量动画,主题是 {主题},结尾落到 {品牌名}/{标题文字}。
-
-## 视觉语言
-- 纯色几何,零渐变、零投影、零描边光效。形状只用圆、圆角矩形、胶囊、三角、半圆拼。
-- 体积只靠「双色平涂」:物体右侧切一条比本色暗约 10% 的色块,不画光影。
-- 色板严格 6 色:电光蓝 #2B1EF4 主背景;珊瑚红 #F14B50 主角圆点;向日葵黄 #F8CA33;薄荷绿 #40FDAA;奶油白 #FDF7E9 地面/文字;墨蓝 #121434 只用于细节线和深色物件。远景用蓝的提亮版 #4B44F6 做剪影,再远就沉进背景。
-- 细线只给小细节(眼镜、对勾、提示符号),线宽粗、圆头。点缀:放射短线、同心椭圆波纹、背景里半透明的圈/叉/胶囊。
-
-## 字体排印
-- 主标题:圆头几何超粗无衬线(Fredoka / Nunito Black 一类),奶油白,居中。
-- 副标题:中文粗黑体 + 英文全大写小字,字距 0.3em,透明度约 70%。
-- 分区标签贴角:「01 {标签}」小号数字 + 粗体词。
-
-## 构图
-- 正面平视,横向排布,地平线压在画面下 1/4~1/3。主体居中或三分点,四周留色块呼吸。
-- 可用 2×2 等分色块网格做「并列要点」,每格一个大图标 + 角标。
-
-## 动效语言
-- 主角 = 一颗 {核心物件} 化身的珊瑚色圆点,贯穿全片:落地 → 变成场景元素 → 跳格 → 最后成为 {标题文字} 上的一个点。
-- 全部弹性缓动:进场 back.out(1.7)/elastic.out(1,0.5),落地压扁拉伸(scaleY 0.6 / scaleX 1.3),再回弹。
-- 元素从地面「长出」:scaleY 0→1,transform-origin 底部,stagger 0.06–0.1s。
-- 快速位移加方向性运动模糊和两三条速度线。
-- 节奏:每 0.25–0.5s 一个动作点,每个场景 1.5–2s 就换。
-- 转场三招:① 镜头推进钻进画面里的小元素(下一场景缩在其中,配放射速度线 + 缩放模糊);② 珊瑚圆形遮罩扩散吞屏;③ 某一格面板放大铺满,其中的图形直接变成下一场景的元素。
-- 结尾:标题字母逐个弹出,中文逐字下落回弹,圆点外扩一道细圆环脉冲,角落再弹出一个小 logo 标。
-
-## 该做 / 不该做
-- 做:一个主角贯穿到底,形状呼应(圆点 = 太阳 = 按钮 = 字母上的点)。
-- 不做:渐变、写实阴影、细描边插画、多余字幕、线性匀速运动、超过 6 种颜色。</pre>
-      <pre data-l=en hidden># Style: Flat Vector Motion Graphics (one dot, one continuous take)
-
-Build a ~10 s, 1920×1080 flat-vector animation in code (SVG + GSAP, or Remotion) about {topic}, ending on {brand_name}/{title_text}.
-
-## Visual language
-- Solid geometry only: no gradients, no drop shadows, no glow. Build everything from circles, rounded rects, capsules, triangles, half-circles.
-- Volume comes only from two-tone flat fills: a strip on the right side ~10% darker than the base color. No lighting.
-- Strict 6-color palette: electric blue #2B1EF4 (main background); coral #F14B50 (hero dot); sunflower #F8CA33; mint #40FDAA; cream #FDF7E9 (ground/type); ink navy #121434 (detail lines and dark objects only). Distant layers use a lifted blue #4B44F6 as silhouettes, fading into the background.
-- Thin lines only for small details (glasses, check marks, alert glyphs): thick, round caps. Accents: radial burst ticks, concentric elliptical ripples, translucent circles/crosses/capsules floating in the background.
-
-## Typography
-- Headline: rounded geometric ultra-bold sans (Fredoka / Nunito Black family), cream, centered.
-- Subline: bold Chinese sans + small all-caps English, letter-spacing 0.3em, ~70% opacity.
-- Section labels pinned to corners: &quot;01 {label}&quot; with small numerals + bold word.
-
-## Composition
-- Frontal, eye-level, horizontal layouts; horizon sits in the lower 1/4–1/3. Subject centered or on thirds, generous color fields around it.
-- A 2×2 grid of equal color panels works for parallel points: one big icon per panel + a corner label.
-
-## Motion language
-- Hero = a coral dot standing in for {core_object}, carried through the whole piece: it drops → becomes a scene element → hops panel to panel → ends as the dot on {title_text}.
-- Everything springy: entrances back.out(1.7) / elastic.out(1,0.5); landings squash and stretch (scaleY 0.6 / scaleX 1.3) then rebound.
-- Elements &quot;grow&quot; from the ground: scaleY 0→1, transform-origin bottom, stagger 0.06–0.1 s.
-- Fast moves get directional motion blur plus two or three speed lines.
-- Rhythm: an action beat every 0.25–0.5 s; each scene lasts 1.5–2 s.
-- Three transitions: (1) camera pushes into a small element inside the frame (the next scene sits inside it) with radial speed lines + zoom blur; (2) coral circle mask expands to swallow the screen; (3) one panel scales up to fill the frame and its graphic morphs into the next scene&#x27;s element.
-- Ending: headline letters pop in one by one, Chinese characters drop in and bounce, a thin ring pulses out from the dot, a small logo mark pops in a corner.
-
-## Do / Don&#x27;t
-- Do: one hero runs start to finish; shapes rhyme (dot = sun = button = letter dot).
-- Don&#x27;t: gradients, realistic shadows, fine-line illustration, extra captions, linear constant-speed motion, more than 6 colors.</pre>
+      <pre data-l=zh>风格:扁平矢量,纯色几何零阴影,主色圆点贯穿全片。
+画面:钴蓝#2B1EF4底,珊瑚#F14B4F主色,薄荷#3DFDA7/明黄#F7CC30点缀,奶油#FDF7E9留白;只用圆、圆角矩形、胶囊。
+字体:圆润粗体小写,宽字距副标逐字弹出。
+动效:30fps+方向模糊;下落拉伸1.2,落地压扁1.5×0.6停2帧,回弹过冲10%+放射线;错开3帧弹出;每场2秒,0.4秒推镜穿框或圆点扩张擦除换场。
+实现:SVG+GSAP,scaleX/Y,clip-path。
+不要:投影渐变;匀速;一拍二;超5色。
+内容:{在这里写你的内容}</pre>
+      <pre data-l=en hidden>Style: flat vector, solid geometry, zero shadows; one accent dot runs through the whole piece.
+Look: cobalt #2B1EF4 ground, coral #F14B4F lead, mint #3DFDA7 / yellow #F7CC30 accents, cream #FDF7E9 negative space; only circles, rounded rects, pills.
+Type: rounded heavy lowercase; wide-tracked subline, letters pop in one by one.
+Motion: 30fps + directional blur; falls stretch 1.2x, lands squash 1.5x0.6 held 2 frames, 10% rebound overshoot with radial tick lines; 3-frame stagger pop-ins; ~2s per beat, change scenes with a 0.4s push-in through a small frame or the dot swelling into a circle wipe.
+Build: SVG + GSAP, scaleX/Y, clip-path circle.
+Avoid: shadows/gradients; linear easing; on-twos; more than 5 colors on screen.
+Content: {your content here}</pre>
     </div>
-    <details><summary>拆解要点</summary><ul><li>开场圆点下落拉长 + 速度线(004),落地压扁 + 放射短线 + 同心椭圆波纹(005-006),然后飞走化身太阳(007-008):一个物体贯穿全片是核心手法。</li><li>体积不靠光影,只靠物体右侧一条暗 10% 的平涂色块(012 黄楼 #F8CA33/#E6B01C);远景剪影用提亮蓝 #4B44F6(008、010)。</li><li>元素从地面按 stagger 长出(010 前排楼还在升、窗点模糊),窗点随后逐个点亮(012、015)。</li><li>转场有三种:镜头推进钻进画面中的小窗、下一场景就缩在里面(015 → 016 放射速度线 + 缩放模糊);珊瑚圆形遮罩扩散吞屏(023 → 024);2×2 面板放大铺满,图形变成字母的一笔(033 → 034 → 035)。</li><li>2×2 色块网格里圆点逐格跳、带方向模糊,落点即点亮那一格(026、029、032);结尾标题字母逐个弹入(035)、中文逐字下落(038)、圆环脉冲 + 角落小标弹出(037、040)。</li></ul></details>
+    <details><summary>已剥离的内容层(提示词里不含这些)</summary><div class=gones><span class=gone>城市天际线与楼房</span><span class=gone>公交车</span><span class=gone>太阳</span><span class=gone>戴眼镜女孩与办公桌房间</span><span class=gone>手机通知铃铛</span><span class=gone>柱状图/对勾/爱心/金币图标</span><span class=gone>popwise 品牌字标</span><span class=gone>「每天聪明一点点」标语</span></div></details>
+    <details><summary>逐帧证据 + 运动曲线</summary><ul><li>f008-014 圆点每帧下落25→40px逐帧加速(ease-in),高宽比143/117≈1.2拉伸;f016-017 压成宽177×高82并停2帧,f021 回弹宽133过冲约10%</li><li>motion.txt 运动帧247/301、内部静止帧仅8、交替率0.13→30fps全帧,非一拍二;f032、f098 快速位移带方向模糊拖影</li><li>f091-110 画面变化峰值≈64:推镜穿进楼体小窗,伴放射速度线,f104附近窗内闪白后展开成新场景</li><li>f151-163 圆点膨胀成满屏圆形擦除→薄荷胶囊二次擦除→f163硬切奶油底</li><li>f186-230 2×2分屏,每格由圆点落地后扩成满格色块,相隔约8-12帧逐格点亮;f236-240 蓝格放大成全屏进入字标段</li></ul><img class=motion loading=lazy src="images/03-motion.webp" alt="相邻帧变化量曲线"></details>
     <a class=md href="prompts/03-flat-vector.md">Markdown 版 →</a>
   </div>
 </article>
-<article class=card id="s04">
+<article class="card" id="s04">
   <div class=media>
-    <img class=hero loading=lazy src="images/04-1.webp" alt="线条动画(一笔画) 样片截图">
+    <img class=hero loading=lazy src="images/04-1.webp" alt="线条动画 样片截图">
     <div class=thumbs><button class=th data-src="images/04-1.webp"><img loading=lazy src="images/04-1.webp" alt=""></button><button class=th data-src="images/04-2.webp"><img loading=lazy src="images/04-2.webp" alt=""></button><button class=th data-src="images/04-3.webp"><img loading=lazy src="images/04-3.webp" alt=""></button></div>
   </div>
   <div class=body>
-    <header><span class=no>04</span><h2>线条动画(一笔画)<small>Line Art (One Continuous Line)</small></h2></header>
-    <p class=tagline>一根发光金线不断笔,在深蓝夜幕上从一点长成全景</p>
-    <div class=pal><span class="sw" style="--c:#18233A" title="背景中心:深海军蓝,径向渐变的亮区(略偏画面中上)"><i></i>#18233A</span><span class="sw" style="--c:#070C14" title="背景边缘:近黑蓝,重暗角收边"><i></i>#070C14</span><span class="sw" style="--c:#C9B27C" title="主线条:香槟金描边(已画完、冷却后的线)"><i></i>#C9B27C</span><span class="sw" style="--c:#FFF4D6" title="笔尖光点与刚画出的一段:暖白高光 + 柔光晕"><i></i>#FFF4D6</span><span class="sw" style="--c:#E6D6A3" title="实心徽标/标题渐变的亮端(左上)"><i></i>#E6D6A3</span><span class="sw" style="--c:#B4985E" title="实心徽标/标题渐变的暗端(右下)"><i></i>#B4985E</span><span class="sw" style="--c:#8A8676" title="远端旧线/副标题装饰线:暗淡灰金"><i></i>#8A8676</span></div>
-    <div class=tags><span class=tag>一笔画</span><span class=tag>SVG 描边动画</span><span class=tag>发光笔尖</span><span class=tag>深蓝+香槟金</span><span class=tag>镜头跟笔</span><span class=tag>留白</span><span class=tag>线稿收成徽标</span><span class=tag>衬线大字距</span></div>
+    <header><span class=no>04</span><h2>线条动画<small>Single-Line Art</small></h2></header>
+    <p class=tagline>一根金线不离纸,留白即画面</p>
+    <div class=pal><span class="sw" style="--c:#151E2D" title="背景中心(径向渐变亮部)"><i></i>#151E2D</span><span class="sw" style="--c:#070E16" title="背景四角暗角"><i></i>#070E16</span><span class="sw" style="--c:#C9B27E" title="已画完的金线"><i></i>#C9B27E</span><span class="sw" style="--c:#FFF8E8" title="笔尖光点/新画线段的白热头"><i></i>#FFF8E8</span><span class="sw" style="--c:#E4D3A0" title="收尾闭合形金色填充亮部(渐变至 #C3A86E)"><i></i>#E4D3A0</span></div>
+    <div class=tags><span class=tag>一笔画单线</span><span class=tag>SVG 描边动画</span><span class=tag>笔尖光点</span><span class=tag>镜头跟笔</span><span class=tag>闭合填金定版</span></div>
     <div class=prompt>
       <div class=bar>
         <div class=seg role=tablist><button class=on data-l=zh>中文</button><button data-l=en>English</button></div>
         <button class=copy>复制提示词</button>
       </div>
-      <pre data-l=zh>## 风格:线条动画 · 一笔画(Line Art)
-做一条约 10 秒、16:9 的动画,主题是 {主题}。整片只有一根线:从画外左侧进来,全程不断笔,从很小的 {起点意象} 画起,连成 {核心物件/整体场景},最后收成 {徽标形状} 并亮出 {标题文字}。线就是全部画面,留白同样重要。
-
-### 视觉语言
-- 背景:深海军蓝径向渐变,中心 #18233A,边缘压到 #070C14,重暗角;不放纹理和背景物件。
-- 线:单一路径,细(1280 宽下约 2px),stroke-linecap/linejoin 全部 round。已画完的线是香槟金 #C9B27C;越靠近笔尖越亮越白(#FFF4D6),像金丝在冷却;外加极淡同色外发光。
-- 笔尖:暖白光点 + 柔和光晕(约线宽 10 倍),是全画面最亮处。
-- 形状语言:极简线稿。几何体用直角折线 + 半圆拱,自然物用叶形小环、S 曲线、回旋圈;各段用长水平基线或大弧线串起来。
-- 唯一的实心块在收尾:{徽标形状} 先被线勾出轮廓,再瞬间灌满金色渐变(#E6D6A3 → #B4985E,左上亮右下暗),内部负形镂空。
-
-### 字体排印
-- 标题:古典罗马衬线全大写(Cinzel / Cormorant Garamond 一类),细到中等字重,字距约 0.5em,金色渐变填充,居中在线稿下方。
-- 副标题:小号中文宋体/衬线,字距拉开,两侧各一条带圆点端头的短细线装饰。
-
-### 构图
-- 过程中笔尖保持在画面中心附近,地平线在下三分之一。
-- 收尾全景:上徽标、中线稿、下标题居中定版,四周大量留白;线起点从画外淡入,终点一个小回勾。
-
-### 动效语言
-- 描边节奏不匀速:细节处(叶子、拱门、尖顶)画得慢,长直线和大弧线一冲而过。
-- 镜头:2D 相机阻尼跟随笔尖,同时缓慢拉远让画面越来越完整;冲长直线时快速平移,带运动模糊残影。
-- 高潮:徽标轮廓闭合 → 瞬间灌满金色 + 一两圈极淡光环外扩 → 全部线条降回统一香槟金。
-- 收尾:镜头 ease-out 拉远上移腾出标题位;标题逐字淡入并由糊变清(stagger 40–60ms),副标题随后;最后静止 1.5–2 秒。
-- 60fps 平滑,不用一拍二。
-
-### 代码实现提示
-- 整根线写成一条 SVG path,用 getTotalLength() + stroke-dasharray/stroke-dashoffset 驱动绘制进度;用 getPointAtLength(progress) 求笔尖坐标,放光点并作为相机目标。
-- &quot;越新越亮&quot;:同一路径再叠一层白色描边,只露末端 8–15%,加 blur。
-- 相机 = 外层 &lt;g&gt; 的 translate/scale;Remotion 可用 CameraMotionBlur 做残影。
-- 进度用分段关键帧(每个物件一段 easeInOut),不要线性。
-
-### 该做 / 不该做
-- 该做:一根线贯穿、留白充足、金色单一色相、光集中在笔尖。
-- 不该做:多条独立线段、断笔、彩色、大面积填色、背景花纹、满屏粒子、粗或卡通描边。</pre>
-      <pre data-l=en hidden>## Style: Line Art · One Continuous Line
-Make a ~10-second 16:9 animation about {topic}. The whole film is a single line: it enters from off-screen left and never lifts or breaks. It starts as a tiny {origin motif}, keeps flowing into {core object / overall scene}, and finally resolves into a {emblem shape} that reveals {title text}. The line is the entire picture; negative space matters as much as the line.
-
-### Visual language
-- Background: deep navy radial gradient, center #18233A falling to #070C14 at the edges, with a strong vignette. No texture, grain or background objects.
-- Line: one path, thin (~2px at 1280 wide), round linecap and linejoin everywhere. Settled line is champagne gold #C9B27C; the closer to the pen tip, the brighter and whiter it gets (#FFF4D6), like freshly heated gold wire cooling down. Add a very faint same-color outer glow.
-- Pen tip: a warm-white dot plus a soft radial bloom (~10x line width) — the brightest thing on screen.
-- Shape language: minimal line drawing. Geometry uses right-angle polylines and semicircular arches; organic forms use small leaf loops, S-curves and curls. Everything is traced by the same line on its way, linked by long horizontal baselines or big sweeping arcs.
-- Only one solid element, at the end: the {emblem shape} is first outlined by the line, then instantly floods with a gold linear gradient (#E6D6A3 → #B4985E, light top-left to dark bottom-right, slight metallic sheen), with a negative-space cutout inside.
-
-### Typography
-- Title: classical Roman serif in all caps (Cinzel / Cormorant Garamond feel), light-to-regular weight, ~0.5em tracking, gold gradient fill, centered below the drawing.
-- Subtitle: small CJK serif / Songti with wide tracking, flanked by two short hairlines with dot terminals.
-
-### Composition
-- During drawing the camera follows the pen tip and keeps it near frame center; the drawing&#x27;s horizon sits in the lower third.
-- Final wide shot: centered vertical lockup — emblem on top, line drawing in the middle, title below — with generous margins. Both ends of the line taper off gently (start fades in from off-screen, end finishes in a small hook).
-
-### Motion language
-- Drawing speed is not constant: slow on details (leaves, arches, spires), very fast on long straights and big arcs.
-- Camera: a 2D camera tracks the pen tip with damped/lerp smoothing while slowly zooming out (scale shrinking) so the picture keeps growing; when the tip races along a long straight, the camera pans fast with visible motion-blur echoes.
-- Climax: emblem outline closes → fills with gold within one frame + one or two very faint expanding halo ripples → all lines cool from glowing back to uniform champagne gold.
-- Outro: camera eases out, pulling back and up to make room for the title; title letters fade in with blur-to-sharp, staggered ~40–60ms; subtitle follows; hold still for the final 1.5–2s.
-- Smooth 60fps, no on-twos stepping.
-
-### Implementation hints
-- Write the whole line as ONE SVG path; drive drawing with getTotalLength() + stroke-dasharray/stroke-dashoffset; use getPointAtLength(progress) for the tip position, place the glow dot there and use it as the camera target.
-- &quot;Newest is brightest&quot;: overlay the same path again showing only the last 8–15% of the drawn length (via dasharray) in white with a blur filter.
-- Camera = translate/scale on an outer &lt;g&gt;, damped-following the tip; in Remotion use CameraMotionBlur or multi-sample accumulation for the echo blur.
-- Use a piecewise progress curve (one segment per object, each with easeInOut), never one linear ramp.
-
-### Do / Don&#x27;t
-- Do: one line from start to end, lots of negative space, a single gold hue, light concentrated at the tip.
-- Don&#x27;t: multiple separate strokes, pen lifts, extra colors, heavy fills, background patterns, particle clutter, thick or cartoon outlines.</pre>
+      <pre data-l=zh>风格:一根金线一笔画到底,大留白
+画面:底 #151E2D→#070E16 暗角;线 #C9B27E 2px;笔尖 #FFF8E8 光点;末个闭合形填金 #E4D3A0
+字体:如需文字:宽字距细衬线,定版后淡入
+动效:30fps 连续;笔尖匀速,拐角停 5 帧;镜头跟笔;新线亮白 1s 退成金;闭合时3帧由外向内填满+光环外扩;再 0.8s 拉远定版
+实现:SVG单path+stroke-dashoffset;getPointAtLength 定光点与相机
+不要:多条线;断笔;提前填色;快切
+内容:{在这里写你的内容}</pre>
+      <pre data-l=en hidden>Style: one gold line drawn without lifting, lots of negative space
+Look: radial bg #151E2D→#070E16 vignette; line #C9B27E 2–3px round caps; white-hot tip #FFF8E8; only the final closed shape fills gold #E4D3A0
+Type: if text is needed: after lockup, wide-tracked thin serif caps centered below, blur-fade in
+Motion: smooth 30fps; tip near-constant speed, holds 4–6 frames at corners; camera pans with tip; fresh line glows white, fades to gold over 1s; on closure, 3-frame outside-in fill + expanding glow ring; then 0.8s ease-in-out pull-back to lockup
+Build: single SVG path + stroke-dashoffset; getPointAtLength drives tip glow and camera
+Avoid: multiple lines; breaks or jumps; early fills; hard cuts or shake
+Content: {your content here}</pre>
     </div>
-    <details><summary>拆解要点</summary><ul><li>全片是同一根不断的线:003 只有一条从画外进来的水平线 + 笔尖光点,012 已长出叶形小环,020 顺路折成直角建筑,030 甩出大弧和回旋圈,041 收成完整全景——中间从未断笔。</li><li>镜头跟笔并逐步拉远:003/012 笔尖都在画面中心附近且线稿很大,020→029 物体逐渐变小,035→041 继续拉远上移给标题腾位。</li><li>笔尖冲长直线时有明显运动模糊残影(024 建筑出现多重平移重影,033 拉远时建筑线条也有双影),说明相机运动做了多采样模糊。</li><li>线有&#x27;越新越亮&#x27;的冷却梯度:012 近笔尖的茎是亮白、远处基线是暗灰金;033 徽标轮廓刚闭合时最亮,034 灌满金色后全线降回统一香槟金,并有极淡外扩光环。</li><li>收尾定版是标题逐字带模糊淡入(038 字母深浅不一、两端最淡),041 为衬线大字距金色标题 + 两侧带圆点短线的小副标题;001-002 与 044 为相邻风格转场,已忽略。</li></ul></details>
-    <a class=md href="prompts/04-line-art-(one-continuous-line).md">Markdown 版 →</a>
+    <details><summary>已剥离的内容层(提示词里不含这些)</summary><div class=gones><span class=gone>种子发芽</span><span class=gone>城市天际线</span><span class=gone>拱门房屋</span><span class=gone>尖塔楼</span><span class=gone>月亮/圆形徽标</span><span class=gone>海浪卷</span><span class=gone>ATELIER LINEA 品牌名</span><span class=gone>始于一线 副题</span></div></details>
+    <details><summary>逐帧证据 + 运动曲线</summary><ul><li>f001-225 全程只有一条连续 path 被描出,笔尖带白色光点(f005 笔尖 #FCFFF3,旧线 #C0C5BE→渐暗金),从未断线</li><li>motion.txt 交替率 0.15、仅 1 个静止帧 → 30fps 连续运动,非一拍二;f62-68、f105-110、f140-148 曲线跌近 0 = 笔尖在拐角/段落间短停</li><li>f106→f165→f195 已画图形持续左移、笔尖保持在画面中部偏右 → 镜头横向跟随笔尖</li><li>f226 曲线尖峰 4.8:f224 线框圆 → f226 外圈亮环 → f227 由外向内填金 → f229 填满+外扩光环,约 3 帧完成</li><li>f240-270 能量拱形(峰 3.0 @f250):全景缩小居中(f238→f252→f290);f262-280 宽字距衬线标题模糊淡入</li></ul><img class=motion loading=lazy src="images/04-motion.webp" alt="相邻帧变化量曲线"></details>
+    <a class=md href="prompts/04-single-line-art.md">Markdown 版 →</a>
   </div>
 </article>
-<article class=card id="s05">
+<article class="card" id="s05">
   <div class=media>
-    <img class=hero loading=lazy src="images/05-1.webp" alt="3D 渲染·软糯物理 样片截图">
+    <img class=hero loading=lazy src="images/05-1.webp" alt="3D渲染 样片截图">
     <div class=thumbs><button class=th data-src="images/05-1.webp"><img loading=lazy src="images/05-1.webp" alt=""></button><button class=th data-src="images/05-2.webp"><img loading=lazy src="images/05-2.webp" alt=""></button><button class=th data-src="images/05-3.webp"><img loading=lazy src="images/05-3.webp" alt=""></button></div>
   </div>
   <div class=body>
-    <header><span class=no>05</span><h2>3D 渲染·软糯物理<small>3D Render — Soft Physics</small></h2></header>
-    <p class=tagline>糖果色充气字砸进胶囊地毯，软糯又有分量</p>
-    <div class=pal><span class="sw" style="--c:#E0306C" title="主体（充气 3D 字）本色：高饱和糖果玫红"><i></i>#E0306C</span><span class="sw" style="--c:#F7A6C4" title="主体高光 / 次表面透出的浅粉，以及落地冲击后在地面扩散的粉色涟漪"><i></i>#F7A6C4</span><span class="sw" style="--c:#A8144A" title="主体暗部与接触阴影里的深玫红"><i></i>#A8144A</span><span class="sw" style="--c:#F6E3D6" title="胶囊地毯第一态：奶油米色（胶囊顶面）"><i></i>#F6E3D6</span><span class="sw" style="--c:#F2C4B6" title="地毯中远景的蜜桃粉过渡色"><i></i>#F2C4B6</span><span class="sw" style="--c:#A98BEB" title="胶囊地毯第二态：薰衣草紫（胶囊另一半，翻面后铺满全场）"><i></i>#A98BEB</span><span class="sw" style="--c:#7A5AD0" title="紫色地毯缝隙与阴影"><i></i>#7A5AD0</span><span class="sw" style="--c:#E6C2DC" title="背景天空 / 远景雾：粉紫柔光渐变"><i></i>#E6C2DC</span><span class="sw" style="--c:#C9CBD3" title="镜面铬球的中性银灰（主要靠反射环境取色）"><i></i>#C9CBD3</span><span class="sw" style="--c:#3A2E3E" title="底部收尾小字的深灰紫墨色"><i></i>#3A2E3E</span></div>
-    <div class=tags><span class=tag>3D 实拍感渲染</span><span class=tag>充气软糖字</span><span class=tag>海量实例阵列</span><span class=tag>物理弹跳与挤压</span><span class=tag>双色翻面换色</span><span class=tag>微距浅景深</span><span class=tag>铬球重击</span><span class=tag>粉紫糖果色</span></div>
+    <header><span class=no>05</span><h2>3D渲染<small>3D Render</small></h2></header>
+    <p class=tagline>粉彩充气质感,软糯落地有分量</p>
+    <div class=pal><span class="sw" style="--c:#E8336F" title="主体亮粉(釉面充气主元素)"><i></i>#E8336F</span><span class="sw" style="--c:#F0CDBA" title="奶杏色小球地面(初始)"><i></i>#F0CDBA</span><span class="sw" style="--c:#DDB8D2" title="雾紫天空/背景墙"><i></i>#DDB8D2</span><span class="sw" style="--c:#A48BE8" title="高潮后地面换成的第二色(薰衣草紫)"><i></i>#A48BE8</span><span class="sw" style="--c:#C9CCD6" title="镜面金属点缀"><i></i>#C9CCD6</span><span class="sw" style="--c:#3A2E4A" title="副标小字"><i></i>#3A2E4A</span></div>
+    <div class=tags><span class=tag>Blender Cycles 程序化</span><span class=tag>充气釉面材质</span><span class=tag>海量实例铺地</span><span class=tag>压扁回弹物理</span><span class=tag>浅景深一镜到底</span><span class=tag>冲击波纹换色</span></div>
     <div class=prompt>
       <div class=bar>
         <div class=seg role=tablist><button class=on data-l=zh>中文</button><button data-l=en>English</button></div>
         <button class=copy>复制提示词</button>
       </div>
-      <pre data-l=zh># 风格：3D 渲染·软糯物理
-做一条约 10 秒 16:9 的三维渲染动画，主题 {主题}。气质：糖果色、软糯、有分量，像广告级物理模拟 CG。
-
-## 视觉
-- 场景：数千颗竖立双色胶囊排成网格，铺到地平线，低机位看像一排排珠子；胶囊上半奶油米 #F6E3D6、下半薰衣草紫 #A98BEB。
-- 主体：{标题文字} 做成充气软糖感的圆胖 3D 字，全圆角，玫红 #E0306C，清漆高光+微次表面，暗部 #A8144A。
-- 重物：镜面铬球 {核心物件}，反射粉紫环境，软硬对比。
-- 光：大面积柔光、软短阴影、缝隙 AO；远景粉紫雾 #E6C2DC，天空无细节渐变。
-- 镜头：贴地微距、浅景深、轻 bloom 与暗角。
-
-## 字体与构图
-主字用胖圆小写无衬线，占画宽 50–60%、略高于中线，重物停在字尾当句号。收尾副标：全大写宽字距（约 0.3em）细体英文 + 短细线 + 一行中文小字，深灰紫 #3A2E3E，垫淡白柔光，居下 1/4。先微距局部，结尾正面居中对称定版。
-
-## 动效
-1. 0–2s：首个元素从画外落下，下落纵向拉伸+运动模糊，触地挤压下陷，胶囊被压开，一圈粉色 #F7A6C4 涟漪向外扩散；镜头后拉抬升。
-2. 2–5s：其余元素依次落下，间隔渐短（约 1s→0.5s），每次弹簧回弹带轻微过冲和新涟漪；镜头缓慢环绕。
-3. 6.5–8.5s：重物加速坠下砸在字尾，周围胶囊炸起翻滚、落回翻成紫色面，紫色由落点扩散到全场；重物几乎不弹。
-4. 8.5–10s：正面定版，副标 0.6s 淡入微上浮，静止留白。
-物理驱动（重力、阻尼弹簧、碰撞让位），不用线性；30fps 连续，不做一拍二。
-
-## 实现提示
-Three.js `InstancedMesh(CapsuleGeometry)` 逐实例写下沉/旋转/颜色，涟漪 = 随时间外扩的环形衰减；翻色 = 预计算抛物线+绕水平轴转 180°；字用大 bevel 的 TextGeometry + `MeshPhysicalMaterial`(clearcoat)；铬球 metalness 1、roughness≈0 + 环境贴图；后期 DOF + Bloom + SSAO。物理按帧号解析或预烘焙（Remotion 用 @remotion/three），或 Blender+Python 建模 Cycles 渲染。
-
-## 不要
-扁平图形、描边卡通、硬阴影、纯黑底、霓虹色；字不能像硬塑料壳；不加 UI 框和图标。</pre>
-      <pre data-l=en hidden># Style: 3D Render — Soft Physics
-Make a ~10s 16:9 3D-rendered animation about {topic}. Mood: candy-colored, squishy, weighty — ad-grade physics-sim CG.
-
-## Visual
-- Set: thousands of upright two-tone capsules in a grid stretching to the horizon; from a low camera they read as rows of beads. Capsule halves: cream #F6E3D6 / lavender #A98BEB.
-- Hero: {title_text} as chubby inflated gummy 3D letters, fully rounded, hot pink #E0306C, clearcoat highlights + slight subsurface, shadows #A8144A.
-- Heavy object: a mirror-chrome sphere as {core_object}, reflecting the pink-lilac world — soft vs. hard.
-- Light: large soft lighting, short soft shadows, AO in the gaps; pink-lilac haze #E6C2DC at the horizon, featureless gradient sky.
-- Camera: ground-hugging macro, shallow DOF, light bloom and vignette.
-
-## Type &amp; composition
-Hero word in rounded chubby lowercase sans, 50–60% of frame width, slightly above center; the heavy object rests at the end like a period. End caption: ALL-CAPS light sans with ~0.3em tracking + short hairline + one small secondary-language line, dark plum-gray #3A2E3E over a faint white glow band, lower quarter. Open on a macro detail, end on a frontal centered symmetrical lock-up.
-
-## Motion
-1. 0–2s: first element drops in from off-frame, stretched with motion blur, squashes and sinks on impact, pushing capsules aside; a pink #F7A6C4 ripple radiates outward; camera pulls back and rises.
-2. 2–5s: remaining elements drop with shrinking gaps (~1s→0.5s), each with spring rebound (slight overshoot) and a new ripple; slow camera orbit.
-3. 6.5–8.5s: heavy object accelerates down and slams at the word&#x27;s end; nearby capsules blast up, tumble and land flipped lavender-up; lavender spreads from impact across the field; the heavy object barely bounces.
-4. 8.5–10s: frontal lock-up, caption fades in over 0.6s with slight rise, hold.
-Physics-driven (gravity, damped springs, collision displacement), never linear; continuous 30fps, not on twos.
-
-## Implementation
-Three.js `InstancedMesh(CapsuleGeometry)` with per-instance sink/rotation/color; ripple = ring falloff expanding over time; recolor = precomputed ballistic arc + 180° flip about a horizontal axis; letters via TextGeometry with big bevel + `MeshPhysicalMaterial` (clearcoat); chrome metalness 1, roughness≈0 + env map; post DOF + Bloom + SSAO. Drive physics from frame number analytically or pre-baked (Remotion: @remotion/three), or model in Blender+Python and render in Cycles.
-
-## Don&#x27;t
-Flat graphics, outlined cartoon, hard shadows, pure black backgrounds, neon colors; letters must not feel like rigid plastic; no UI frames or icons.</pre>
+      <pre data-l=zh>风格:粉彩3D棚拍,充气糖果感,软糯有分量
+画面:#E8336F主体/#F0CDBA地/#DDB8D2天/#A48BE8换色;釉面鼓胀;数千小球铺地;柔光、低机位浅景深、远景雾化
+字体:主标做充气3D圆胖字;副标极小全大写、宽字距,末淡入
+动效:24fps;元素逐个落入隔0.45s,触地压扁20%回弹、压坑;一镜缓推环绕;高潮镜面重物砸入,小球溅飞、自落点波纹换色;末1.5s定版。
+实现:Blender Cycles+Python;实例化+刚体;运动模糊。
+不要:扁平假3D;黑底霓虹;硬切;匀速。
+内容:{在这里写你的内容}</pre>
+      <pre data-l=en hidden>Style: pastel 3D studio render, inflated candy-gloss, soft yet weighty.
+Look: #E8336F hero / #F0CDBA ground / #DDB8D2 sky / #A48BE8 takeover; glossy puffy forms; ground tiled with thousands of small spheres; soft key light, low camera, shallow DOF, hazy distance.
+Type: headline as chubby inflated 3D letters; tiny all-caps subline, wide tracking, fades in last.
+Motion: 24fps feel; elements drop in one by one ~0.45s apart, squash ~20% on landing, rebound, dent the ground; one continuous take, slow dolly-orbit; climax: a chrome heavy object slams in, spheres splash, color ripples outward from impact to the takeover hue; hold final 1.5s.
+Build: Blender Cycles + Python; instancing + rigid-body sim; motion blur on.
+Avoid: flat fake 3D; dark neon; hard cuts; linear motion.
+Content: {your content here}</pre>
     </div>
-    <details><summary>拆解要点</summary><ul><li>地面不是球而是竖立的双色胶囊：030 帧被炸飞的胶囊清楚露出一半米色一半紫色，落回后整片地毯在 032→034→041 逐步变紫——「翻面换色」是这条片的核心视觉事件。</li><li>主字用『重力 + 挤压回弹』入场：013 帧下落中的字纵向拉长且带运动模糊，015/019 帧落地后字下方胶囊被压陷，019 帧右下出现由冲击扩散的粉色涟漪带。</li><li>镜头从微距浅景深开场（005/006 帧前景珠子大而虚、主字局部占满屏），随后后拉抬升（007→009），中段持续环绕改变透视（019→023→027），最终收在正面对称定版（041）。</li><li>软与硬的对比是情绪核心：027 帧铬球从上方加速坠入，028 帧接触瞬间周围胶囊被挤开，029–031 帧炸起翻滚，之后铬球几乎不弹、像句号一样停在字尾。</li><li>收尾排版极克制：036–041 帧副标两行淡入，全大写宽字距英文 + 细分隔线 + 中文小字，下方垫一层淡白柔光；作者侧栏注明原作为 Blender Cycles + Python 建模（推测 Web 端需用 Three.js 实例化 + 后期模拟）。</li></ul></details>
-    <a class=md href="prompts/05-3d-render-—-soft-physics.md">Markdown 版 →</a>
+    <details><summary>已剥离的内容层(提示词里不含这些)</summary><div class=gones><span class=gone>soft 单词</span><span class=gone>字母逐个砸落</span><span class=gone>铬球当句号</span><span class=gone>胶囊</span><span class=gone>8700 颗胶囊</span><span class=gone>SOFTNESS CARRIES WEIGHT / 柔软 自有分量</span></div></details>
+    <details><summary>逐帧证据 + 运动曲线</summary><ul><li>motion.txt:约每 5 帧 1 帧静止(f6/11/16/21…)→24fps 渲染放入 30fps</li><li>f15→f17-018 首个元素带运动模糊落地,f017-018 横向压扁明显、四周小球被压下,f020-026 回弹立起</li><li>落入节拍:f010/f039/f055/f068 依次入画,间隔约 13-15 帧≈0.45s;全程无硬切(hard cuts=[])</li><li>f120-160 能量对称拱形=镜头缓入缓出推轨环绕(对比 f105 与 f150 视角)</li><li>f175 镜面球入画→f183 砸入溅飞→f190-240 地面自落点向外换成紫色;f245-260 副标淡入,f255-300 帧差≈0 定版</li></ul><img class=motion loading=lazy src="images/05-motion.webp" alt="相邻帧变化量曲线"></details>
+    <a class=md href="prompts/05-3d-render.md">Markdown 版 →</a>
   </div>
 </article>
-<article class=card id="s06">
+<article class="card" id="s06">
   <div class=media>
     <img class=hero loading=lazy src="images/06-1.webp" alt="形变动画 样片截图">
     <div class=thumbs><button class=th data-src="images/06-1.webp"><img loading=lazy src="images/06-1.webp" alt=""></button><button class=th data-src="images/06-2.webp"><img loading=lazy src="images/06-2.webp" alt=""></button><button class=th data-src="images/06-3.webp"><img loading=lazy src="images/06-3.webp" alt=""></button></div>
   </div>
   <div class=body>
     <header><span class=no>06</span><h2>形变动画<small>Shape Morph</small></h2></header>
-    <p class=tagline>一个形状连续变身讲完整个故事,色块大胆、扁平如剪纸</p>
-    <div class=pal><span class="sw" style="--c:#F2EEE3" title="米白纸底(带细纸纹),也是深底/彩底上的主形状色"><i></i>#F2EEE3</span><span class="sw" style="--c:#17161C" title="墨黑:纸底上的首个形状、片尾深底"><i></i>#17161C</span><span class="sw" style="--c:#EC3F2E" title="番茄红:主强调色,形状色/整屏底色/收尾句点"><i></i>#EC3F2E</span><span class="sw" style="--c:#F4BA2E" title="明黄:整屏底色或红底上的形状色"><i></i>#F4BA2E</span><span class="sw" style="--c:#272EDE" title="钴蓝:整屏底色,和红做上下分屏"><i></i>#272EDE</span><span class="sw" style="--c:#CC2C1E" title="深一档的红:形状上的折纸暗面"><i></i>#CC2C1E</span><span class="sw" style="--c:#A49FA1" title="暖灰:角标英文小字、未激活进度点"><i></i>#A49FA1</span></div>
-    <div class=tags><span class=tag>SVG 形状插值</span><span class=tag>一形到底</span><span class=tag>扁平剪纸</span><span class=tag>原色色块</span><span class=tag>圆形扩散换底</span><span class=tag>运动模糊</span><span class=tag>章节角标</span><span class=tag>句点收尾</span></div>
+    <p class=tagline>一个形状连续变身,底色随形翻页</p>
+    <div class=pal><span class="sw" style="--c:#F3EFE4" title="纸纹米白底 / 浅色主体"><i></i>#F3EFE4</span><span class="sw" style="--c:#15141A" title="墨黑主体 / 收尾深底"><i></i>#15141A</span><span class="sw" style="--c:#E8422C" title="番茄红强调色块"><i></i>#E8422C</span><span class="sw" style="--c:#F4BF35" title="明黄色块"><i></i>#F4BF35</span><span class="sw" style="--c:#262ED7" title="钴蓝整屏底色"><i></i>#262ED7</span></div>
+    <div class=tags><span class=tag>SVG 路径插值</span><span class=tag>单主体连续形变</span><span class=tag>软边圆扩张换底色</span><span class=tag>扁平色块+纸纹</span><span class=tag>运动模糊</span></div>
     <div class=prompt>
       <div class=bar>
         <div class=seg role=tablist><button class=on data-l=zh>中文</button><button data-l=en>English</button></div>
         <button class=copy>复制提示词</button>
       </div>
-      <pre data-l=zh># 风格:形变动画(Shape Morph)
-
-做一条 16:9、约 10 秒的动画,主题是 {主题}。核心规则:全片只有**一个主形状**,不切镜、不消失,连续变成下一个形状——每次变形是一个故事节拍,形状本身就是叙事。
-
-## 视觉语言
-- 极简扁平图标:实心填充 + 圆头粗线(stroke-linecap: round),无描边、无渐变、无写实阴影。所有形状居中,约占画面高度 1/4~1/3,四周大量留白。
-- 立体感只靠**折纸面**:叠一块深一档(或半透明白)的三角面,像纸折了一下。
-- 配色只用 5 色:米白纸 #F2EEE3、墨黑 #17161C、番茄红 #EC3F2E、明黄 #F4BA2E、钴蓝 #272EDE。每个节拍是「一个整屏底色 + 一个对比色形状」,如红底白形、黄底红形;可用水平线把画面切成上下两块色。
-- 质感:纸底和浅色形状叠一层很淡的纸纹噪点,画面四角轻微暗角。
-
-## 字体排印
-- 左下角固定章节角标:等宽数字 `01/07`(总数变灰)+ 粗黑体中文短词 {节拍名} + 极小字距拉宽的英文大写副标。右下角一排小圆点进度,当前项拉长成短胶囊。角标随底色黑白切换,换时上滑 + 竖向模糊淡入。
-- 片尾:深底上一个圆润几何无衬线小写粗体 {标题文字},后面跟一个红色圆点句点;下方小号中文 {副标题} 字间加宽、中间用红点分隔,再下一行等宽英文全大写小字。
-
-## 动效语言
-- 节拍:每 1~1.5 秒一次变形;变形本身约 0.4~0.6 秒,稳定停留约 0.5 秒。
-- 变形一律经过「圆/椭圆」中转:旧形状先收成一个圆点,再长成新形状。圆是所有形状之间的公共母体。
-- 缓动:变形用 ease-in-out 偏快出慢收,落定时 5~10% 的回弹;运动中形状要压扁拉伸(下落拉长、拐弯压扁)并带方向性运动模糊,略微旋转倾斜。
-- 附件(光芒、热气、波纹线等短线条)从主形状里弹出或缩回,彼此错开 40~60ms。
-- **换底色转场**:新底色以形状为圆心,画一个边缘柔化的圆形向外扩张盖满全屏;或者地平线色块整体上推/下压换场。不用硬切、不用淡入淡出。
-- 停留时保持微动:心跳式缩放 1.0→1.06、落点处椭圆波纹一圈圈向外散开、虚线轨迹描边跟随飞行路径。
-- 收尾:圆点分裂成几个小球,飞成字母依次弹出;各节拍的颜色化成小色条沿弧线飞进句点;句点再泛出几圈彩色同心圆环淡出。
-
-## 实现提示
-- SVG path 插值:用 flubber 或 GSAP MorphSVG 在形状之间插值,所有形状路径预先重采样成相同点数并对齐起点,避免翻转。
-- 运动模糊:Remotion 用 @remotion/motion-blur 的 CameraMotionBlur,或 SVG feGaussianBlur 按速度只做单向模糊。
-- 圆形扩散换底:CSS clip-path: circle(r at x y) 动画 r,外加 filter: blur 柔边;或 SVG mask 里画一个模糊圆。
-- 纸纹:SVG feTurbulence + 低透明度 multiply 铺满。
-
-## 该做 / 不该做
-- 该做:一形到底;每拍只说一件事;5 色轮换;形状居中。
-- 不该做:多个并列主体;硬切或交叉淡化;写实渐变/3D/描边;大段文字。</pre>
-      <pre data-l=en hidden># Style: Shape Morph
-
-Make a 16:9, ~10-second animation about {topic}. Core rule: the whole piece has **one hero shape** that never cuts away or disappears — it continuously turns into the next shape, and each morph is one story beat. The shape itself is the narrative; text does not carry the story.
-
-## Visual language
-- Minimal flat icons: solid fills plus thick round-capped strokes (stroke-linecap: round); no outlines, no gradients, no realistic shadows. Everything centered, the shape about 1/4–1/3 of frame height, generous empty space.
-- Only one depth trick: a **paper-fold facet** — overlay a triangle one shade darker (or semi-transparent white) on the shape, as if the paper were creased.
-- Five colors only: paper cream #F2EEE3, ink #17161C, tomato red #EC3F2E, sunny yellow #F4BA2E, cobalt blue #272EDE. Each beat is &quot;one full-screen background + one contrasting shape&quot; (white on red, red on yellow, white on blue). You may split the frame into two color bands with a horizontal line (horizon split).
-- Texture: a very faint paper-grain noise over the cream background and light shapes, plus a subtle corner vignette.
-
-## Typography
-- Fixed chapter tag bottom-left: monospace counter `01/07` (total greyed) + a bold sans short word {beat name} + a tiny, widely tracked uppercase English subtitle. Bottom-right: a row of small progress dots, the active one stretched into a short pill. Tag color flips between black and white with the background; on change it slides up and fades in with vertical blur.
-- End card: on a dark background, a rounded geometric sans, bold lowercase {title text} followed by a red dot as the period; below it a small, widely spaced {subtitle} split by a red dot, and one line of tiny uppercase monospace English.
-
-## Motion language
-- Rhythm: one morph every 1–1.5 s; the morph itself ~0.4–0.6 s, then ~0.5 s of settled hold.
-- Every morph passes through a circle/ellipse: the old shape collapses into a dot, then grows into the new shape. The circle is the common parent of all shapes.
-- Easing: ease-in-out with a quick start and slow landing, 5–10% overshoot on settle; squash and stretch while moving (stretch when falling, squash on turns), directional motion blur, slight rotation/tilt.
-- Accessory strokes (rays, steam, ripple lines) pop out of or retract into the hero shape, staggered 40–60 ms.
-- **Background-change transition**: the new background color expands from the shape&#x27;s center as a soft-edged circle until it fills the screen; or the horizon color band pushes up/down to swap. No hard cuts, no crossfades.
-- Keep holds alive: heartbeat scale 1.0→1.06, elliptical ripples spreading from a landing point, a dashed trail drawing along the flight path.
-- Finale: the dot splits into a few small balls that pop into letters one by one; small color chips (one per beat color) fly along an arc into the period; the period emits a few colored concentric rings that fade out.
-
-## Implementation hints
-- SVG path interpolation: flubber or GSAP MorphSVG between shapes; resample all paths to the same point count and align start points to avoid flipping.
-- Motion blur: in Remotion use CameraMotionBlur from @remotion/motion-blur, or a velocity-driven one-axis SVG feGaussianBlur.
-- Circular reveal: animate the radius of CSS clip-path: circle(r at x y) with a filter: blur soft edge, or a blurred circle inside an SVG mask.
-- Paper grain: SVG feTurbulence at low opacity, multiply blend, full-frame.
-
-## Do / Don&#x27;t
-- Do: one shape from start to finish; one idea per beat; rotate within the five colors; keep the shape centered.
-- Don&#x27;t: several side-by-side subjects; hard cuts or crossfades between beats; realistic gradients, 3D or outlines; paragraphs of on-screen text.</pre>
+      <pre data-l=zh>风格:单一形状连续变形串起全片,扁平图标极简。
+画面:#F3EFE4 纸白、#15141A 墨黑、#E8422C 红、#F4BF35 黄、#262ED7 钴蓝大色块;居中单主体,实心填充+一道斜向浅色折面;全屏纸纹+轻暗角。
+字体:如需文字:粗几何无衬线;角落小号等宽章节号,换段上下滚动替换。
+动效:30fps 全帧不抽帧;每形停 1–1.5s,形变 8–12 帧 ease-in-out,落地挤压回弹约 10%;快移带方向模糊;换段时新底色从主体中心以软边圆 5–8 帧加速扩满屏;形内换色用斜向擦除。
+实现:flubber 插值 SVG path d;底色 clip-path circle+blur。
+不要:交叉淡化换形;多主体并排;线稿描边;渐变光。
+内容:{在这里写你的内容}</pre>
+      <pre data-l=en hidden>Style: one shape continuously morphs to carry the whole piece; flat, iconic minimalism.
+Visual: #F3EFE4 paper white, #15141A ink, #E8422C red, #F4BF35 yellow, #262ED7 cobalt as big flat fields; one centered subject, solid fill plus one diagonal lighter fold facet; full-frame paper grain, light vignette.
+Type (if needed): bold geometric sans; small mono chapter index in a corner, rolls vertically on section change.
+Motion: 30fps, no stepping; hold each form 1–1.5s, morph in 8–12 frames ease-in-out, ~10% squash-rebound on landing; directional blur on fast moves; on section change the new background grows from the subject&#x27;s center as a soft-edged circle filling the screen in 5–8 accelerating frames; recolor inside the shape with a diagonal wipe.
+Build: flubber-interpolated SVG path d; background via clip-path circle + blur.
+Avoid: crossfading between shapes; multiple subjects side by side; outline line-art; gradient glows.
+Content: {your content here}</pre>
     </div>
-    <details><summary>拆解要点</summary><ul><li>一形到底:全片同一个主形状连续变身,中间几乎总经过圆/椭圆中转(007 红椭圆、017/021 白椭圆、026 红圆、030 白圆、034 分裂成两颗圆),圆是所有形状的公共母体。</li><li>换底色不硬切:新底色从形状中心以柔边圆形扩张盖满(008 黄圆扩到全屏、011 红圆、030 红圆),或用地平线色带整体上推(016→017→018 红蓝分界上移直到全蓝)。</li><li>运动靠压扁拉伸 + 方向性运动模糊 + 轻微倾斜:001 墨滴竖向拉长、002 下落拖影、007 形状歪斜、024 纸飞机拖影、035 字母弹出带模糊。</li><li>扁平剪纸质感:实心色块 + 圆头粗线 + 一块深一档三角折面(027 定位针、022 纸飞机、031 心形),浅色底与浅色形状都带细纸纹,四角有淡暗角。</li><li>版式固定:左下角等宽编号 + 粗黑体中文词 + 极小英文、右下角进度点胶囊始终不动(002/019/031);停留时有心跳缩放(031→032)、落点波纹(027→028)等微动;片尾句点吸入各节拍色条后泛同心圆环(037→039)。</li></ul></details>
+    <details><summary>已剥离的内容层(提示词里不含这些)</summary><div class=gones><span class=gone>墨滴</span><span class=gone>咖啡杯与热气</span><span class=gone>日出日落与海平线</span><span class=gone>海鸥</span><span class=gone>纸飞机与虚线航迹</span><span class=gone>定位针</span><span class=gone>爱心</span><span class=gone>品牌字标与口号</span></div></details>
+    <details><summary>逐帧证据 + 运动曲线</summary><ul><li>motion.txt 交替率 0.21、运动段内仅 5 个静止帧 → 30fps 全帧流畅,非一拍二</li><li>f052-057 黄色软边圆从主体中心约 6 帧扩满屏换底色(曲线 f054 起峰)</li><li>f191-192 单帧差≈110:米白软边圆从中心爆开换底色,同时主体形变</li><li>f010-012 落地横向挤压后回弹;f012-018 约 6-8 帧由椭圆形变为新轮廓并伴运动模糊</li><li>f139-150 形内斜向擦除换色同时轮廓形变;f184-190 快速位移带方向运动模糊</li></ul><img class=motion loading=lazy src="images/06-motion.webp" alt="相邻帧变化量曲线"></details>
     <a class=md href="prompts/06-shape-morph.md">Markdown 版 →</a>
   </div>
 </article>
-<article class=card id="s07">
+<article class="card" id="s07">
   <div class=media>
     <img class=hero loading=lazy src="images/07-1.webp" alt="贴纸风科普 样片截图">
     <div class=thumbs><button class=th data-src="images/07-1.webp"><img loading=lazy src="images/07-1.webp" alt=""></button><button class=th data-src="images/07-2.webp"><img loading=lazy src="images/07-2.webp" alt=""></button><button class=th data-src="images/07-3.webp"><img loading=lazy src="images/07-3.webp" alt=""></button></div>
   </div>
   <div class=body>
     <header><span class=no>07</span><h2>贴纸风科普<small>Sticker Explainer</small></h2></header>
-    <p class=tagline>白边贴纸拆解硬知识,一镜推过超长信息长图</p>
-    <div class=pal><span class="sw" style="--c:#EAEFF2" title="主背景:冷浅灰纸面,铺淡点阵网格"><i></i>#EAEFF2</span><span class="sw" style="--c:#2A3036" title="墨色:大标题、深色数据块、引线、标签胶囊"><i></i>#2A3036</span><span class="sw" style="--c:#EE4B3A" title="唯一强调红:重点数据块、下划线高亮、方块标记、进度条、枢纽圆点"><i></i>#EE4B3A</span><span class="sw" style="--c:#F6F9FB" title="未激活数据块/空格子底色(近白+极淡投影)"><i></i>#F6F9FB</span><span class="sw" style="--c:#8E969D" title="次级灰字:英文小标、分母数字、刻度"><i></i>#8E969D</span><span class="sw" style="--c:#C5CED3" title="地图陆地/次级图形填充"><i></i>#C5CED3</span><span class="sw" style="--c:#FFFFFF" title="贴纸粗白描边"><i></i>#FFFFFF</span><span class="sw" style="--c:#1D272D" title="收尾拉远后的深炭灰舞台背景"><i></i>#1D272D</span></div>
-    <div class=tags><span class=tag>粗白描边贴纸</span><span class=tag>超大画布长图</span><span class=tag>相机推拉运镜</span><span class=tag>数据块网格</span><span class=tag>单色红强调</span><span class=tag>运动模糊转场</span><span class=tag>SVG 信息图</span><span class=tag>拉远揭底</span></div>
+    <p class=tagline>白描边贴纸,一镜推到底的长画布科普</p>
+    <div class=pal><span class="sw" style="--c:#EAEFF2" title="主背景浅灰(配淡点阵)"><i></i>#EAEFF2</span><span class="sw" style="--c:#26313A" title="墨色:标题字/数据方块"><i></i>#26313A</span><span class="sw" style="--c:#EE4A3C" title="强调红:重点方块/关键词下划条/大数字"><i></i>#EE4A3C</span><span class="sw" style="--c:#9AA1A6" title="辅助灰:英文副标/未激活格/刻度"><i></i>#9AA1A6</span><span class="sw" style="--c:#1F2A31" title="收尾深色舞台底"><i></i>#1F2A31</span><span class="sw" style="--c:#FFFFFF" title="贴纸粗描边/方块内文字"><i></i>#FFFFFF</span></div>
+    <div class=tags><span class=tag>超大画布镜头推移</span><span class=tag>白描边贴纸</span><span class=tag>方块FLIP重排</span><span class=tag>方向运动模糊</span><span class=tag>数据可视化科普</span></div>
     <div class=prompt>
       <div class=bar>
         <div class=seg role=tablist><button class=on data-l=zh>中文</button><button data-l=en>English</button></div>
         <button class=copy>复制提示词</button>
       </div>
-      <pre data-l=zh># 贴纸风科普视频(16:9,约 10 秒,30fps)
-主题:{主题};核心物件:{核心物件};标题:{标题文字};收尾数字:{核心数字}/{总数}。
-
-## 视觉语言
-- 背景冷浅灰 #EAEFF2,铺 24px 间距的淡点阵网格(点色约 #D3D9DE)。墨色 #2A3036,唯一强调色红 #EE4B3A,次级灰 #8E969D。红只给重点,面积 &lt;10%。
-- 所有实物用写实抠图(照片或 AI 生图去底),外加 6–10px 粗白描边 + 柔和下投影(0 8px 20px rgba(0,0,0,.15)),像贴纸;随机倾斜 -4°~4°,描边略不规则显手剪感。
-- 信息单元做成圆角方块(圆角 6px):激活=墨色底白字,重点=红底白字,未激活=近白底浅灰字+极淡阴影;左上角可放小序号。
-- 地图、图表用扁平 SVG:陆地 #C5CED3,重点区域墨色,路线为墨色弧线+红色枢纽点(外圈脉冲环)。
-
-## 字体排印
-- 中文用粗黑体(思源黑体 Heavy / HarmonyOS Sans Black),英文数字用几何无衬线特粗(Poppins / Montserrat ExtraBold)。
-- 每段标题旁配全大写、字距 0.2em 的灰色英文小标;栏目头 = 红色小方块 + “01 栏目名”+ 英文。
-- 巨型数字做主角,分母“/{总数}”用灰色细一号;关键词下加一道红色粗下划线。
-- 常驻 HUD:左下品牌位(红方块+名称+字距英文),右下 4 段章节进度条,当前段红色填充随时间推进。
-
-## 构图与运镜
-- 全部内容排在一张竖向超长画布上,各段依次:标题+物件 → 物件拆解标注 → 数据网格 → 分类条形图 → 地图来源。相机平移/推近切段。
-- 拆解段:物件居中,零件贴纸围一圈,引线从零件圆点拉出到右/左侧标签(中文粗标题+英文小标+数据小方块)。
-- 结尾相机猛拉远,揭示整张长图其实是一块屏幕/卡片里的内容(粗白描边贴纸外框),画面背景翻成深炭灰 #1D272D;它偏左,右侧出巨大的红色数字(白描边)+一句总结+注脚,用红色虚点线把屏幕里的小数字连到大数字。
-
-## 动效
-- 节奏快而稳:每段 1.2–2 秒,段间转场 0.3–0.5 秒,easeInOutCubic,转场中给整画面方向性运动模糊。
-- 标题逐行上浮淡入(间隔 0.2s),随后下划线 scaleX 0→1、副标与分隔线依次出现。
-- 贴纸进场:从核心物件后方弹出飞到位,spring(damping≈14),带轻微旋转与过冲。
-- 标签:引线 stroke-dashoffset 画出 → 文字淡入 → 数据方块 scale 0.6→1 依次弹出(stagger 60ms)。
-- 数据方块从上一段“飞”进下一段的格子/条形图里(带旋转+模糊),当作数据的物理迁移;计数器 easeOutExpo 滚动到目标值,网格按列扫描点亮。
-- 地图:贴纸弹入,虚线引线连到产地点,弧线路线逐段画出汇向红色枢纽,枢纽出脉冲环。
-- 巨数字出场:scale 1.3→1 加红色光环扩散淡出。
-
-## 实现提示
-Remotion:一个 &lt;AbsoluteFill&gt; 里放超大 world 容器,用 interpolate 驱动 translate/scale 做相机;运动模糊用 @remotion/motion-blur 的 &lt;CameraMotionBlur&gt; 或转场段加 CSS filter: blur。贴纸白边:CSS drop-shadow 叠多层 0 0 0 白色,或 SVG feMorphology dilate + feFlood 白色。图表与地图全用 SVG。
-
-## 该做 / 不该做
-- 该做:知识点都落成看得见的物件或方块;一镜到底;数据跨段迁移。
-- 不该做:渐变炫光、多强调色、细线插画、纯文字页、硬切。</pre>
-      <pre data-l=en hidden># Sticker Explainer video (16:9, ~10s, 30fps)
-Topic: {topic}; hero object: {core_object}; title: {title_text}; closing stat: {key_number}/{total}.
-
-## Visual language
-- Background: cool light gray #EAEFF2 with a faint dot grid (24px spacing, dots ~#D3D9DE). Ink #2A3036, single accent red #EE4B3A, secondary gray #8E969D. Red marks only the answer/emphasis; keep red under ~10% of the frame.
-- Every real object is a photoreal cutout (photo or AI image with background removed) with a thick 6–10px white outline plus a soft drop shadow (0 8px 20px rgba(0,0,0,.15)) — like a sticker stuck on paper. Random tilt of -4° to 4°; a slightly irregular outline reads as hand-cut.
-- Data units are rounded tiles (6px radius): active = ink fill + white text, highlighted = red fill + white text, inactive = near-white fill + pale gray text + faint shadow; optional tiny index number top-left.
-- Maps and charts are flat SVG: land #C5CED3, focus region in ink, routes as ink arcs converging on a red hub dot with a pulse ring.
-
-## Typography
-- Chinese: heavy black sans (Source Han Sans Heavy / HarmonyOS Sans Black). Latin &amp; numerals: extra-bold geometric sans (Poppins / Montserrat ExtraBold).
-- Every heading carries an ALL-CAPS gray English sub-label with 0.2em tracking. Section header = small red square + &quot;01 Section&quot; + English label.
-- A giant number is the hero; the &quot;/{total}&quot; denominator is gray and smaller. Key words get a thick red underline drawn left to right.
-- Persistent HUD: brand mark bottom-left (red square + name + tracked English), 4-segment chapter progress bar bottom-right, the active segment filling red over time.
-
-## Composition &amp; camera
-- Lay all content on one tall super-canvas (like an infographic long-read): title + object → exploded object with callouts → data grid → category bar chart → source map. The camera pans/pushes across the canvas between sections; no hard cuts.
-- Exploded section: object centered, part stickers around it, leader lines from a dot on each part to side labels (bold title + English sub-label + data tiles).
-- Finale: the camera pulls way back to reveal the entire long canvas was content inside a screen/card (with a thick white sticker frame); the backdrop flips to dark charcoal #1D272D. The card sits left; on the right a huge red number with a white outline, a one-line summary and a footnote; a red dotted trail links the small number inside the card to the hero number.
-
-## Motion
-- Fast but steady: 1.2–2s per section, 0.3–0.5s transitions with easeInOutCubic and directional motion blur over the whole frame during moves.
-- Title lines rise and fade in one by one (0.2s apart), then the underline scaleX 0→1, then subtitle and divider.
-- Stickers burst out from behind the hero object and fly into place with a spring (damping ≈14), slight rotation and overshoot.
-- Callouts: leader line draws via stroke-dashoffset → text fades in → data tiles pop scale 0.6→1 with 60ms stagger.
-- Data tiles physically fly from one section into the next section&#x27;s grid/bars (with rotation + blur) as data migration; counters roll up with easeOutExpo while the grid lights up in a column sweep.
-- Map: stickers pop in, dashed leaders tie them to origin dots, arc routes draw segment by segment into the red hub, which emits a pulse ring.
-- Hero number: scale 1.3→1 with an expanding red ring that fades out.
-
-## Implementation hints
-Remotion: put an oversized world container inside one &lt;AbsoluteFill&gt; and drive translate/scale with interpolate as the camera; motion blur via &lt;CameraMotionBlur&gt; from @remotion/motion-blur or CSS filter: blur during moves. White sticker edge: stacked CSS drop-shadow(0 0 0 white) or SVG feMorphology dilate + white feFlood. Charts and maps are pure SVG.
-
-## Do / Don&#x27;t
-- Do: turn every fact into a visible object or tile; keep a one-continuous-shot feel; let the same data migrate between sections.
-- Don&#x27;t: gradient glows, multiple accent colors, thin-line illustration, text-only slides; no hard cuts, no red overload.</pre>
+      <pre data-l=zh>风格:贴纸风科普,一张超长画布,镜头一路推下去。
+画面:浅灰点阵底#EAEFF2,墨#26313A,红#EE4A3C点重点,收尾转深底#1F2A31;抠图套粗白描边+软投影;数据用墨色圆角小方块。
+字体:粗黑体标题+宽字距英文小副标,关键词下红条划出;角落固定章节进度条。
+动效:30fps;换章镜头0.5s急推+强运动模糊;同批方块错峰飞向新布局,旋转落定;元素5帧弹出微过冲;数字滚动。收尾拉远,画布缩进白边容器,关键数字贴纸弹出。
+实现:Remotion超高画布+camera;方块同key做FLIP变形;多帧采样运动模糊;SVG feMorphology描边。
+不要:硬切/淡入换页;无描边扁平图标;多色;匀速漂移。
+内容:{在这里写你的内容}</pre>
+      <pre data-l=en hidden>Style: sticker explainer — one extra-tall canvas, the camera keeps pushing down through it.
+Look: light gray dot-grid bg #EAEFF2, ink #26313A, red #EE4A3C for emphasis only, finale on dark #1F2A31; cutouts get a thick white sticker outline + soft shadow; data as small rounded ink chips.
+Type: heavy sans headlines + wide-tracked small English subtitle; red marker bar wipes under key words; fixed corner chapter progress bar.
+Motion: smooth 30fps; chapter change = 0.5s fast camera push with strong directional motion blur; the same chips fly staggered into each new layout and settle with rotation; elements pop in ~5 frames with slight overshoot; numbers count up. Finale pulls back: whole canvas shrinks into a white-outlined container, key number pops out as a sticker.
+Build: Remotion tall canvas + camera transform; same-key chips FLIP between layouts; multi-sample motion blur; SVG feMorphology outline.
+Avoid: hard cuts/fades between pages; flat outline-less icons; many colors; constant-speed drifting camera.
+Content: {your content here}</pre>
     </div>
-    <details><summary>拆解要点</summary><ul><li>实物全是写实抠图 + 粗白描边 + 软投影的贴纸,并带轻微倾斜(012、029 的零件与矿石,006 的主物件描边不规则)。</li><li>整片是一张超大竖向画布 + 相机运镜:段间平移时整画面强运动模糊(008、013、025),030–033 拉远揭示整张长图其实装在一块白描边屏幕里,背景翻成深炭灰。</li><li>数据用圆角方块承载,且方块会在段与段之间物理飞行迁移:014 方块从标注飞入周期表,020–021 倾斜下落成 023 的分类条形图,024 红色整行被甩向地图。</li><li>单一红色强调:红只给重点数据块、下划线(006)、枢纽点与脉冲环(029)、收尾巨数字(034 出场带红色光环扩散),其余全是墨色+冷灰。</li><li>计数器由快到慢 ease-out 滚动(015→016→017→019:约 5→35→62→70),配合网格按列扫描点亮;右下 4 段章节进度条全程推进作导航。</li></ul></details>
+    <details><summary>已剥离的内容层(提示词里不含这些)</summary><div class=gones><span class=gone>手机</span><span class=gone>元素周期表</span><span class=gone>电池/芯片/主板/磁铁零件</span><span class=gone>稀土</span><span class=gone>世界地图与产地路线</span><span class=gone>70/118 统计数字</span><span class=gone>格物 GEWU LAB 品牌</span></div></details>
+    <details><summary>逐帧证据 + 运动曲线</summary><ul><li>motion.txt 交替率0.08、运动中仅5个静止帧→30fps流畅,非一拍二</li><li>f041-055、f086-100、f137-155、f172-180 四个能量峰各约12-15帧,对应换章镜头急推,f046/f091/f174 原帧可见强纵向运动模糊</li><li>f091→f100→f120 同一批圆角方块带旋转飞入网格并逐个变深/变红,计数2→66;f146→f165 同批方块落成条形图→FLIP式重排</li><li>f064-069 标签方块从点状放大到满尺寸约5帧,带轻微过冲</li><li>f213-215 硬切峰后 f215/f228 整张长画布缩进白描边容器、深底#1F2A31;f246 关键数字带白描边+红光环弹出</li></ul><img class=motion loading=lazy src="images/07-motion.webp" alt="相邻帧变化量曲线"></details>
     <a class=md href="prompts/07-sticker-explainer.md">Markdown 版 →</a>
   </div>
 </article>
-<article class=card id="s08">
+<article class="card" id="s08">
   <div class=media>
-    <img class=hero loading=lazy src="images/08-1.webp" alt="赛博朋克 HUD 样片截图">
+    <img class=hero loading=lazy src="images/08-1.webp" alt="赛博朋克HUD 样片截图">
     <div class=thumbs><button class=th data-src="images/08-1.webp"><img loading=lazy src="images/08-1.webp" alt=""></button><button class=th data-src="images/08-2.webp"><img loading=lazy src="images/08-2.webp" alt=""></button><button class=th data-src="images/08-3.webp"><img loading=lazy src="images/08-3.webp" alt=""></button></div>
   </div>
   <div class=body>
-    <header><span class=no>08</span><h2>赛博朋克 HUD<small>Cyberpunk HUD / FUI</small></h2></header>
-    <p class=tagline>电影级科幻界面：开机、扫描、锁定，冷青翻琥珀</p>
-    <div class=pal><span class="sw" style="--c:#030E10" title="主背景：近黑偏青，带极淡六边形网格与暗角"><i></i>#030E10</span><span class="sw" style="--c:#0A2D29" title="面板底色/全息球体内部雾光"><i></i>#0A2D29</span><span class="sw" style="--c:#1E8C88" title="次级线框、刻度、网格、暗态标签"><i></i>#1E8C88</span><span class="sw" style="--c:#3CE8DC" title="主强调青：环弧、雷达扫描束、高亮数据"><i></i>#3CE8DC</span><span class="sw" style="--c:#6EFFFC" title="辉光过曝芯（青线最亮处）"><i></i>#6EFFFC</span><span class="sw" style="--c:#F3F0E8" title="大号数字读数、准星、关键标签"><i></i>#F3F0E8</span><span class="sw" style="--c:#FF8A1E" title="锁定态主色琥珀橙：环线、面板描边"><i></i>#FF8A1E</span><span class="sw" style="--c:#F5E25A" title="锁定态标题字/坐标读数黄"><i></i>#F5E25A</span><span class="sw" style="--c:#FF3B3B" title="REC 红点等极少量告警点缀"><i></i>#FF3B3B</span></div>
-    <div class=tags><span class=tag>FUI 科幻界面</span><span class=tag>全息线框</span><span class=tag>辉光后期</span><span class=tag>雷达扫描</span><span class=tag>文字解码乱码</span><span class=tag>数字滚动</span><span class=tag>青→琥珀状态翻色</span><span class=tag>CRT 开关机</span></div>
+    <header><span class=no>08</span><h2>赛博朋克HUD<small>Cyberpunk HUD (FUI)</small></h2></header>
+    <p class=tagline>暗底青光细线界面,高潮一瞬转琥珀</p>
+    <div class=pal><span class="sw" style="--c:#03080A" title="近黑青底"><i></i>#03080A</span><span class="sw" style="--c:#2EE6E6" title="主发光线/刻度/标签"><i></i>#2EE6E6</span><span class="sw" style="--c:#0F4F55" title="次级网格/暗线/蜂窝底纹"><i></i>#0F4F55</span><span class="sw" style="--c:#EAFBFF" title="准星与大号数字"><i></i>#EAFBFF</span><span class="sw" style="--c:#FF9A1F" title="高潮状态切换后的主色"><i></i>#FF9A1F</span><span class="sw" style="--c:#FFD23F" title="高潮横幅文字"><i></i>#FFD23F</span></div>
+    <div class=tags><span class=tag>FUI 仪表盘</span><span class=tag>bloom 辉光细线</span><span class=tag>CRT 开关机</span><span class=tag>乱码解码/切片故障</span><span class=tag>青转琥珀状态切换</span></div>
     <div class=prompt>
       <div class=bar>
         <div class=seg role=tablist><button class=on data-l=zh>中文</button><button data-l=en>English</button></div>
         <button class=copy>复制提示词</button>
       </div>
-      <pre data-l=zh>做一段约 10 秒、16:9 的「电影科幻 HUD / FUI」动画，主题是 {主题}，画面中心是 {核心物件} 的全息线框，叙事走「开机 → 搜索 → 锁定」三幕。
-
-## 视觉语言
-- 背景近黑偏青 #030E10，叠极淡六边形网格、径向暗角和细扫描线；四角留 L 形取景框角标。
-- 一切由 1–2px 细线构成：同心圆环、断续粗弧段、刻度尺、方位角数字（每 30°）、十字准星、角括号锁定框。不用实心大色块。
-- 主色冷青 #3CE8DC，次级线 #1E8C88，读数用暖白 #F3F0E8。全部亮线加辉光（bloom），最亮处过曝成 #6EFFFC。
-- 中心物件做成半透明全息体：经纬网格 + 发光轮廓线，内部有青色雾光，缓慢自转。
-
-## 字体排印
-- 标题/大数字：方正几何科技无衬线（Rajdhani / Oxanium / Orbitron 气质），粗体，等宽数字，单位小一号贴右下。
-- 标签：等宽字体（Share Tech Mono / JetBrains Mono），全大写、字距加宽、8–11px，英文代号 + 中文小注并排。
-- 中文大标题用黑体 Heavy。
-
-## 构图
-- 左右两列窄数据面板（系统日志、遥测条形、频谱柱、十六进制数据流、候选列表），中间 50% 宽留给大圆形瞄准镜 + {核心物件}。
-- 顶部居中梯形状态胶囊显示阶段名 {状态文字}；右上 UTC 时钟 + REC 红点；底部横向刻度尺带游标。
-
-## 动效语言
-- 0–0.5s：CRT 开机——黑屏中一道横向光线张开成画面。
-- 0.5–2.5s 开机：主环从小而亮扩成大而细（ease-out），描边顺时针画出；断续弧段、刻度、面板依次 stagger 进场；日志逐行打字带方块光标，行尾跳 [OK]。
-- 2.5–6.5s 搜索：带渐隐拖尾的扇形扫描束顺时针转，约 2 秒一圈；大号距离数字持续递减；遥测条形弹性填充；中途一帧横向切片错位 + RGB 分离的 glitch；中心物件加速旋转后减速停到目标；四角 V 形箭头带残影向中心收拢，角括号框套住目标并跳出百分比。
-- 6.5–7.5s 锁定（招牌）：一帧六边形蜂窝冲击波 + 放射速度线闪白；全局配色从青瞬间翻成琥珀 #FF8A1E；镜头猛推进（侧栏被推出画外并虚化），再回弹落定；横幅「{标题文字} / LOCKED」两端带斜纹警示块。
-- 7.5–9.5s 保持：坐标逐字打出，数字以指数缓动收敛到终值，光标闪烁，小标记缓慢漂移，进度条走完显示完成。不要静止。
-- 结尾 CRT 关机：画面压成横线再缩成一个亮点。
-- 所有状态标签切换时先随机字符乱码再解码成正确文字。
-
-## 实现提示
-- Three.js：线框球 / EdgesGeometry + LineBasicMaterial，配 UnrealBloomPass；或 Canvas 2D 用 shadowBlur + globalCompositeOperation=&#x27;lighter&#x27; 叠加。
-- HUD 层用 SVG：stroke-dasharray 描边动画、rotate 环、conic-gradient 或扇形 path 做扫描束。
-- 数字、乱码、打字效果全部由帧号确定性计算（Remotion 中用 useCurrentFrame + 固定种子随机）。
-- 配色用 CSS 变量，锁定时整体 lerp 切换。
-
-## 该做 / 不该做
-- 该做：信息密度高但层级清晰；每个角落都有微动；辉光只给亮线。
-- 不该做：圆角卡片、渐变大色块、可爱图标、柔和缓入缓出的慢节奏；不要满屏都是同等亮度。</pre>
-      <pre data-l=en hidden>Create a ~10-second 16:9 &quot;sci-fi movie HUD / FUI&quot; animation about {topic}. The center is a holographic wireframe of {core object}; the story runs in three acts: Boot → Search → Lock.
-
-## Visual language
-- Background near-black teal #030E10, overlaid with a very faint hexagon grid, radial vignette and fine scanlines; L-shaped viewfinder corner marks.
-- Everything is built from 1–2px thin lines: concentric rings, broken thick arc segments, tick scales, bearing numbers every 30°, crosshair reticle, corner-bracket lock box. No large solid color blocks.
-- Primary cool cyan #3CE8DC, secondary lines #1E8C88, readouts in warm white #F3F0E8. Every bright line gets bloom; the hottest cores blow out to #6EFFFC.
-- Render {core object} as a translucent hologram: lat/long grid + glowing outlines, cyan inner haze, slow self-rotation.
-
-## Typography
-- Titles / big numbers: squarish geometric tech sans (Rajdhani / Oxanium / Orbitron feel), bold, tabular figures, unit one size smaller at bottom-right.
-- Labels: monospace (Share Tech Mono / JetBrains Mono), all caps, wide tracking, 8–11px, English code + small CJK/secondary note side by side.
-- Big CJK headline in a heavy gothic sans.
-
-## Composition
-- Two narrow data columns left and right (system log, telemetry bars, spectrum bars, hex data stream, candidate list); the middle ~50% width holds a large circular scope + {core object}.
-- Top-center trapezoid status pill shows the phase name {status text}; top-right UTC clock + red REC dot; bottom horizontal ruler with a cursor.
-
-## Motion language
-- 0–0.5s: CRT power-on — a horizontal light line opens into the picture on black.
-- 0.5–2.5s Boot: main ring expands from small/bright to large/thin (ease-out) and strokes on clockwise; arc segments, ticks and panels stagger in; log types line by line with a block cursor, each line ends with [OK].
-- 2.5–6.5s Search: a wedge radar sweep with a fading trail rotates clockwise, ~2s per turn; a big distance number keeps counting down; telemetry bars fill with overshoot; one frame of horizontal slice displacement + RGB split glitch; {core object} spins fast then decelerates onto the target; V-chevrons with echo trails converge from the corners and a corner-bracket box snaps onto the target with a percentage.
-- 6.5–7.5s Lock (signature): a one-frame hex-cell shockwave + radial speed lines flash; the whole palette flips instantly from cyan to amber #FF8A1E; camera punches in hard (side panels pushed off-frame and defocused), then springs back and settles; banner &quot;{title text} / LOCKED&quot; with diagonal hazard-stripe end caps.
-- 7.5–9.5s Hold: coordinates type out character by character, numbers converge to final values with exponential ease, cursor blinks, small markers drift, a progress bar completes. Never fully static.
-- End with CRT power-off: frame collapses to a line, then to a bright dot.
-- Every status label change first scrambles through random glyphs, then decodes into the right text.
-
-## Implementation hints
-- Three.js: wireframe sphere / EdgesGeometry + LineBasicMaterial with UnrealBloomPass; or Canvas 2D with shadowBlur + globalCompositeOperation=&#x27;lighter&#x27;.
-- HUD layer in SVG: stroke-dasharray draw-on, rotating rings, conic-gradient or wedge path for the sweep.
-- Numbers, scramble and typing all computed deterministically from the frame number (in Remotion: useCurrentFrame + seeded random).
-- Drive colors with CSS variables and lerp the whole theme at lock.
-
-## Do / Don&#x27;t
-- Do: high information density with a clear hierarchy; micro-motion in every corner; bloom only on bright lines.
-- Don&#x27;t: rounded cards, big gradient fills, cute icons, soft slow ease-in-out pacing; don&#x27;t make everything equally bright.</pre>
+      <pre data-l=zh>风格:科幻FUI发光细线仪表盘。
+画面:#03080A底,#2EE6E6主线,#0F4F55暗线,#EAFBFF数字,高潮转#FF9A1F。主体套分段刻度环+准星,两侧数据栏+角括号,蜂窝底纹+辉光。
+字体:等宽全大写,小标签配大数字。
+动效:30fps连续。CRT开机进、压线成点出(各0.3s);弧段描边,逐行打字;数字乱跳后落定。转折2帧切片+RGB分离;高潮白闪1帧→3帧转琥珀→推镜后硬切回。
+实现:Three.js线框+Bloom;SVG描边;种子随机乱码。
+不要:无辉光;多色;实心块;圆体字。
+内容:{在这里写你的内容}</pre>
+      <pre data-l=en hidden>Style: sci-fi film FUI — glowing hairline instrument panels on near-black.
+Visual: bg #03080A, lines #2EE6E6, dim #0F4F55, big numerals #EAFBFF, climax shifts to #FF9A1F. Subject wrapped in segmented tick rings + crosshair; side data columns, corner brackets, faint hex grid, bloom.
+Type: monospace, uppercase, wide tracking; tiny labels vs big numerals.
+Motion: smooth 30fps. CRT power-on in, power-off squeeze-to-dot out (0.3s each); arcs draw on, lines type with cursor; numbers scramble then settle and tick. Beat change: 2-frame slice offset + RGB split. Climax: 1-frame white flash → shockwave → amber in 3 frames → push-in, hard snap back.
+Build: Three.js wireframe + bloom pass; SVG stroke draw; seeded-random glyph scramble.
+Avoid: no glow; many hues; big solid fills; rounded fonts.
+Content: {your content here}</pre>
     </div>
-    <details><summary>拆解要点</summary><ul><li>开场 002 是黑屏中的横向光带（CRT 开机），042 收成一个亮点（CRT 关机），首尾呼应；003→004 主环由小而亮扩成大而细，004 的环一半青一半白，说明是顺时针描边画出。</li><li>003、006、020 的状态栏和面板标题出现 &#x27;9&gt;UX SEQBENCW&#x27;、&#x27;14M T4&amp;EME3SY&#x27; 这类乱码，下一帧变成正确文字，确认是字符乱码解码效果；日志面板 004→012 逐行打字带方块光标。</li><li>013→019 扇形扫描束带渐隐拖尾顺时针旋转，每 0.25 秒约转 45°，推测约 2 秒一圈；距离读数 3145.2(012)→1648.3(027) 持续递减，020 有一帧横向切片错位 + RGB 分离 glitch。</li><li>026 四角 V 形箭头带多重残影向中心收拢，027 角括号锁定框套住目标；028 一帧六边形蜂窝冲击波 + 放射速度线，全局由青 #3CE8DC 翻成琥珀 #FF8A1E。</li><li>029 镜头猛推进、侧栏被推出画外并虚化，030 开始回落，032 起稳定；数字 1102→356→155→102→82(032)→78.1(033)→77.9(034 起不再变化)，呈指数缓出收敛；034–041 静态期仍有光标闪烁、标记漂移、进度条走完。</li></ul></details>
-    <a class=md href="prompts/08-cyberpunk-hud---fui.md">Markdown 版 →</a>
+    <details><summary>已剥离的内容层(提示词里不含这些)</summary><div class=gones><span class=gone>地球/全息地球</span><span class=gone>卫星代号与轨道</span><span class=gone>长江口/城市坐标</span><span class=gone>目标锁定文案</span><span class=gone>候选目标列表</span><span class=gone>雷达小地图</span></div></details>
+    <details><summary>逐帧证据 + 运动曲线</summary><ul><li>f001-005 横亮线展开成准星、f294-303 纵向压成亮线再缩成点→CRT 开/关机即本风格自带进出场</li><li>motion.txt 交替率 0.13、全片仅 3 个静止帧→30fps 连续动画,非一拍二</li><li>f063-073 大号数字随机乱跳后落定 1712.5 再逐帧递减→数字先乱码后滚动</li><li>f134-135 横向切片错位+RGB 分离+标签字符乱码(motion 小尖峰 f133-135)</li><li>f193 白闪、f194 蜂窝冲击波、f196 已全局转琥珀;f196-213 画面推近、f214 一帧硬切回原景别(motion 尖峰 f193/f214)</li></ul><img class=motion loading=lazy src="images/08-motion.webp" alt="相邻帧变化量曲线"></details>
+    <a class=md href="prompts/08-cyberpunk-hud-(fui).md">Markdown 版 →</a>
   </div>
 </article>
-<article class=card id="s09">
+<article class="card" id="s09">
   <div class=media>
     <img class=hero loading=lazy src="images/09-1.webp" alt="拼贴剪贴 样片截图">
     <div class=thumbs><button class=th data-src="images/09-1.webp"><img loading=lazy src="images/09-1.webp" alt=""></button><button class=th data-src="images/09-2.webp"><img loading=lazy src="images/09-2.webp" alt=""></button><button class=th data-src="images/09-3.webp"><img loading=lazy src="images/09-3.webp" alt=""></button></div>
   </div>
   <div class=body>
-    <header><span class=no>09</span><h2>拼贴剪贴<small>Collage · Cut-out</small></h2></header>
-    <p class=tagline>牛皮纸上剪报网点拼贴,12fps 手工步进逐层贴满</p>
-    <div class=pal><span class="sw" style="--c:#90785B" title="牛皮纸底色(中心)"><i></i>#90785B</span><span class="sw" style="--c:#745F49" title="牛皮纸暗角边缘"><i></i>#745F49</span><span class="sw" style="--c:#A11319" title="主体背后的红圆 / 红色贴标"><i></i>#A11319</span><span class="sw" style="--c:#BA171F" title="收尾整版报刊红底"><i></i>#BA171F</span><span class="sw" style="--c:#171209" title="网点墨黑 / 横幅黑 / 标题字"><i></i>#171209</span><span class="sw" style="--c:#D9D1BA" title="旧纸米白:抠图纸边、胶带条、报纸底"><i></i>#D9D1BA</span><span class="sw" style="--c:#9E8262" title="半透明牛皮胶带"><i></i>#9E8262</span></div>
-    <div class=tags><span class=tag>剪报拼贴</span><span class=tag>半调网点</span><span class=tag>牛皮纸</span><span class=tag>撕纸边</span><span class=tag>勒索信字</span><span class=tag>12fps步进</span><span class=tag>红黑米白</span><span class=tag>剪纸木偶</span></div>
+    <header><span class=no>09</span><h2>拼贴剪贴<small>Collage Cut-Out</small></h2></header>
+    <p class=tagline>剪报网点纸片,12帧逐格拍上</p>
+    <div class=pal><span class="sw" style="--c:#8A7258" title="牛皮纸底"><i></i>#8A7258</span><span class="sw" style="--c:#ECE6D6" title="剪报米白/抠图白边/纸片底"><i></i>#ECE6D6</span><span class="sw" style="--c:#A2131A" title="印刷红:大色块、标签、强调字"><i></i>#A2131A</span><span class="sw" style="--c:#100F0A" title="油墨黑:网点、横幅、粗字"><i></i>#100F0A</span></div>
+    <div class=tags><span class=tag>抠图拼贴</span><span class=tag>网点印刷</span><span class=tag>撕纸边</span><span class=tag>12fps逐格步进</span><span class=tag>勒索信字</span><span class=tag>撕纸转场</span></div>
     <div class=prompt>
       <div class=bar>
         <div class=seg role=tablist><button class=on data-l=zh>中文</button><button data-l=en>English</button></div>
         <button class=copy>复制提示词</button>
       </div>
-      <pre data-l=zh># 风格:拼贴剪贴(Collage · Cut-out)
-用代码做一条约 10 秒的复古剪报拼贴动画,主题是 {主题}。像在牛皮纸桌上现场拼一张杂志封面,每样东西都是剪下来贴上去的纸片。
-
-## 视觉语言
-- 底:牛皮纸 #90785B,带细颗粒噪点 + 明显暗角(四角压到约 #745F49);结尾可整版换成报刊红 #BA171F(边缘暗到 #871015)。
-- 主色只有四个:牛皮棕、报刊红 #A11319~#BA171F、近黑墨 #171209、旧纸米白 #D9D1BA。彩色只来自后贴入的彩印素材,同样盖网点。
-- 所有图片都做成半调网点印刷:黑白高反差 + 圆点网屏;沿主体轮廓抠图,外圈留 4–6px 米白纸边 + 柔和投影,像真剪下来的。
-- 纸片边缘不规则:撕边(锯齿 + 白色纤维边)、剪刀直边混用;报纸碎片满是小号旧铅字栏。
-- 配件:半透明牛皮胶带、黄铜图钉、虚线剪裁线 + 小剪刀、编号贴标、圆形贴纸徽章。
-
-## 字体排印
-- 标题:超粗压缩无衬线(Anton / Bebas 类),全大写,黑字放在撕边白胶带上,或白字压在斜放黑色横幅上(横幅下沿配一条红边)。
-- 中文大字:粗黑体,一字一块方纸(红底黑字、白底黑字、黑底白字、白底红字轮换),像勒索信拼字。
-- 拟声词:每个字母贴在不同颜色的小纸片上,高低错落、各自倾斜。
-- 角落元信息:小号等宽字体、大写、宽字距(如&quot;{刊名} — N°{期号} — {季节}&quot;),压得很淡。
-
-## 构图
-- 中心一个抠图主体 {核心物件},背后叠一个大红圆;报纸碎片贴在左右边缘、部分出画;标签与气泡围着主体。
-- 所有纸片轻微旋转 ±2–8°,绝不横平竖直对齐;层层叠压,允许出血。
-
-## 动效
-- 逐格步进:整体按 12fps 走(每 2 帧才更新一次),每一步所有纸片都随机抖 1–3px、±0.5° 的&quot;手工抖动&quot;。
-- 进场方式:从画外滑入后停住、比例弹出(轻微过冲)、像盖章一样砸下;节奏是每 0.25–0.5 秒一个新动作,逐个叠加,不同时出现。
-- 招牌叙事动作:主体上出现虚线 → 剪刀沿线走约 1 秒 → 裂口变红 → 被剪开的部分翻飞出去,炸出拟声词和纸屑 → 里面的 {隐喻世界} 被撕开露出,再逐个弹出小贴纸。
-- 主体可做&quot;剪纸木偶&quot;动作:下巴等局部作为单独纸片绕铰点开合。
-- 转场:整页像纸一样卷起撕走(卷边带高光阴影),露出下一层纸;收尾是 {标题文字} 胶带条砸入 + 副标题 + 圆形贴纸,停住约 1 秒。
-
-## 实现提示
-- Remotion / Canvas:用 `Math.floor(frame/2)*2` 量化时间;抖动用以步数为种子的伪随机。
-- 网点:SVG pattern 圆点 + mask,或 Canvas 按亮度画圆点;撕边用 SVG clipPath 加随机锯齿路径。
-- 纸边:`filter: drop-shadow` 叠一圈白色描边;颗粒用 feTurbulence 叠 multiply。
-- 卷页转场:clip 一个移动的斜切面 + 卷筒高光渐变。
-
-## 该做 / 不该做
-- 该做:一切像纸;红黑米白强对比;逐步叠满画面。
-- 不该做:光滑渐变、发光、毛玻璃、平滑 60fps 补间、整齐网格排版、纯矢量扁平插画。</pre>
-      <pre data-l=en hidden># Style: Collage · Cut-out
-Code a ~10-second retro newspaper-collage animation about {topic}. It should feel like someone assembling a magazine cover live on a kraft-paper desk with scissors, tape and pins — every element is a piece of paper that was cut out and stuck down.
-
-## Visual language
-- Ground: kraft paper #90785B with fine grain noise and a strong vignette (corners down to ~#745F49). The finale may swap to a full newsprint-red #BA171F (edges ~#871015).
-- Only four main colors: kraft brown, press red #A11319–#BA171F, near-black ink #171209, aged off-white paper #D9D1BA. The only other color comes from pasted-in color-print clippings (nebula, botanicals, stickers), which are also halftoned.
-- Every image is halftone print: high-contrast B&amp;W with a round-dot screen, cut along the subject&#x27;s silhouette, with a 4–6px off-white paper border and a soft drop shadow.
-- Edges are irregular: torn edges (jagged with white fiber rim) mixed with straight scissor cuts; newspaper scraps are dense columns of tiny old type.
-- Props: translucent masking tape, brass pushpins, dashed cut lines with a small scissors icon, number tags, round sticker badges.
-
-## Typography
-- Headlines: ultra-bold condensed sans (Anton / Bebas type), all caps, black on a torn white tape strip, or white on a tilted black banner with a red lower edge.
-- Big CJK/display characters: one glyph per square paper chip, alternating red/black/white combos, ransom-note style.
-- Onomatopoeia: each letter on its own differently colored chip, staggered and individually rotated.
-- Corner metadata: tiny monospace caps with wide tracking (e.g. &quot;{publication} — N°{issue} — {season}&quot;), low contrast.
-
-## Composition
-- One cut-out hero {core object} in the center, a big red disc behind it; newspaper scraps pinned at the left/right edges and bleeding off-frame; tags and speech bubbles orbit the hero.
-- Every piece is rotated ±2–8°, never grid-aligned; heavy overlapping, bleed allowed.
-
-## Motion
-- Stepped animation: the whole piece runs on 12fps (update every 2 frames), and on every step each paper piece jitters 1–3px and ±0.5° like hand-placed boil.
-- Entrances: slide in from off-frame and stop, scale pop with slight overshoot, or slam down like a stamp. One new action every 0.25–0.5s, layering up one at a time.
-- Signature beat: a dashed line appears on the hero → scissors travel along it for ~1s → the cut turns red → the cut-off part flips away with ransom-letter onomatopoeia and paper confetti → a torn opening reveals {metaphor world}, then small stickers pop in one by one.
-- Paper-puppet acting: parts like a jaw are separate pieces rotating on a hinge point.
-- Transition: the whole page curls up and tears away like paper (highlight + shadow on the curl), revealing the next layer; end with a {title text} tape strip slamming in, subtitle, round sticker, then hold ~1s.
-
-## Implementation hints
-- Remotion / Canvas: quantize time with `Math.floor(frame/2)*2`; seed jitter with the step index.
-- Halftone: SVG dot pattern + mask, or Canvas dots sized by luminance; torn edges via SVG clipPath with randomized jagged paths.
-- Paper border: white outline plus `filter: drop-shadow`; grain via feTurbulence in multiply.
-- Page curl: clip with a moving diagonal edge plus a cylinder highlight gradient.
-
-## Do / Don&#x27;t
-- Do: make everything feel like paper; hard red/black/off-white contrast; let the frame fill up gradually.
-- Don&#x27;t: smooth gradients, glows, glassmorphism, silky 60fps tweening, tidy grid layouts, flat vector illustration.</pre>
+      <pre data-l=zh>风格:剪报纸片拼贴,逐格跳动。
+画面:牛皮纸#8A7258+纸纹暗角;米白#ECE6D6、印刷红#A2131A、墨黑#100F0A。照片转黑白粗网点,抠图留白边+软投影;撕边、胶带。
+字体:粗压缩大写;单字纸片红黑白交替各歪±8°。
+动效:2/3帧交替保持=12fps。元素拍上140%→97%→100%,4步落定;剪刀沿虚线剪开掀出下层;撕纸卷开转场;约2秒一个高潮。
+实现:Remotion时间量化12fps;SVG噪声clipPath撕边;spring。
+不要:平滑补间;扁平矢量;干净直边;发光。
+内容:{在这里写你的内容}</pre>
+      <pre data-l=en hidden>Style: paper collage; everything is a clipped scrap, animated in 12fps steps.
+Look: kraft #8A7258 with grain+vignette; cream #ECE6D6, print red #A2131A, ink #100F0A. Photos as coarse B/W halftone with white cut border + soft shadow; torn edges, tape.
+Type: heavy condensed caps; ransom-note letter chips alternating red/black/cream, each tilted ±8°.
+Motion: alternating 2/3-frame holds at 30fps = 12fps. Items slap on 140%→97%→100% in 4 steps; scissors cut a dashed line, then a paper flap opens to reveal the layer below; paper-tear-and-curl transitions. One big event every ~2s.
+Build: Remotion, quantize time to 12fps; SVG-noise clipPath torn edges; overshoot spring.
+Avoid: smooth tweening; flat vector art; clean straight edges; glows/gradients.
+Content: {your content here}</pre>
     </div>
-    <details><summary>拆解要点</summary><ul><li>全片只用牛皮棕、报刊红、墨黑、米白四色,彩色只出现在后贴入的网点彩印素材上(对比 012 与 024)。</li><li>每张图都是网点印刷抠图 + 米白纸边 + 投影,报纸碎片撕边贴角、带胶带和图钉(012、016)。</li><li>静止段相邻帧整体像素差仍在 13–16(014–018),且碎片、编号贴标位置每帧都在变,证明是逐格步进 + 位置抖动,对应侧栏&#x27;12fps 卡顿也是风格&#x27;。</li><li>招牌动作是剪刀沿虚线剪开主体 → 红色裂口 → 顶部翻飞出拟声字母和纸屑 → 撕开露出内部世界并逐个弹贴纸(013–027)。</li><li>文字是斜放黑横幅 + 一字一块的勒索信方块逐个砸入(028–032),转场用整页卷起撕走露出红底(033–035),最后胶带标题收尾(036–041)。</li></ul></details>
-    <a class=md href="prompts/09-collage-·-cut-out.md">Markdown 版 →</a>
+    <details><summary>已剥离的内容层(提示词里不含这些)</summary><div class=gones><span class=gone>络腮胡绅士老照片</span><span class=gone>剪开脑袋冒出脑洞</span><span class=gone>星云/地球/火箭/鸟/花蝴蝶</span><span class=gone>版画指向手</span><span class=gone>AHEM/咳咳/BANG 拟声词</span><span class=gone>NOGGIN 脑洞季刊刊名</span><span class=gone>THE MIND IS A COLLAGE 标语</span><span class=gone>Nº06 期号</span></div></details>
+    <details><summary>逐帧证据 + 运动曲线</summary><ul><li>帧差只在 f4,6,9,11,14,16,19,21… 出现(间隔 2/3 交替),其余帧差≈0.1 → 12fps 内容放进 30fps,静止元素完全不抖</li><li>f14→16→19→21→24 红色圆盘宽 666→562→495→455→470px 后锁定:约 142% 拍入、下冲约 97%、4 步回 100%</li><li>f196/201/206/211 方块单字纸片每 5 帧(两步)拍上一块,各自歪斜、红黑白底交替</li><li>f121-129 纸层被掀开露出内部图像,碎纸片/网点圆/星形同步散出,帧差峰 34</li><li>f231-240 撕纸转场:先出裂缝,再向两侧卷成纸筒,露出满屏红纸新底,约 10 帧,帧差峰 43</li></ul><img class=motion loading=lazy src="images/09-motion.webp" alt="相邻帧变化量曲线"></details>
+    <a class=md href="prompts/09-collage-cut-out.md">Markdown 版 →</a>
   </div>
 </article>
-<article class=card id="s10">
+<article class="card" id="s10">
   <div class=media>
     <img class=hero loading=lazy src="images/10-1.webp" alt="弥散渐变玻璃拟态 样片截图">
     <div class=thumbs><button class=th data-src="images/10-1.webp"><img loading=lazy src="images/10-1.webp" alt=""></button><button class=th data-src="images/10-2.webp"><img loading=lazy src="images/10-2.webp" alt=""></button><button class=th data-src="images/10-3.webp"><img loading=lazy src="images/10-3.webp" alt=""></button></div>
   </div>
   <div class=body>
     <header><span class=no>10</span><h2>弥散渐变玻璃拟态<small>Aurora Glassmorphism</small></h2></header>
-    <p class=tagline>极光雾里浮起磨砂玻璃,一滴液态透镜收成品牌符号</p>
-    <div class=pal><span class="sw" style="--c:#060316" title="画面四边暗角/最深底色(近黑紫)"><i></i>#060316</span><span class="sw" style="--c:#100A30" title="暗部过渡,弥散光斑之外的夜空底"><i></i>#100A30</span><span class="sw" style="--c:#923DD6" title="右上品红紫光斑(最暖的一团)"><i></i>#923DD6</span><span class="sw" style="--c:#6048DC" title="中段靛紫主光斑"><i></i>#6048DC</span><span class="sw" style="--c:#404FF0" title="下方宝蓝光斑"><i></i>#404FF0</span><span class="sw" style="--c:#6ECAF9" title="中心偏下青蓝高光、光晕核心"><i></i>#6ECAF9</span><span class="sw" style="--c:#C5ECFF" title="最亮的冰蓝高光/光圈中心"><i></i>#C5ECFF</span><span class="sw" style="--c:#F7F8F3" title="文字、开关圆钮、玻璃高光边"><i></i>#F7F8F3</span></div>
-    <div class=tags><span class=tag>极光弥散渐变</span><span class=tag>磨砂玻璃卡片</span><span class=tag>液态玻璃透镜</span><span class=tag>折射放大</span><span class=tag>景深虚化</span><span class=tag>慢推镜</span><span class=tag>品牌收尾冲击光环</span></div>
+    <p class=tagline>极光暗场上浮磨砂玻璃,液态透镜折光</p>
+    <div class=pal><span class="sw" style="--c:#060316" title="近黑底色与四周暗角"><i></i>#060316</span><span class="sw" style="--c:#923EDA" title="右上紫色弥散光斑"><i></i>#923EDA</span><span class="sw" style="--c:#4558F4" title="中下靛蓝主光团"><i></i>#4558F4</span><span class="sw" style="--c:#74D8FC" title="中心青色高光核"><i></i>#74D8FC</span><span class="sw" style="--c:#FFFFFF" title="主文字与玻璃描边高光(次级文字降为半透明)"><i></i>#FFFFFF</span></div>
+    <div class=tags><span class=tag>弥散渐变</span><span class=tag>磨砂玻璃拟态</span><span class=tag>液态玻璃透镜折射</span><span class=tag>RGB色散</span><span class=tag>景深虚焦</span><span class=tag>3D倾斜视差</span></div>
     <div class=prompt>
       <div class=bar>
         <div class=seg role=tablist><button class=on data-l=zh>中文</button><button data-l=en>English</button></div>
         <button class=copy>复制提示词</button>
       </div>
-      <pre data-l=zh># 风格:弥散渐变 + 玻璃拟态(Aurora Glassmorphism)
-
-做一条约 10 秒、16:9、30fps 的产品发布感短片,主题是 {主题},主角是 {核心物件}(以若干块浮空 UI 玻璃卡片的形式出现),结尾落到 {标题文字} + {副标语}。
-
-## 视觉语言
-- 底:近黑紫 #060316 夜空,上面叠 3-4 团高斯模糊极大的弥散光斑——右上品红紫 #923DD6、中段靛紫 #6048DC、下方宝蓝 #404FF0、中心偏下青蓝 #6ECAF9,核心可亮到冰蓝 #C5ECFF。四周压暗角。光斑全程极慢漂移,不许出现硬边。
-- 玻璃卡片:大圆角(画布宽的约 2%),填充白色 8-12% 透明,背景模糊 30-40px + 饱和度提高,1px 半透明白描边且上沿更亮,底部一层大而软的投影;卡片透出背后光斑的颜色,所以每张卡片自带紫→青的渐变。小胶囊按钮/气泡是更亮一级的半透明药丸。
-- 一处发光点:卡片交界处放一颗青色小光球,带强泛光(bloom)。点缀极少量微小尘点。
-- 多层卡片有前后层次,远层略暗略糊,做出浅景深。
-
-## 字体排印
-中性无衬线(SF Pro / Inter 气质),UI 文字 400-500 字重,白色,次要信息降到 50% 透明。收尾品牌字用细体(300)、字距略开、居中;副标语中英并排、小号、更淡。
-
-## 构图
-主卡片居中偏右,1-2 张小卡错层叠在左上/左下,形成对角线。收尾回到正中单行大字,四周全部留给光斑。
-
-## 动效语言
-- 缓动全部用柔和的 ease-out / 低回弹 spring,没有硬切、没有抖动,节奏松弛。
-- 0-1s:卡片带 3D 透视倾斜(rotateX/Y 约 10-15°)从镜头前飘入,逐渐摆正。
-- 1-5s:内容逐行出现——每行从左到右以“模糊+透明→清晰”的扫光方式显现;开关滑开、滑杆数值上涨;整体镜头缓慢推近并上移。
-- 5-7s 招牌:从某个控件里拉出一滴液态玻璃(粘滞拉丝的 metaball),变成药丸形透镜,滑过文字时放大+折射+边缘轻微色散。
-- 7-8s:其余卡片做焦外虚化并滑出画面,只有透镜保持清晰,带着镜头转到收尾。
-- 8-10s:透镜缩小,恰好成为 {标题文字} 里一个圆形字母(或字标里的圆点),落定瞬间向外扩散一圈淡淡的冲击光环,副标语淡入。
-
-## 实现提示
-背景用 WebGL 片元着色器或多层 radial-gradient + filter: blur;卡片用 CSS backdrop-filter;透镜用 SVG feDisplacementMap 或着色器做折射与色散;景深用逐层 filter: blur 插值;Remotion 里全部由 frame 驱动,用 spring/interpolate,不依赖 CSS transition。
-
-## 该做 / 不该做
-该做:颜色只在冷色紫青区间流动;玻璃要“透出背景色”;一个视觉焦点贯穿全片。
-不该做:纯白/灰色不透明卡片、硬阴影、霓虹描边、快速闪切、暖橙黄大色块、满屏粒子。</pre>
-      <pre data-l=en hidden># Style: Aurora Gradient + Glassmorphism
-
-Make a ~10s, 16:9, 30fps product-launch style clip about {topic}. The hero is {core object}, shown as a few floating glass UI cards; it ends on {title text} + {tagline}.
-
-## Visual language
-- Background: near-black violet #060316 night, with 3-4 huge, heavily blurred gradient blobs — magenta-violet #923DD6 top-right, indigo #6048DC mid, royal blue #404FF0 low, cyan #6ECAF9 just below center, core reaching ice-blue #C5ECFF. Darkened vignette on all edges. Blobs drift very slowly; never any hard edge.
-- Glass cards: large corner radius (~2% of canvas width), white fill at 8-12% opacity, backdrop blur 30-40px with boosted saturation, 1px translucent white border that is brighter on the top edge, one large soft drop shadow. Cards pick up the color of the blobs behind them, so each card carries its own violet→cyan gradient. Chips/bubbles are a brighter translucent pill.
-- One glow accent: a small cyan light orb where two cards meet, with strong bloom. A few tiny dust specks, nothing more.
-- Cards are layered front/back; rear layers slightly darker and softer for a shallow depth of field.
-
-## Typography
-Neutral sans (SF Pro / Inter feel). UI text weight 400-500, white, secondary info at ~50% opacity. The closing wordmark is thin (300), slightly open tracking, centered; the tagline sits below, small, bilingual side by side, dimmer.
-
-## Composition
-Main card center-right, 1-2 smaller cards staggered top-left / bottom-left on a diagonal. The ending returns to a single centered line, everything else left to the glow.
-
-## Motion language
-- All easing soft ease-out or low-bounce springs; no hard cuts, no jitter, relaxed pacing.
-- 0-1s: cards float in toward camera with a 3D perspective tilt (rotateX/Y ~10-15°) and settle flat.
-- 1-5s: content appears line by line, each line revealed left-to-right as a blur+fade → sharp sweep; a toggle slides on, a slider value climbs; the camera slowly pushes in and drifts up.
-- 5-7s signature: a drop of liquid glass is pulled out of a control (gooey metaball stretch), becomes a pill-shaped lens, and glides over text, magnifying and refracting it with slight chromatic fringing at the edges.
-- 7-8s: the other cards rack out of focus and slide off-frame; only the lens stays sharp and carries the camera to the ending.
-- 8-10s: the lens shrinks and lands exactly as a round letter (or dot) in {title text}; on landing a faint shockwave ring expands outward and the tagline fades in.
-
-## Implementation hints
-Background: a WebGL fragment shader, or stacked radial-gradients + filter: blur. Cards: CSS backdrop-filter. Lens: SVG feDisplacementMap or a shader for refraction and dispersion. Depth of field: per-layer interpolated filter: blur. In Remotion drive everything from the frame with spring/interpolate, never CSS transitions.
-
-## Do / Don&#x27;t
-Do: keep color flowing only within cool violet-cyan; glass must show the background color through it; keep one visual focal point running through the whole piece.
-Don&#x27;t: opaque white/gray cards, hard shadows, neon outlines, rapid flash cuts, large warm orange/yellow areas, screen-filling particles.</pre>
+      <pre data-l=zh>风格:暗色极光上的磨砂玻璃与液态透镜。
+画面:#060316底+暗角;#923EDA/#4558F4/#74D8FC柔光斑缓流;2-3张圆角玻璃卡错层,亮描边、柔投影、高光扫过。
+字体:细无衬线,白/半透明两级,标题宽字距。
+动效:30fps顺滑;镜头慢推+3D倾斜视差;卡片错峰0.5s入场;文字逐行0.4s由糊变清;透镜游走放大1.3倍带色散;收尾卡片虚焦,光环0.6s扩散后静持。
+实现:WebGL噪声渐变+折射着色器;backdrop-filter。
+不要:白底扁平;实心卡;硬切。
+内容:{在这里写你的内容}</pre>
+      <pre data-l=en hidden>Style: frosted-glass cards floating over a dark aurora; a liquid lens refracts content.
+Visuals: #060316 base + vignette; soft drifting blobs of #923EDA/#4558F4/#74D8FC; 2-3 large-radius translucent glass cards layered in depth, bright rim, soft shadow, diagonal specular sweep.
+Type: light sans, white + translucent tier; closing title ultra-light, wide tracking.
+Motion: smooth full 30fps; slow push-in with 3D tilt parallax; cards stagger in 0.5s apart; text lines resolve blur-to-sharp, 0.4s each; lens glides, magnifying 1.3x with chromatic fringing; outro: cards defocus, lens lands on title, halo expands 0.6s, then 1s hold.
+Build: WebGL noise gradient + refraction shader; backdrop-filter blur; perspective.
+Avoid: flat white; opaque cards; hard cuts; neon outlines.
+Content: {your content here}</pre>
     </div>
-    <details><summary>拆解要点</summary><ul><li>底色与光斑实测:暗角 #060316、右上品红 #923DD6、中心青蓝 #6ECAF9、下方宝蓝 #404FF0(取自 036),光斑位置从 001 到 040 基本不动,只做极慢漂移(推测)。</li><li>卡片入场带 3D 透视倾斜:001-004 主卡片明显梯形透视,到 013 基本摆正;同期左下小卡从画外滑入(005→013)。</li><li>文字逐行“模糊+透明→清晰”从左往右扫出:007 首行半透明模糊、010 第三行只显现一半、013 四行全部清晰,约每 0.5 秒一行。</li><li>招牌手法是液态玻璃透镜:021 从开关里拉出粘滞水滴,022 变圆球掠过按钮,024-027 变药丸透镜放大并折射文字;028-030 其余卡片焦外虚化滑出,只留透镜清晰。</li><li>收尾:透镜在 031-032 缩成字标中的圆形字母,036→037→038 每 0.25 秒外扩一圈渐淡的冲击光环;039-040 为转场帧可忽略。</li></ul></details>
+    <details><summary>已剥离的内容层(提示词里不含这些)</summary><div class=gones><span class=gone>虚构AI助手品牌名</span><span class=gone>聊天对话气泡</span><span class=gone>语音波形录音卡</span><span class=gone>专注模式开关与亮度滑杆</span><span class=gone>周日行程文案</span><span class=gone>加日历/提醒按钮</span><span class=gone>品牌口号</span></div></details>
+    <details><summary>逐帧证据 + 运动曲线</summary><ul><li>motion.txt 交替率0.07、运动段仅2个静止帧(f96/f180)→全帧30fps顺滑,无一拍二</li><li>f001-120 卡片带透视倾斜持续漂移,f030/f055 第二、三张卡相隔约15帧错峰滑入</li><li>f055 首行文字半透明模糊、f061-100 逐行变清,行间隔约12-15帧</li><li>f160-170 运动峰(Δ≈4)透镜从界面元素析出游走,f165/f168 文字边缘RGB色散;f200 胶囊透镜放大其下文字并带金/青色散</li><li>f211-240 卡片景深虚焦后退、透镜移至中心落在标题字形上;f247-268 Δ≈0静持;f273-292 光环由透镜向外扩散淡出;f302-304 为转场</li></ul><img class=motion loading=lazy src="images/10-motion.webp" alt="相邻帧变化量曲线"></details>
     <a class=md href="prompts/10-aurora-glassmorphism.md">Markdown 版 →</a>
   </div>
 </article>
-<article class=card id="s11">
+<article class="card" id="s11">
   <div class=media>
     <img class=hero loading=lazy src="images/11-1.webp" alt="几何构成包豪斯 样片截图">
     <div class=thumbs><button class=th data-src="images/11-1.webp"><img loading=lazy src="images/11-1.webp" alt=""></button><button class=th data-src="images/11-2.webp"><img loading=lazy src="images/11-2.webp" alt=""></button><button class=th data-src="images/11-3.webp"><img loading=lazy src="images/11-3.webp" alt=""></button></div>
   </div>
   <div class=body>
-    <header><span class=no>11</span><h2>几何构成包豪斯<small>Geometric Constructivist Bauhaus</small></h2></header>
-    <p class=tagline>原色基本形踩着节拍,在网格上一拍一拍搭成海报</p>
-    <div class=pal><span class="sw" style="--c:#F8F2E0" title="主背景:暖象牙色海报纸,边缘略压暗"><i></i>#F8F2E0</span><span class="sw" style="--c:#E7E0CE" title="底层构成网格线(极淡细线)"><i></i>#E7E0CE</span><span class="sw" style="--c:#DC2F35" title="原色红:主角圆/大块面"><i></i>#DC2F35</span><span class="sw" style="--c:#F5C60C" title="原色黄:三角形/尖锐块面"><i></i>#F5C60C</span><span class="sw" style="--c:#2453A5" title="原色蓝:方块/半圆"><i></i>#2453A5</span><span class="sw" style="--c:#121013" title="墨黑:粗条、扇形、轴线、标题字、反相底板"><i></i>#121013</span><span class="sw" style="--c:#111111" title="反相段整版黑底"><i></i>#111111</span></div>
-    <div class=tags><span class=tag>包豪斯</span><span class=tag>红黄蓝三原色</span><span class=tag>圆方三角</span><span class=tag>严格网格</span><span class=tag>按拍构建</span><span class=tag>动态模糊快切</span><span class=tag>瓷砖拼贴</span><span class=tag>海报版式</span></div>
+    <header><span class=no>11</span><h2>几何构成包豪斯<small>Geometric Bauhaus Construction</small></h2></header>
+    <p class=tagline>三原色几何块踩着节拍在网格上搭建</p>
+    <div class=pal><span class="sw" style="--c:#F7F1E3" title="米色纸底"><i></i>#F7F1E3</span><span class="sw" style="--c:#DC2F35" title="主红"><i></i>#DC2F35</span><span class="sw" style="--c:#F6C60C" title="主黄"><i></i>#F6C60C</span><span class="sw" style="--c:#2552A3" title="主蓝"><i></i>#2552A3</span><span class="sw" style="--c:#111111" title="黑色块/文字/反白底"><i></i>#111111</span></div>
+    <div class=tags><span class=tag>120px模块网格</span><span class=tag>每拍一个动作</span><span class=tag>纯平几何原形</span><span class=tag>对位十字锚点</span><span class=tag>模块格翻转转场</span><span class=tag>运动模糊落定</span></div>
     <div class=prompt>
       <div class=bar>
         <div class=seg role=tablist><button class=on data-l=zh>中文</button><button data-l=en>English</button></div>
         <button class=copy>复制提示词</button>
       </div>
-      <pre data-l=zh>用代码(Remotion/SVG/Canvas)做 10 秒 16:9 包豪斯动态海报,主题 {主题}。
-
-## 视觉
-- 暖象牙纸底 #F8F2E0,轻纸纹、四角微暗;铺极淡网格 #E7E0CE(1920 宽下 120px 模数),所有元素吸附网格。
-- 只用纯平原色:红 #DC2F35、黄 #F5C60C、蓝 #2453A5、墨黑 #121013;无渐变、阴影、描边、圆角。
-- 形状只用正圆、正方、三角、1/4 扇形、半圆、长条、小黑点,大小反差拉满。边缘加 1-2px 丝网毛边(feTurbulence+feDisplacementMap)。
-
-## 版式
-- 纸边当印刷框:四角裁切线、上下十字套准标;左上小字拍数「07 / 20」,右上刊头 {标题文字},左下一行技术说明,右下色票随新颜色出现逐格点亮。
-- 一根细黑横轴 + 一根满高黑粗条切分画面,{核心物件} 用圆/三角/方块围着轴上小黑点咬合堆叠。
-- 标题用粗重几何无衬线全大写,旋转 90° 竖贴左边;副标极小字号大字距,可双语。
-
-## 动效
-- 锁 120 BPM,每 0.5 秒一拍共 20 拍,每拍只做一个构造动作,拍数同步 +1。
-- 0.15-0.25 秒 expo-out 冲到位后硬停,运动中带强方向模糊。
-- 进场:画外滑入;长条 scaleX/Y 擦出;扇形旋转扫出;一拍内形变(方→扇)。落位前目标点闪十字准星。
-- 开场:黑构造线从中心扫开后缩成淡网格,首个圆从上坠入。
-- 中段:整组绕小黑点大幅旋转重组(约 1 秒)。
-- 高潮:画面裂成网格瓷砖(Truchet 拼贴:扇形/三角/矩形)逐格旋转;再用单格翻牌(scaleX 1→0→1)切到整版黑底反相段,三原色形 + 小标签,形状切拼成字母形后翻回。
-- 收尾:标题每拍蹦一个字母拼完,副标出现;只留一个小扇形持续旋转,其余定格。
-
-## 不要
-渐变、柔光、3D 透视、过度回弹、多元素同时乱动、三原色+黑以外的颜色。</pre>
-      <pre data-l=en hidden>Build a ~10-second 16:9 &quot;Geometric Constructivist Bauhaus&quot; kinetic poster in code (Remotion / SVG / Canvas), about {topic}.
-
-## Visual language
-- Ground: warm ivory poster paper #F8F2E0 with very faint paper grain / vertical fibres and slightly darkened corners; overlay a very light grid #E7E0CE with a fixed module (120px at 1920 wide = 16x9 cells). Every element snaps to this grid in size and position.
-- Flat primaries only: red #DC2F35, yellow #F5C60C, blue #2453A5, ink black #121013. No gradients, shadows, strokes or highlights.
-- Basic shapes only: perfect circle, square, equilateral triangle, quarter-circle wedge, half circle, long bar, small black dot. Use extreme scale contrast (full-height bar vs tiny dot).
-- Give fills a slight screen-print rough edge (SVG feTurbulence + feDisplacementMap, 1-2px), not perfect vectors.
-
-## Layout
-- Keep a paper margin as a print frame: corner crop marks, centre registration crosshairs top and bottom, tiny top-left beat counter &quot;{beat label} 07 / 20&quot;, tiny top-right masthead {title text}, a one-line technical caption bottom-left, and colour swatch chips bottom-right that light up as each colour first appears.
-- Composition is asymmetric but balanced: one thin black horizontal axis plus one full-height black bar slice the canvas; circle, triangle and squares interlock around a small dot on the axis, edges butting tightly.
-- Type: heavy geometric sans (Archivo Black / Futura Bold feel), all caps, rotated 90 degrees running up the left edge; subtitles in tiny, widely tracked geometric light weight, optionally bilingual.
-
-## Motion language
-- Lock to 120 BPM: one beat every 0.5s, 20 beats total. Exactly one construction action per beat; the counter ticks with it.
-- Moves are fast: 0.15-0.25s expo-out into place, then a dead stop for the rest of the beat - a &quot;snap, hold, snap, hold&quot; rhythm.
-- Entrances: slide in from off-frame with strong directional motion blur; bars wipe in via scaleX/scaleY from one end; wedges sweep in by rotation like a fan opening; a shape can morph into another within one beat (square to quarter circle). Flash a crosshair at the target spot just before a shape lands.
-- Open: a few black construction lines sweep out from centre and shrink into the faint grid; the first circle drops in from above.
-- Mid: on one beat the whole group swings around the small dot as a pivot (~1s, rotational blur) and re-settles into a new composition.
-- Climax: the canvas breaks into grid tiles, each filled with a quarter circle / triangle / bar (Truchet tiling), tiles rotate cell by cell; then per-cell card flips (scaleX 1-0-1) cut to a full black inverted section showing three primary shapes with small labels, the shapes slice and recombine into letter-like forms, then flip back.
-- Ending: the title letters pop in one per beat to complete the vertical word, subtitle appears; only one small wedge keeps spinning, everything else freezes.
-
-## Do / Don&#x27;t
-- Do: snap to grid, one action per beat, flat hard-edged colour, alternate generous negative space with full-bleed tiling.
-- Don&#x27;t: gradients, soft glow, rounded corners, 3D perspective, over-bouncy springs, many elements moving at once, any colour beyond the three primaries plus black.</pre>
+      <pre data-l=zh>风格:包豪斯几何构成,按网格逐拍搭成海报
+画面:米纸#F7F1E3淡网格;红#DC2F35黄#F6C60C蓝#2552A3黑#111111平涂;只用圆/扇形/方/三角/粗条,吸附120px模块
+字体:粗黑几何无衬线大写,可竖排;注释小字宽距
+动效:120BPM,15帧一拍,每拍一个动作;缓入缓出,落定无回弹,带运动模糊;新形先现对位十字再展开;可整组绕支点转动重排;转场=逐格翻转散开再拼新构图
+实现:帧号÷15查拍号状态表;坐标取模块整数倍
+不要:渐变阴影圆角;多处同动;离网格
+内容:{在这里写你的内容}</pre>
+      <pre data-l=en hidden>Style: Bauhaus geometric construction; a poster assembled on a grid, one beat at a time
+Visual: cream paper #F7F1E3 with faint grid; flat red #DC2F35, yellow #F6C60C, blue #2552A3, black #111111; only circles, quarter-circles, squares, triangles, thick bars, snapped to a 120px module
+Type: heavy geometric sans caps, may run vertical; small wide-tracked captions
+Motion: 120 BPM, 15 frames per beat, one action per beat; ease-in-out, settle with no bounce, motion blur on moves; a registration crosshair appears first, then the shape unfolds from it; whole cluster may rotate about a pivot to re-compose; transition = cells flip and scatter, then reassemble into a new layout
+Build: beat = floor(frame/15) indexes a state table; coordinates are integer multiples of the module
+Avoid: gradients, shadows, rounded corners; several things moving at once; off-grid placement
+Content: {your content here}</pre>
     </div>
-    <details><summary>拆解要点</summary><ul><li>节拍是骨架:顶部计数器从 002 帧的 01/20 到 038 帧的 19/20,约每 2 帧(0.5 秒)+1,对应 120 BPM、20 拍共 10 秒,每拍只加一个构造动作。</li><li>动作是「快冲+硬停」:002 帧圆坠入、006/008 帧三角从右侧滑入、014 帧整组移动都带强方向模糊,下一帧即清晰落位静止。</li><li>色块吸附 80px(画布 1280)/120px(1920)网格:024 帧所有圆、方、条、轴线边缘都落在网格线上,色值实测红 #DC2F35、黄 #F6C60C、蓝 #2453A3、黑 #121013,边缘有毛刺印刷感。</li><li>高潮两段:025-027 帧满版 Truchet 瓷砖逐格旋转;029-031 帧黑底反相段,三形状被切拼成字母形,再用单格翻牌(031 帧)切回。</li><li>收尾 033-038 帧竖排粗体标题逐字拼出,配极小字距副标与三形小图标;只留左上小扇形持续旋转(035-040 帧模糊)。</li></ul></details>
-    <a class=md href="prompts/11-geometric-constructivist-bauhaus.md">Markdown 版 →</a>
+    <details><summary>已剥离的内容层(提示词里不含这些)</summary><div class=gones><span class=gone>BAUHAUS竖排大字</span><span class=gone>德文页眉页脚(SCHLAG/KINETISCHES PLAKAT/WEIMAR 1919)</span><span class=gone>GELB/ROT/BLAU色名标签</span><span class=gone>FORM·FARBE·FUNKTION标语</span><span class=gone>圆+三角+条组成的拟鸟/拟脸构图</span><span class=gone>三原色对应三角方圆的教学页</span><span class=gone>色样图例条</span></div></details>
+    <details><summary>逐帧证据 + 运动曲线</summary><ul><li>f001-016 首个圆形加速下落(质心y 89→437),f016-017落定440后完全静止,无过冲回弹</li><li>角标拍号计数每15帧+1(f106-120=08/20,f166-180=12/20,f286-290=20/20)→120BPM一拍15帧,动作都收在拍点</li><li>f039、f088 新形状出现前先在锚点画对位十字,随后从该点展开/翻转(f040-060三角水平展开再翻面)</li><li>f102-120 整组形状绕支点旋转约90°重排,移动帧带方向运动模糊,f120落定后静止</li><li>f181/f241 硬切;f182-200 全画面拆成模块格扇形/方块旋转散开再拼合,f203-212 逐格翻成黑底新构图,f230-240 逐格翻回</li></ul><img class=motion loading=lazy src="images/11-motion.webp" alt="相邻帧变化量曲线"></details>
+    <a class=md href="prompts/11-geometric-bauhaus-construction.md">Markdown 版 →</a>
   </div>
 </article>
-<article class=card id="s12">
+<article class="card" id="s12">
   <div class=media>
-    <img class=hero loading=lazy src="images/12-1.webp" alt="复古 Synthwave 样片截图">
+    <img class=hero loading=lazy src="images/12-1.webp" alt="复古Synthwave 样片截图">
     <div class=thumbs><button class=th data-src="images/12-1.webp"><img loading=lazy src="images/12-1.webp" alt=""></button><button class=th data-src="images/12-2.webp"><img loading=lazy src="images/12-2.webp" alt=""></button><button class=th data-src="images/12-3.webp"><img loading=lazy src="images/12-3.webp" alt=""></button></div>
   </div>
   <div class=body>
-    <header><span class=no>12</span><h2>复古 Synthwave<small>Retro Synthwave (80s Neon VHS)</small></h2></header>
-    <p class=tagline>霓虹网格奔向条纹落日,铬金大字砸在一盘老录像带上</p>
-    <div class=pal><span class="sw" style="--c:#0B0311" title="天空顶部/画面暗部近黑紫"><i></i>#0B0311</span><span class="sw" style="--c:#1E013A" title="中段天空深紫"><i></i>#1E013A</span><span class="sw" style="--c:#5E046D" title="地平线附近天空洋红紫"><i></i>#5E046D</span><span class="sw" style="--c:#EC46E3" title="地平线光带与霓虹网格线(品红)"><i></i>#EC46E3</span><span class="sw" style="--c:#0F0214" title="反光地板底色"><i></i>#0F0214</span><span class="sw" style="--c:#F8FFAE" title="落日顶部近白黄"><i></i>#F8FFAE</span><span class="sw" style="--c:#DB7F3C" title="落日中段橙"><i></i>#DB7F3C</span><span class="sw" style="--c:#E1306C" title="落日底部粉红/条纹缝"><i></i>#E1306C</span><span class="sw" style="--c:#5BC8F0" title="线框山脉描边青、路灯光点"><i></i>#5BC8F0</span><span class="sw" style="--c:#81C6F6" title="铬字上半天蓝"><i></i>#81C6F6</span><span class="sw" style="--c:#FDE8D3" title="铬字下半暖金高光"><i></i>#FDE8D3</span><span class="sw" style="--c:#EF58BA" title="霓虹手写字外发光"><i></i>#EF58BA</span><span class="sw" style="--c:#E50240" title="主物件尾灯红光带"><i></i>#E50240</span><span class="sw" style="--c:#BEBFD4" title="小标语与 OSD 文字浅灰白"><i></i>#BEBFD4</span></div>
-    <div class=tags><span class=tag>Synthwave</span><span class=tag>霓虹透视网格</span><span class=tag>条纹落日</span><span class=tag>80s 铬金字</span><span class=tag>霓虹手写字</span><span class=tag>VHS 后期</span><span class=tag>Bloom 溢光</span><span class=tag>一点透视</span></div>
+    <header><span class=no>12</span><h2>复古Synthwave<small>Retro Synthwave VHS</small></h2></header>
+    <p class=tagline>霓虹网格落日,录像带回放</p>
+    <div class=pal><span class="sw" style="--c:#190A21" title="夜空底色"><i></i>#190A21</span><span class="sw" style="--c:#FF3CC8" title="霓虹网格线/地平线辉光"><i></i>#FF3CC8</span><span class="sw" style="--c:#FFE27A" title="落日顶部/铬字下半金"><i></i>#FFE27A</span><span class="sw" style="--c:#EC5655" title="落日底部珊瑚红"><i></i>#EC5655</span><span class="sw" style="--c:#82EAFF" title="线框山/细线点缀青"><i></i>#82EAFF</span><span class="sw" style="--c:#6492EA" title="铬字上半天空蓝"><i></i>#6492EA</span></div>
+    <div class=tags><span class=tag>透视霓虹网格</span><span class=tag>铬金属字</span><span class=tag>VHS后期</span><span class=tag>Bloom辉光</span><span class=tag>CRT关机转场</span><span class=tag>WebGL</span></div>
     <div class=prompt>
       <div class=bar>
         <div class=seg role=tablist><button class=on data-l=zh>中文</button><button data-l=en>English</button></div>
         <button class=copy>复制提示词</button>
       </div>
-      <pre data-l=zh># 复古 Synthwave(80s 霓虹 + VHS)风格提示词
-
-把 {主题} 做成约 10 秒、1920×1080、30fps 的 80 年代 Synthwave 片头,整段像一盘 VHS 录像带在回放。
-
-## 视觉
-- Three.js 真 3D:黑色反光地板 + 洋红霓虹透视网格 #EC46E3,持续朝镜头滚动;地平线一条极亮品红光带。
-- 正中巨大条纹落日:上近白黄 #F8FFAE → 橙 #DB7F3C → 下粉红 #E1306C,下半部被水平黑缝切成百叶,越往下缝越宽。
-- 两侧低多边形线框山(青描边 #5BC8F0);天空近黑紫 #0B0311 → 深紫 #1E013A → 地平线洋红,带星点。
-- {核心物件} 做黑剪影 + 一条红光带 #E50240;路边青白小光点;前景剪影可虚焦。所有亮部 bloom 溢光,地板有竖向长倒影。
-
-## 字体
-- 主标题 {标题文字}:超宽粗黑全大写几何无衬线,80s 铬金字——上天蓝 #81C6F6、中间近白高光线、下暖橙金,深紫挤出边。
-- 副标题 {副标题}:斜体刷体手写,白芯 + 品红外发光 #EF58BA 的霓虹灯管字,斜压在主标题右下。
-- 顶部小标语:超宽字距细体大写,两侧细横线。
-- OSD:等宽像素白字,左上 PLAY ▶ / 结尾 STOP ■,右下 SP 时间码真实计时。
-
-## 构图
-一点透视、中轴对称:消失点 = 落日中心;地平线约在 55% 高度;标题三层锁版叠在落日上半部;低机位,轻微上下起伏与侧倾。
-
-## 动效(约 10 秒)
-1. 0–1.2s:4:3 小画幅 + 黑边、强噪点、底部 tracking 干扰带,出现 PLAY ▶,噪点退去后硬切满屏。
-2. 1.2–4s:跟随 {核心物件} 匀速前进,网格滚动,偶发单帧水平撕裂。
-3. ~4.2s:主标题从 3–4 倍大小带变焦模糊与重影砸入,0.25–0.5s 强 ease-out(expo.out)落定,四芒星光斑闪亮并约每秒在字母间跳一次;{核心物件} 拖光尾冲向地平线消失。
-4. ~6.2s:副标题先以暗灯管出现,闪两下过曝后回落点亮。
-5. ~7.5s:小标语淡入。
-6. 9.3–10s:强 VHS 故障(切片错位 + RGB 分离),切 STOP ■。
-
-## 代码提示
-- 网格用 shader 的 fract(uv+time) 画线,EffectComposer + UnrealBloomPass;落日用 step(fract(y*N), 随 y 增大的阈值) 挖缝。
-- 铬字:background-clip:text 多段渐变 + 多层 text-shadow 挤出;霓虹字多层品红 text-shadow,opacity 关键帧做通电闪烁。
-- VHS 后期 shader:扫描线、噪点、色差、下移的 tracking 条、偶发 UV 水平切片位移、暗角 + 微桶形畸变。
-
-## 该做 / 不该做
-- 该做:只用洋红/紫/青/日落金四族色;所有光都 bloom;中轴对称。
-- 不该做:扁平无光色块、现代细线 UI、干净无噪的画面、多个消失点。</pre>
-      <pre data-l=en hidden># Retro Synthwave (80s Neon + VHS Tape) Style Prompt
-
-Turn {topic} into a ~10-second, 1920×1080, 30fps 1980s synthwave title sequence that plays like a VHS tape just pushed into a VCR.
-
-## Visual language
-- Scene: real 3D in WebGL/Three.js. An endless black reflective floor with a thin magenta neon perspective grid (emissive + bloom) that constantly scrolls toward camera to sell forward motion. A blazing magenta light band on the horizon.
-- Dead center in the distance, a huge &quot;striped sunset&quot;: near-white yellow #F8FFAE at top → gold #E0CD67 → orange #DB7F3C → pink #E1306C at bottom, the lower half sliced by horizontal dark gaps that get wider toward the bottom.
-- Low-poly wireframe mountains on both sides (cyan edges #5BC8F0, deep purple fill #2A1655). Sky goes from near-black violet #0B0311 to deep purple #1E013A to horizon magenta #5E046D, with tiny stars.
-- Midground: {core object} as a black silhouette / low-poly model with one saturated red light strip; a row of small roadside posts emitting cyan-white dots. Foreground silhouettes may be defocused for depth.
-- Light: every bright element blooms (UnrealBloom); the floor shows long vertical reflections of neon and red lights.
-
-## Typography
-- Main title {title text}: ultra-wide, heavy, all-caps geometric sans (Bungee / Michroma / Orbitron Black type), rendered as 80s chrome: sky-blue #81C6F6 top → a near-white horizon highlight #FFFFFA → warm peach-gold #FDE8D3 / #CA7B74 bottom, with a deep purple extruded bevel and a thin bright outline.
-- Subtitle {subtitle}: slanted brush script (Mr Dafoe / Kaushan Script type) as a neon tube: white core + magenta outer glow #EF58BA, tucked at the lower right of the main title, overlapping the sun.
-- Top tagline {tagline}: very widely tracked all-caps thin sans, pale grey-white #BEBFD4, flanked by thin horizontal rules, center-dot separator.
-- OSD corners: white monospaced pixel font — &quot;PLAY ▶&quot; top-left (ending with &quot;STOP ■&quot;), &quot;SP 0:00:0X&quot; bottom-right with a timecode that really counts seconds.
-
-## Composition
-- One-point perspective, strict center symmetry: vanishing point = sun center = frame axis; horizon at ~55% frame height.
-- Title lockup sits over the upper half of the sun, three tiers top-down: small tagline → chrome title → neon script.
-- Low, ground-hugging camera with a gentle breathing bob and slight roll.
-
-## Motion and rhythm (~10 s)
-1. 0–1.2s power-on: small 4:3 picture with black side pillars, heavy noise, desaturated, a tracking distortion band rolling at the bottom, &quot;TRACKING&quot; bottom-left, then &quot;PLAY ▶&quot; appears; noise clears within ~1s, then hard snap to full 16:9.
-2. 1.2–4s cruise: camera follows {core object} at constant speed, grid scrolling, silhouettes passing, an occasional single-frame horizontal tear (sliced row offsets).
-3. ~4.2s title slam: the chrome title drops from ~3–4× scale with radial/zoom blur and ghosting, settling in 0.25–0.5s on a hard ease-out (expo.out); on landing a four-point star lens glint flashes on a letter, then hops between letters about once per second as a sweep; meanwhile {core object} streaks to the horizon with light trails and vanishes.
-4. ~6.2s script ignition: the subtitle first appears as an unlit dark tube, then flickers twice and overexposes before settling — like a neon sign powering on.
-5. ~7.5s the top tagline fades in with its thin rules.
-6. 9.3–10s ending: one strong VHS glitch (horizontal slice displacement + RGB split + broken text), top-left switches to &quot;STOP ■&quot;.
-
-## Signature techniques (code hints)
-- Three.js: grid via GridHelper or a custom shader (fract(uv + time) lines); floor MeshStandardMaterial with low roughness + Reflector; EffectComposer with UnrealBloomPass.
-- Sun: fragment shader with a vertical gradient; carve stripes with step(fract(y*N), threshold that grows with y).
-- Chrome text: CSS background-clip:text multi-stop linear gradient (blue→white→pink→orange) + stacked text-shadows for extrusion; neon script with layered magenta text-shadow glow and opacity keyframes for the ignition flicker.
-- VHS post: full-screen shader with scanlines, grain, chroma offset, a tracking band (high-noise strip drifting down), occasional horizontal UV slice offsets; light corner vignette + subtle barrel distortion.
-
-## Do / Don&#x27;t
-- Do: limit color to magenta / purple / cyan / sunset gold; bloom every light; keep center symmetry; make the OSD timecode actually count.
-- Don&#x27;t: flat unlit colors, modern thin-line UI icons, a clean noise-free image, multiple vanishing points, or anything that breaks the 80s look.</pre>
+      <pre data-l=zh>风格:80年代Synthwave+VHS回放
+画面:夜空#190A21;洋红网格#FF3CC8一点透视;条纹落日#FFE27A→#EC5655;青线框山#82EAFF;对称,强bloom
+字体:粗宽铬字(蓝金镜面+星芒扫光);副行霓虹草书
+动效:30fps连续;网格匀速滚向镜头;开场4:3噪点画框撑满;标题巨大推入7帧落定+闪白1帧;霓虹字闪2-3下点亮;每2-3s撕裂2帧;结尾CRT关机→光点
+实现:Three.js网格+着色器落日;Bloom+扫描线+色差+噪点;角落VHS时间码
+不要:无辉光;网格静止;噪点糊主体
+内容:{在这里写你的内容}</pre>
+      <pre data-l=en hidden>Style: 80s synthwave via VHS playback
+Look: night #190A21; magenta grid #FF3CC8, one-point perspective; striped sun #FFE27A→#EC5655; cyan wireframe hills #82EAFF; symmetric, strong bloom
+Type: wide heavy chrome letters (blue-gold mirror + star-glint sweep); secondary line in neon script
+Motion: smooth 30fps; grid scrolls toward camera at constant speed; open on noisy 4:3 frame expanding to full; headline flies in huge, settles in 7 frames + 1-frame white flash; neon text flickers 2-3x to power on; 2-frame horizontal tear every 2-3s; end with CRT power-off to line → dot
+Build: Three.js grid + shader sun; bloom + scanlines + chromatic aberration + noise; corner VHS timecode
+Avoid: no glow; static grid; noise smearing the subject
+Content: {your content here}</pre>
     </div>
-    <details><summary>拆解要点</summary><ul><li>开头 001-005 是 4:3 小画幅 + 黑边 + 强噪点 + TRACKING 干扰带的「录像机开机」,006 啪地切满 16:9,右下 SP 时间码随秒数真实跳动(000→009 贯穿全片)。</li><li>主标题入场是「砸入」:018 字号约为定位态 3-4 倍且带变焦模糊与重影,下一帧 019 已落定并闪出四芒星光斑,判断为 ≤0.5s 的强 ease-out;023、030 光斑跳到别的字母,是间歇扫光。</li><li>手写副标题是霓虹管通电:026 先以暗色未亮灯管出现,028 过曝发白,029 回落为白芯品红外发光,约 0.75s 完成。</li><li>VHS 故障是点缀不是常态:017 落日与路边剪影出现单帧水平切片错位,039 整屏切片撕裂 + 文字打碎,040 左上换成 STOP ■ 收尾。</li><li>取色实测:落日纵向从 #F8FFAE 过渡到 #DB7F3C 再到粉红,下半部横缝越往下越宽(014);铬字纵向为青蓝→近白高光→粉→暖金(032 采样)。</li></ul></details>
-    <a class=md href="prompts/12-retro-synthwave-(80s-neon-vhs).md">Markdown 版 →</a>
+    <details><summary>已剥离的内容层(提示词里不含这些)</summary><div class=gones><span class=gone>跑车与尾灯</span><span class=gone>棕榈树</span><span class=gone>路边灯柱</span><span class=gone>片名 NEON DRIVE</span><span class=gone>草书副标 Midnight</span><span class=gone>SUMMER 1986 · IN HI-FI STEREO 标语</span><span class=gone>夜驰剧情</span></div></details>
+    <details><summary>逐帧证据 + 运动曲线</summary><ul><li>motion.txt:302 帧中 298 帧在动、0 个静止帧 → 30fps 连续运动,非一拍二</li><li>f001-030 4:3 圆角画框+满屏雪花噪点+TRACKING 字样,f031-036 画框撑满 16:9</li><li>f121-127 主标题从镜头前巨大推入落定,f127 差值尖峰≈108 = 闪白+右上十字星芒</li><li>f199-204 草书由暗色变白热霓虹,差值连续尖峰≈27 = 通电闪烁;f066/f183/f234/f283 横向撕裂错位</li><li>f293 出现 STOP■,f296 画面压成横条,f298 收成横线,f299-303 光点渐灭 = CRT 关机</li></ul><img class=motion loading=lazy src="images/12-motion.webp" alt="相邻帧变化量曲线"></details>
+    <a class=md href="prompts/12-retro-synthwave-vhs.md">Markdown 版 →</a>
   </div>
 </article>
-<article class=card id="s13">
+<article class="card" id="s13">
   <div class=media>
     <img class=hero loading=lazy src="images/13-1.webp" alt="像素风 样片截图">
     <div class=thumbs><button class=th data-src="images/13-1.webp"><img loading=lazy src="images/13-1.webp" alt=""></button><button class=th data-src="images/13-2.webp"><img loading=lazy src="images/13-2.webp" alt=""></button><button class=th data-src="images/13-3.webp"><img loading=lazy src="images/13-3.webp" alt=""></button></div>
   </div>
   <div class=body>
     <header><span class=no>13</span><h2>像素风<small>16-bit Pixel Art</small></h2></header>
-    <p class=tagline>320×180 低分屏里过完一整天,16 位游戏机开机即冒险</p>
-    <div class=pal><span class="sw" style="--c:#4A86E8" title="白天天空顶部(横向色带渐变的最上层)"><i></i>#4A86E8</span><span class="sw" style="--c:#BFF3FA" title="白天地平线浅青,与上层用棋盘格抖动过渡"><i></i>#BFF3FA</span><span class="sw" style="--c:#2E8B45" title="中景针叶林/灌木主绿"><i></i>#2E8B45</span><span class="sw" style="--c:#6FD84F" title="地面草皮高光绿"><i></i>#6FD84F</span><span class="sw" style="--c:#A0502F" title="前景砖土地块"><i></i>#A0502F</span><span class="sw" style="--c:#F28A4E" title="黄昏橙天空(调色板轮换第二档)"><i></i>#F28A4E</span><span class="sw" style="--c:#D8306A" title="黄昏洋红山体/天空(第三档)"><i></i>#D8306A</span><span class="sw" style="--c:#1C1A3A" title="夜晚天空顶部深靛(最后一档)"><i></i>#1C1A3A</span><span class="sw" style="--c:#3A3F8C" title="夜晚中层蓝紫/远山"><i></i>#3A3F8C</span><span class="sw" style="--c:#282B5E" title="对话框底色,配 1px 浅蓝白描边"><i></i>#282B5E</span><span class="sw" style="--c:#FFD84A" title="标题字上半段金黄/可收集物"><i></i>#FFD84A</span><span class="sw" style="--c:#E8582A" title="标题字下半段橙红"><i></i>#E8582A</span><span class="sw" style="--c:#92122E" title="标题硬投影/挤出厚度暗红"><i></i>#92122E</span><span class="sw" style="--c:#E52D3F" title="副标题绶带红"><i></i>#E52D3F</span><span class="sw" style="--c:#5480EA" title="高潮能量光晕蓝(抖动点阵)"><i></i>#5480EA</span><span class="sw" style="--c:#F4F4F4" title="HUD 文字与星点白"><i></i>#F4F4F4</span></div>
-    <div class=tags><span class=tag>16位像素</span><span class=tag>低分辨率放大</span><span class=tag>有限调色板</span><span class=tag>调色板轮换昼夜</span><span class=tag>Bayer抖动</span><span class=tag>CRT扫描线</span><span class=tag>横版卷轴视差</span><span class=tag>开机标题画面</span></div>
+    <p class=tagline>低分辨率逐点画,CRT 里的日夜换色</p>
+    <div class=pal><span class="sw" style="--c:#1F1A30" title="夜色底/最深阴影"><i></i>#1F1A30</span><span class="sw" style="--c:#3D438B" title="靛蓝天空/对话框底"><i></i>#3D438B</span><span class="sw" style="--c:#BF2964" title="黄昏洋红远景/标签条"><i></i>#BF2964</span><span class="sw" style="--c:#F5C542" title="标题黄/高光/放射光"><i></i>#F5C542</span><span class="sw" style="--c:#339245" title="白天主绿/植被"><i></i>#339245</span></div>
+    <div class=tags><span class=tag>320×180 整数放大</span><span class=tag>Bayer 有序抖动</span><span class=tag>调色板硬切换</span><span class=tag>整数像素视差</span><span class=tag>CRT 扫描线外壳</span><span class=tag>逐字打字框</span></div>
     <div class=prompt>
       <div class=bar>
         <div class=seg role=tablist><button class=on data-l=zh>中文</button><button data-l=en>English</button></div>
         <button class=copy>复制提示词</button>
       </div>
-      <pre data-l=zh>做一段约 10 秒的 16 位游戏机像素风动画,主题:{主题}。
-
-**像素纪律**
-- 在 320×180 小画布上按整数像素绘制,再最近邻整数倍放大(imageSmoothingEnabled=false / image-rendering: pixelated)。禁止抗锯齿、亚像素位移、模糊。
-- 全片约 32 色。渐变 = 横向色带 + 带间 Bayer 棋盘格抖动;光束、光晕也用抖动点阵,不用透明度。
-
-**画面**
-- 横版卷轴,4–5 层视差:色带天空+像素云 → 亮暗两面的三角远山 → 中景树林剪影 → 地面 → 前景砖块。镜头匀速右移。
-- {主角精灵} 16–24 像素高、大头身、2–4 帧走路;{可收集小物} 用宽度变化帧模拟旋转。
-- 外罩 CRT:扫描线、圆角暗角、轻微桶形弯曲。
-
-**字体**
-- 左上 HUD:像素字 {计分标签} + 6 位补零金色数字;右上图标×计数,事件时跳增。
-- 标题 {标题文字}:粗方块像素字,上黄下橙红分段填充 + 暗红硬投影;副标题放红色折角绶带上。
-- 对话框:深蓝底、1px 浅描边、红底名牌、左侧头像格,文字逐字打出约 10 字/秒。
-
-**动效时间轴**
-1. 0–0.5s CRT 开机:黑屏亮点 → 过曝画面带一次纵向滚动错位后稳定。
-2. 0.5–4s 跑跳拾取,头顶弹出分数上飘消失。
-3. 4–6s 调色板轮换:同一场景按白天蓝→金→橙→洋红→夜紫→深靛分档硬切,每档约 0.75–1s,不插值;入夜出星点。
-4. 6–7s 头顶「!/?」气泡,对话框先空框弹出再打字。
-5. 7–7.5s 最近邻约 2 倍推近,硬切回全景。
-6. 7.5–8.5s {核心物件} 爆出 6–8 道抖动点阵放射光束,小物上喷,角色周身蓝色抖动光晕。
-7. 8.5–10s 标题先白闪一帧再落色;副标题逐字出现;底部 {按键提示} 每 0.5s 闪烁,其余待机微动。
-
-**节奏**:坐标一律取整,精灵约 8–12fps 卡顿感;缓动只用线性或 steps(),不用弹性回弹。
-
-**不要**:平滑渐变、圆滑矢量边、高斯辉光、现代无衬线字体、照片级配色。</pre>
-      <pre data-l=en hidden>Create a ~10-second 16-bit console pixel-art animation about {topic}.
-
-**Canvas &amp; pixel discipline**
-- Draw everything on a 320×180 internal canvas at integer pixel positions, then nearest-neighbor upscale by an integer factor to 1280×720 / 1920×1080 (canvas imageSmoothingEnabled=false, CSS image-rendering: pixelated). No sub-pixel motion, no anti-aliasing, no blur, no smooth gradients.
-- Lock the whole piece to a ~32-color palette. Every gradient is horizontal color bands joined by 2–4px of Bayer/checkerboard dithering; light beams, glows and fades are ordered-dither stipple, never opacity.
-
-**Visual language**
-- Side-scrolling scene with 4–5 parallax layers: banded sky + pixel clouds → far mountains (triangular blocks, lit side / shadow side) → mid-ground tree line or building silhouettes → ground layer → foreground brick terrain. Each layer scrolls slower than the one in front; the camera pans right at a constant speed.
-- {hero sprite} is ~16–24px tall with a big-head chibi ratio and a 2–4 frame walk cycle; {collectible} fakes rotation with a 1→3→5px-wide frame sequence.
-- Wrap the frame in a CRT pass: a scanline every 2 physical pixels, rounded dark corners, slight barrel curve and edge bloom.
-
-**Typography**
-- Top-left HUD: pixel-font {score label} plus a 6-digit zero-padded counter in gold; top-right an icon × two-digit counter that ticks up on events.
-- Title {title text} in chunky blocky pixel letters filled with stepped yellow-to-orange-red bands plus a 3–4px dark-red hard drop shadow; subtitle {subtitle} sits on a red ribbon banner with folded ends.
-- Dialog box: deep navy fill, 1px light border, a red name tag {speaker} on the top-left corner, a 16×16 portrait slot on the left, typewriter text at ~10 chars/s, a small blinking triangle prompt bottom-right.
-
-**Motion language (timeline)**
-1. 0–0.5s CRT power-on: a bright dot on black → expands into a line → over-exposed picture with one vertical-roll glitch, then settles.
-2. 0.5–4s scroll run: hero runs, jumps and picks things up; floating score numbers rise for 0.5s and vanish.
-3. 4–6s palette cycling: the same scene hard-swaps through day blue → gold → orange → magenta → night violet → deep indigo, ~0.75–1s per step, no smooth interpolation; twinkling stars appear at night.
-4. 6–7s story beat: a &#x27;!&#x27; or &#x27;?&#x27; bubble over the hero; dialog box pops in empty, then types.
-5. 7–7.5s integer nearest-neighbor punch-in (~2×), then hard cut back to wide.
-6. 7.5–8.5s climax: 6–8 dithered radial light beams burst from {core object}, small items spray upward, a blue dithered aura surrounds the hero.
-7. 8.5–10s title slam: one solid white flash frame, then it settles into the gold-orange gradient; subtitle appears character by character; a bottom &#x27;{press prompt}&#x27; blinks every 0.5s while everything else idles (aura breathing, stars twinkling).
-
-**Rhythm**: all movement steps by whole pixels; sprite animation at ~8–12fps for a chunky feel; scrolling may run at 60fps but coordinates are rounded. Easing is linear or stepped (steps()) only, never elastic or overshoot.
-
-**Avoid**: smooth gradients, vector-smooth edges, Gaussian glow, half-pixel jitter, modern sans-serif fonts, photographic color beyond the 32-color palette.</pre>
+      <pre data-l=zh>风格:16位游戏机像素画,套CRT外壳。
+画面:320×180逐点画放大4倍;≤32色,渐变用Bayer抖动;多层视差;#1F1A30 #3D438B #BF2964 #F5C542 #339245。
+字体:点阵字;标题黄橙渐变+深红厚投影;正文入框逐字打。
+动效:只走整数像素;色表每2秒整套硬切;CRT开机进、关机出;推镜1×→2×硬切;高潮闪白1帧接抖动放射光;标题4帧砸落。
+实现:Canvas低分辨率绘制,关平滑放大;LUT换色;扫描线+桶形畸变+暗角。
+不要:亚像素移动、抗锯齿、淡入淡出、矢量字。
+内容:{在这里写你的内容}</pre>
+      <pre data-l=en hidden>Style: 16-bit console pixel art, framed inside a CRT.
+Visuals: paint at 320×180, 4× nearest-neighbor upscale; ≤32 colors per screen, gradients only as Bayer dither bands; multi-layer parallax; #1F1A30 #3D438B #BF2964 #F5C542 #339245.
+Type: bitmap font; titles chunky, yellow→orange gradient + thick dark-red shadow; body text in a double-bordered box, typed per character.
+Motion: integer-pixel moves only, far layer 1px per 4 frames; hard whole-palette swap every ~2s (day→night); CRT power-on in, power-off out; push-in as hard 1×→2× cut; climax = 1 white frame, then dithered radial light burst; titles slam down in 4 frames.
+Build: Canvas low-res render + imageSmoothingEnabled=false; LUT palette swaps; scanlines + barrel distortion + vignette.
+Avoid: sub-pixel smooth motion, anti-aliasing, opacity fades, vector fonts.
+Content: {your content here}</pre>
     </div>
-    <details><summary>拆解要点</summary><ul><li>侧栏写明「320×180 画布」「32 色调色板轮换出一整天的光」,帧里能看到所有边缘都是放大后的方块像素,天空是横向色带+棋盘格抖动过渡(005、012)。</li><li>调色板是分档硬切而非平滑过渡:016 金黄天、017–019 橙天,019→020 一步跳到洋红,028 起转夜紫,035–042 落到深靛夜空,场景几何不变只换色。</li><li>叙事节奏:021 对话框先空框出现,022→025 每 0.25s 多 2–3 个字的打字机效果;026→027 镜头最近邻推近约 2 倍,028 硬切回全景。</li><li>高潮用有序抖动点阵画放射光束(028–030),030→031 标题先整块白闪、032 落成黄→橙红分段渐变加暗红硬投影;035→036 副标题逐字补齐,037–040 底部提示语明暗闪烁。</li><li>全程罩 CRT:027 放大帧能看清水平扫描线,四角暗角圆角;002 黑屏中心亮点、003 过曝并带底部滚动错位条,推测是 CRT 开机效果(043 缩小模糊为图鉴页转场,忽略)。</li></ul></details>
+    <details><summary>已剥离的内容层(提示词里不含这些)</summary><div class=gones><span class=gone>红发小人</span><span class=gone>宝箱</span><span class=gone>金币与 SCORE 计分 HUD</span><span class=gone>瀑布石塔与木桥</span><span class=gone>史莱姆</span><span class=gone>PIXEL QUEST / 像素冒险 标题</span><span class=gone>欢迎来到像素世界 台词</span><span class=gone>PRESS START</span></div></details>
+    <details><summary>逐帧证据 + 运动曲线</summary><ul><li>f020-060 地面每 2 帧移 16px(=4 倍放大下每帧 2 像素),远山 4px/0px 交替→整数像素步进视差,云层静止</li><li>f001-006 黑屏亮点→白横线→纵向撑开成满屏:CRT 开机进场;f301-304 画面收缩变暗:关机收尾</li><li>约 f051、f093、f133-135、f244 整套色表 1-2 帧内硬切换(青蓝昼→黄→橙→洋红黄昏→靛蓝夜),无连续插值</li><li>f193 全白底+单色线稿、f194 淡黄,f195 起抖动网点放射光束(motion.txt 硬切 193/195,峰值≈178)</li><li>f186 等帧可见逐行扫描线、桶形弯曲边框与暗角;f160 天空渐变为棋盘格抖动分档</li></ul><img class=motion loading=lazy src="images/13-motion.webp" alt="相邻帧变化量曲线"></details>
     <a class=md href="prompts/13-16-bit-pixel-art.md">Markdown 版 →</a>
   </div>
 </article>
-<article class=card id="s14">
+<article class="card" id="s14">
   <div class=media>
     <img class=hero loading=lazy src="images/14-1.webp" alt="液态流动 样片截图">
     <div class=thumbs><button class=th data-src="images/14-1.webp"><img loading=lazy src="images/14-1.webp" alt=""></button><button class=th data-src="images/14-2.webp"><img loading=lazy src="images/14-2.webp" alt=""></button><button class=th data-src="images/14-3.webp"><img loading=lazy src="images/14-3.webp" alt=""></button></div>
   </div>
   <div class=body>
     <header><span class=no>14</span><h2>液态流动<small>Liquid Motion</small></h2></header>
-    <p class=tagline>糖果色果冻液滴在暗紫镜面上坠落、融合、成字</p>
-    <div class=pal><span class="sw" style="--c:#4A0E50" title="背景主色:深葡萄紫,画面中心偏亮"><i></i>#4A0E50</span><span class="sw" style="--c:#2A0730" title="暗角与远景,四角压暗"><i></i>#2A0730</span><span class="sw" style="--c:#12031A" title="近景镜面地板,接近黑的紫"><i></i>#12031A</span><span class="sw" style="--c:#F0603A" title="液体色 1:橘红/橙"><i></i>#F0603A</span><span class="sw" style="--c:#E8455A" title="液体色 2:珊瑚红"><i></i>#E8455A</span><span class="sw" style="--c:#E0186E" title="液体色 3:玫红/洋红"><i></i>#E0186E</span><span class="sw" style="--c:#9B2FE0" title="液体色 4:电光紫"><i></i>#9B2FE0</span><span class="sw" style="--c:#E16390" title="「钻进液体内部」场景的粉色水体,向下渐深到 #840E40"><i></i>#E16390</span><span class="sw" style="--c:#F5C8A6" title="冲击溅冠/光晕的桃色高亮"><i></i>#F5C8A6</span><span class="sw" style="--c:#FFFFFF" title="镜面高光条、字幕主色"><i></i>#FFFFFF</span></div>
-    <div class=tags><span class=tag>SDF 融球</span><span class=tag>果冻质感</span><span class=tag>镜面倒影</span><span class=tag>挤压拉伸</span><span class=tag>粘连拉丝</span><span class=tag>糖果渐变</span><span class=tag>暗紫棚拍</span><span class=tag>液态成字</span></div>
+    <p class=tagline>果冻般可捏的液体,粘连拉丝融合弹跳</p>
+    <div class=pal><span class="sw" style="--c:#3F1142" title="背景主色(中心偏亮的深李子紫)"><i></i>#3F1142</span><span class="sw" style="--c:#1A0620" title="暗角/地面远端"><i></i>#1A0620</span><span class="sw" style="--c:#E8582E" title="液体色1 橙"><i></i>#E8582E</span><span class="sw" style="--c:#E83A5C" title="液体色2 珊瑚红"><i></i>#E83A5C</span><span class="sw" style="--c:#E0146E" title="液体色3 洋红"><i></i>#E0146E</span><span class="sw" style="--c:#9B1FD6" title="液体色4 紫"><i></i>#9B1FD6</span></div>
+    <div class=tags><span class=tag>SDF融球</span><span class=tag>果冻高光材质</span><span class=tag>拉丝断颈</span><span class=tag>冠状飞溅</span><span class=tag>阻尼弹簧回弹</span><span class=tag>液浪擦除转场</span></div>
     <div class=prompt>
       <div class=bar>
         <div class=seg role=tablist><button class=on data-l=zh>中文</button><button data-l=en>English</button></div>
         <button class=copy>复制提示词</button>
       </div>
-      <pre data-l=zh>做一条约 10 秒的「液态流动」风格动画,主题 {主题},结尾落版 {标题文字} + {副标语}。
-
-**视觉语言**
-- 暗紫摄影棚:背景 #4A0E50 中心微亮、四角压暗到 #2A0730;下方近黑镜面地板 #12031A,液体都有随距离变虚的倒影。
-- 主角是半透明高饱和果冻液体,四色:橘红 #F0603A、珊瑚 #E8455A、玫红 #E0186E、电光紫 #9B2FE0。要「饱满得像能捏起来」:菲涅尔亮边、一条窗形白色硬高光、内部柔和透光;异色融合后内部有色块漩涡。
-- 液滴折射身后物体,透过它看到的 {核心物件} 被放大且倒置。
-- 低机位贴地、浅景深,前景水珠虚焦,快速运动带运动模糊。
-
-**字体排印**
-- {标题文字} 用粗壮小写复古衬线体,每个字母鼓成果冻立体字,四色逐字分配,字内有小气泡,底边挂液珠。
-- 副标语在右下:白色宋体中文 + 一行全大写宽字距小号无衬线英文。
-
-**构图**
-主体居中或沿地平线横排,地平线在下 1/3;落版标题约占半屏宽,留大片暗紫负空间。
-
-**动效语言**(一镜到底,不硬切)
-1. 液滴拉丝垂挂,颈部断开,加速下坠。
-2. 落地压扁,溅起皇冠水花;其他颜色接连落下。
-3. 液饼靠近,先拉细颈粘连再融合,内部颜色搅拌。
-4. 融合体弹起成球、弹簧晃动;镜头穿过液面进入粉色液体内部(光束 + 漂浮颗粒),再用柔软液态擦除回到暗紫棚。
-5. 四色液珠排一排抖动,粘成胶囊后炸开成 {标题文字},背后升起桃色溅冠和粉色径向冲击环。
-6. 字持续微晃,一滴从字底拉丝滴落,地面起同心涟漪,副标语淡入,静帧约 2 秒。
-- 每个动作 0.75–1.5 秒;落定用欠阻尼弹簧(轻过冲 2–3 次),坠落用 ease-in;顺滑 60fps,不要一拍二。
-
-**实现提示**
-- WebGL 片元着色器光线步进:球/胶囊 SDF 用 smin 融合,菲涅尔 + Blinn 高光,地面做反射 + 距离模糊;标题用 SDF 文字挤出并圆角膨胀。
-- 参数全部由帧号驱动(Remotion 用 useCurrentFrame 传 uniform)。
-- 低成本替代:SVG goo 滤镜(feGaussianBlur + feColorMatrix 阈值)+ 径向渐变高光。
-
-**该做 / 不该做**
-- 该做:每次接触都有挤压拉伸、拉丝和倒影;颜色只在四种液体色里轮换。
-- 不该做:扁平矢量水滴、硬描边、冷色蓝绿水、线性运动、硬切。</pre>
-      <pre data-l=en hidden>Create a ~10-second, 1920×1080 animation in a &quot;Liquid Motion&quot; style. Topic: {topic}. End on a logo lockup of {title_text} plus a one-line {tagline}.
-
-**Visual language**
-- The set feels like a dark purple photo studio: deep grape-purple background #4A0E50, slightly brighter in the center, vignetted to #2A0730 at the corners; below it a near-black glossy mirror floor #12031A. Every liquid shape casts a clear reflection that softens with distance.
-- All subjects are translucent, highly saturated jelly liquid in four colors: orange-red #F0603A, coral #E8455A, hot magenta #E0186E, electric violet #9B2FE0. The material must look &quot;so plump you could pinch it&quot;: fresnel-brightened rims, one hard white window-shaped specular streak, soft subsurface glow inside, a thin light inner rim. When colors merge, swirling color patches flow inside the blob.
-- Drops refract what is behind them: {core_object} or text seen through a drop appears magnified and flipped upside down.
-- Low camera skimming the floor, shallow depth of field, out-of-focus droplets in the foreground; motion blur on fast moves.
-
-**Typography**
-- The final {title_text} is a chunky lowercase serif (soft, bracketed, retro serif), each letter an inflated 3D jelly glyph, the four liquid colors assigned letter by letter, tiny bubbles inside, liquid beads hanging from the bottom edges about to drip.
-- The tagline sits lower right: white CJK/Song-style serif at medium weight, plus one line of small all-caps sans with wide tracking.
-
-**Composition**
-- Subjects stay centered or lined up horizontally along the horizon; horizon in the lower third. At the lockup the title spans about half the frame width with plenty of dark purple negative space.
-
-**Motion language** (one continuous camera story, no hard cuts)
-1. A drop hangs from the top on a stretched string, the neck thins and snaps, it falls with gravity (ease-in).
-2. It squashes into a puddle on impact, throwing a crown splash and tiny beads; drops of other colors fall one after another.
-3. Puddles slide toward each other, first linking with a thin neck, then fusing (smooth-min metaballs) while colors stir inside.
-4. The fused blob bounces up into a sphere, wobbles on an underdamped spring and lands; the camera pushes through its surface into a pink inside-the-liquid world (god rays, floating particles), then a soft liquid wipe returns to the dark purple studio.
-5. Four colored beads in a row jiggle, link into one capsule, then burst into {title_text}: a peach splash crown rises behind it with a pink radial shockwave ring, debris droplets rain down.
-6. The letters keep a subtle jelly wobble; one bead stretches and drips from a letter, hits the floor with concentric ripples, the tagline fades in with the ripple; hold the final frame ~2 s.
-- Rhythm: each action 0.75–1.5 s; every bounce/settle uses an underdamped spring (2–3 light overshoots); falls use accelerating curves. Smooth 60fps feel, no stepped animation.
-
-**Implementation hints**
-- Preferred: WebGL fragment-shader raymarching. Spheres/capsules as SDFs fused with smin; normals drive fresnel + Blinn specular; the floor uses a reflection ray with distance blur. Title via MSDF/SDF text extruded and rounded/inflated.
-- Drive every position and radius from the frame number (in Remotion pass useCurrentFrame into uniforms) for deterministic renders.
-- Cheap fallback: SVG goo filter (feGaussianBlur + feColorMatrix alpha threshold) for the sticky merges, layered with radial gradients and white highlights.
-
-**Do / Don&#x27;t**
-- Do: squash &amp; stretch, stringing and reflections on every contact; rotate colors only within the four liquid hues.
-- Don&#x27;t: flat vector droplets, hard outlines, cold blue/cyan water, linear motion or hard cuts.</pre>
+      <pre data-l=zh>风格:SDF 融球液态,一切都是可捏的高光果冻
+画面:李子紫底#3F1142压暗角;液体橙#E8582E→洋红#E0146E→紫#9B1FD6;半透明+强高光+菲涅尔边光;镜面地面倒影
+字体:粗衬线小写,同材质果冻字挂液滴
+动效:流畅30fps;拉丝断颈坠落,落地冠状飞溅;相邻形状平滑融合、交界混色;弹簧过冲约15%、0.5s收住,静止仍微颤;转场=液浪擦屏约4帧,或聚团爆开+冲击环
+实现:WebGL raymarch SDF+smin,算高光/折射/倒影
+不要:扁平填色;硬边不相融;线性匀速;冷色
+内容:{在这里写你的内容}</pre>
+      <pre data-l=en hidden>Style: SDF metaball liquid; everything is glossy, squeezable jelly
+Look: plum bg #3F1142 with dark vignette; liquids orange #E8582E → magenta #E0146E → violet #9B1FD6; translucent, hard specular, fresnel rim; mirror floor reflections, centered
+Type: bold lowercase serif in the same jelly material, drips on the baseline
+Motion: smooth 30fps; stretch, pinch-off and fall, crown splash on landing; neighbours smooth-merge with blended seams; spring ~15% overshoot settling in 0.5s, idle wobble; transitions = liquid surge wipe (~4 frames) or fuse into one blob, burst + shockwave ring
+Build: WebGL raymarched SDF + smin, normals for specular/refraction/floor reflection
+Avoid: flat fills; hard shapes that never merge; linear motion; cold palette
+Content: {your content here}</pre>
     </div>
-    <details><summary>拆解要点</summary><ul><li>开场 003-005:垂挂液滴内可见放大且倒置的文字(折射),断颈下坠后在 005 砸成带运动模糊的皇冠溅花,地板倒影清晰——确立「镜面棚拍 + 物理液体」基调。</li><li>006-016:低机位横移,多色液滴接连落地成饼(008 紫色皇冠溅花),011-014 液饼拉颈粘连融合、内部出现紫色色块漩涡,016 融合体起立带细颈,这是 SDF smooth-min 融球的招牌证据。</li><li>019-023:镜头推近液球后进入粉色液体内部世界(020-022,丁达尔光束 + 漂浮颗粒 + 液珠拉颈),023 用一道紫色柔软液膜擦除回到暗紫背景,是全片唯二的转场手法(钻入 + 液态擦除)。</li><li>024-029:四色液珠从水滴形抖动回圆(024-027,欠阻尼弹簧),028 粘连成一根胶囊,029 炸开成果冻衬线字标,背后桃色溅冠 + 粉色径向冲击光环,节奏是「蓄力-爆发」。</li><li>030-043:碎珠落地后字标保持微晃,字母内有小气泡、底边挂液珠;035-036 一滴从字母底部拉丝坠落,037-041 地面起同心涟漪、副标语淡入,末尾静帧约 2 秒(001/002/044 为转场帧已忽略)。</li></ul></details>
+    <details><summary>已剥离的内容层(提示词里不含这些)</summary><div class=gones><span class=gone>虚构汽水品牌</span><span class=gone>drop 字标</span><span class=gone>万物始于一滴 标语</span><span class=gone>四种口味水滴</span><span class=gone>水滴内倒影字</span><span class=gone>水下气泡场景</span></div></details>
+    <details><summary>逐帧证据 + 运动曲线</summary><ul><li>f001-012 液滴颈部拉细断开后下落,f013-018 落地冠状飞溅+卫星小滴+镜面倒影</li><li>f080-090 相邻液面平滑融合、交界处颜色渐混;f101-110 液团被拉起时与地面拉丝再断开</li><li>motion.txt hold frames=0、交替率0.06→全程流畅30fps,无一拍二</li><li>f125-128、f151-152 帧差尖峰(≈40/37)=整屏液浪擦除转场,各约4帧</li><li>f187-193 四个球融成胶囊再收缩,f194-197 爆开出字标+径向冲击光环(帧差峰值≈50)</li></ul><img class=motion loading=lazy src="images/14-motion.webp" alt="相邻帧变化量曲线"></details>
     <a class=md href="prompts/14-liquid-motion.md">Markdown 版 →</a>
   </div>
 </article>
-<article class=card id="s15">
+<article class="card vert" id="s15">
   <div class=media>
     <img class=hero loading=lazy src="images/15-1.webp" alt="综艺花字 样片截图">
     <div class=thumbs><button class=th data-src="images/15-1.webp"><img loading=lazy src="images/15-1.webp" alt=""></button><button class=th data-src="images/15-2.webp"><img loading=lazy src="images/15-2.webp" alt=""></button><button class=th data-src="images/15-3.webp"><img loading=lazy src="images/15-3.webp" alt=""></button></div>
   </div>
   <div class=body>
     <header><span class=no>15</span><h2>综艺花字<small>Variety Show Captions</small></h2></header>
-    <p class=tagline>多层描边糖果花字砸上真实素材,把情绪放大十倍</p>
-    <div class=pal><span class="sw" style="--c:#FFE24A" title="主花字填充上半(柠檬黄),渐变到底部琥珀"><i></i>#FFE24A</span><span class="sw" style="--c:#F5B93A" title="花字渐变下半 / 暖色强调"><i></i>#F5B93A</span><span class="sw" style="--c:#F0257F" title="热粉:花字外描边、胶囊标签、EP 角标、爆炸星阴影层"><i></i>#F0257F</span><span class="sw" style="--c:#3ED8F0" title="青蓝:冷情绪花字、问号贴纸、条纹转场"><i></i>#3ED8F0</span><span class="sw" style="--c:#1E2266" title="深靛蓝:所有贴纸/字的最外硬描边与硬投影"><i></i>#1E2266</span><span class="sw" style="--c:#FFFFFF" title="内描边、撕纸剪贴边、星光闪点"><i></i>#FFFFFF</span><span class="sw" style="--c:#E5144A" title="高潮大字红、警示条底色"><i></i>#E5144A</span><span class="sw" style="--c:#F07AAE" title="高潮段放射光芒背景(与黄色交替)"><i></i>#F07AAE</span></div>
-    <div class=tags><span class=tag>综艺花字</span><span class=tag>多层描边</span><span class=tag>弹跳逐字</span><span class=tag>表情贴纸</span><span class=tag>漫画爆炸框</span><span class=tag>竖屏9:16</span><span class=tag>情绪分段</span></div>
+    <p class=tagline>多层描边弹跳花字,按情绪放大笑点</p>
+    <div class=pal><span class="sw" style="--c:#FFE14A" title="主字面/爆炸星/横幅底黄"><i></i>#FFE14A</span><span class="sw" style="--c:#EC2580" title="桃红外描边、标签、放射底"><i></i>#EC2580</span><span class="sw" style="--c:#3ED3EE" title="青色斜纹底、彩条、点缀字"><i></i>#3ED3EE</span><span class="sw" style="--c:#1C1D5D" title="藏青最外描边与硬投影"><i></i>#1C1D5D</span><span class="sw" style="--c:#FFFFFF" title="内描边、抠像贴纸边、白闪"><i></i>#FFFFFF</span></div>
+    <div class=tags><span class=tag>多层描边花字</span><span class=tag>逐字弹跳spring</span><span class=tag>表情贴纸</span><span class=tag>彩条斜扫转场</span><span class=tag>白闪重拍</span><span class=tag>放射光芒底</span></div>
     <div class=prompt>
       <div class=bar>
         <div class=seg role=tablist><button class=on data-l=zh>中文</button><button data-l=en>English</button></div>
         <button class=copy>复制提示词</button>
       </div>
-      <pre data-l=zh>## 风格:综艺花字(Variety Show Captions)
-
-做一条 9:16 竖屏、约 8-10 秒的短片,主题是 {主题}。底层是真实照片/视频素材 {主体素材},上层用代码叠「综艺后期花字」,专门把情绪放大。分 3-4 段,每段一种情绪(如 惬意/尴尬/登场/震惊),各配一套颜色和贴纸。
-
-### 视觉语言
-- 底素材全画幅铺满,每段做缓慢推近(scale 1.0→1.08),段内可再来一次 0.5 秒急推(crash zoom)制造紧张。
-- 配色:柠檬黄 #FFE24A→琥珀 #F5B93A 渐变字、热粉 #F0257F、青蓝 #3ED8F0、警示红 #E5144A,所有元素最外层一律深靛蓝 #1E2266 硬描边。暖情绪用黄+粉,冷/尴尬情绪用青蓝+白,高潮用红+黄。
-- 形状:圆角胶囊、带小三角耳朵的标题牌、斜切丝带、四角星闪光、问号/汗滴贴纸、警示斜纹条、漫画爆炸星。饱满糖果感扁平矢量。
-
-### 字体排印
-- 圆润特粗黑体(站酷快乐体 / 庞门正道粗书体 / 思源黑体 Heavy 方向),字重 900。
-- 花字=「渐变填充 + 白色内描边 + 彩色外描边 + 深色硬投影(向下偏移 4-6px 无模糊)+ 外发光」至少 4 层。
-- 字号故意不统一:关键字放大 1.2-1.4 倍、单字上下错落、整行轻微倾斜 -4°~-8°。
-- 旁白/内心戏用小号白字+深色阴影,前面加 (小声) 之类括号标注;冷场时用竖排单列字。
-
-### 构图
-- 主花字放下 1/3 居中;标题角标左上;内心戏小字左上空白处;人物/主体的「名牌」放主体身侧(小胶囊头衔 + 大名字 + 斜丝带副标三层叠)。
-- 高潮段切成漫画版:放射条纹满屏背景 + 主体抠像(白色锯齿撕纸边+深色描边)+ 下方爆炸星托住大字,四周加「惊吓抖动线」。
-
-### 动效语言
-- 一切进场都用过冲弹簧(Remotion spring,damping≈8-10,stiffness≈180),scale 0→1.15→1,带 2-4 帧运动模糊。
-- 主花字逐字弹出,每字间隔约 3 帧,字落位后轻微呼吸缩放;四角星闪光随机闪烁。
-- 内心戏字用打字机逐字出现(约 8 字/秒);进度类小图标逐格填充。
-- 问号贴纸依次蹦出并飘动;汗滴滑落。
-- 名牌按 头衔→名字→丝带 依次从侧面滑入弹定;警示条弹出后红/粉两色交替闪烁(约 4Hz)。
-- 高潮:硬切到漫画版,爆炸星带旋转弹入,大字第一个字从大砸下、后面字依次追上;顶部再掉下一个仪表/计量贴纸,指针甩到最大。
-- 段间转场:斜向三色条纹(青/黄/粉,带白条纹底)整屏扫过,中间闪一下节目标题牌,全程带横向动态模糊,约 0.3 秒。
-
-### 实现提示
-Remotion + DOM/SVG:花字用 `-webkit-text-stroke` 叠多层(或多个绝对定位副本逐层加粗描边)+ `background-clip:text` 渐变 + `text-shadow` 硬投影;爆炸星/撕纸边/放射条纹用 SVG polygon 程序生成(随机半径锯齿);放射背景用 `repeating-conic-gradient`;运动模糊用按速度变化的 `filter: blur()` 或方向性重影。
-
-### 该做 / 不该做
-- 该做:每段只放大一种情绪;层层描边要厚;节奏密,1-2 秒必有新元素进场。
-- 不该做:细字重、单层描边、低饱和、线性缓动、挡住主体脸。</pre>
-      <pre data-l=en hidden>## Style: Variety Show Captions
-
-Make a 9:16 vertical clip, ~8-10 s, about {topic}. The base layer is real photo/video footage {subject_footage}; on top, code-driven &quot;variety-show post-production captions&quot; that exaggerate emotion. Split into 3-4 beats, one emotion each (e.g. cozy / awkward / grand entrance / shock), each beat with its own color set and sticker kit.
-
-### Visual language
-- Footage fills the frame with a slow push-in per beat (scale 1.0→1.08); optionally one 0.5 s crash zoom inside a beat to build tension.
-- Colors: lemon #FFE24A → amber #F5B93A gradient text, hot pink #F0257F, cyan #3ED8F0, alert red #E5144A; every element gets an outermost hard outline in deep indigo #1E2266. Warm emotions = yellow + pink, cold/awkward = cyan + white, climax = red + yellow.
-- Shapes: rounded pills, title plate with little triangle ears, slanted ribbons, four-point sparkles, question-mark / sweat-drop stickers, hazard-stripe banners, comic explosion stars. Plump candy-like flat vectors, no realistic lighting.
-
-### Typography
-- Rounded ultra-bold CJK/Latin display face (ZCOOL KuaiLe / heavy rounded gothic / Source Han Sans Heavy direction), weight 900.
-- A caption = at least 4 layers: gradient fill + white inner stroke + colored outer stroke + dark hard drop shadow (4-6 px down, no blur) + soft outer glow.
-- Deliberately uneven sizing: key glyph 1.2-1.4× larger, glyphs bob up/down, whole line tilted -4° to -8°.
-- Inner monologue: small white text with dark shadow, prefixed by a bracketed whisper tag; awkward silence = a single vertical column of text.
-
-### Composition
-- Main caption centered in the lower third; show badge top-left; monologue in top-left negative space; a subject &quot;name tag&quot; beside the subject (small pill title + big name + slanted ribbon subtitle, stacked).
-- Climax cuts to a comic version: full-screen radial sunburst stripes + subject cutout (white jagged torn-paper edge + dark outline) + an explosion star holding the big word, with shake/emanata lines around.
-
-### Motion language
-- Every entrance is an overshooting spring (Remotion spring, damping ≈8-10, stiffness ≈180), scale 0→1.15→1, with 2-4 frames of motion blur.
-- Main caption pops in per glyph, ~3 frames apart, then breathes gently; sparkles twinkle randomly.
-- Monologue text types on (~8 chars/s); progress-style icons fill cell by cell.
-- Question-mark stickers pop in sequentially and float; sweat drops slide down.
-- Name tag slides in from the side in order title → name → ribbon; the alert banner pops in then flashes red/pink (~4 Hz).
-- Climax: hard cut to comic layout, explosion star spins in, the first glyph slams down huge and the rest catch up; a gauge/meter sticker drops from the top and its needle whips to max.
-- Beat transitions: a diagonal tri-color stripe wipe (cyan/yellow/pink over white pinstripes) sweeps the screen with the show badge flashing mid-wipe, heavy horizontal motion blur, ~0.3 s.
-
-### Implementation hints
-Remotion + DOM/SVG: stack multiple `-webkit-text-stroke` layers (or absolutely positioned copies with increasing stroke) + `background-clip:text` gradients + hard `text-shadow`; generate explosion stars / torn edges / rays as SVG polygons with randomized radii; sunburst via `repeating-conic-gradient`; motion blur via velocity-driven `filter: blur()` or directional ghost copies.
-
-### Do / Don&#x27;t
-- Do: amplify exactly one emotion per beat; make outlines thick and layered; keep it dense — something new enters every 1-2 s.
-- Don&#x27;t: thin weights, single-layer strokes, desaturated palettes, slow linear easing, or clutter that covers the subject&#x27;s face.</pre>
+      <pre data-l=zh>风格:综艺花字,9:16;实拍垫底,每段情绪换一套花字。
+画面:#FFE14A #EC2580 #3ED3EE,#1C1D5D 描边;爆炸星、放射底、斜纹底,抠像加白贴纸边。
+字体:超粗圆体;渐变字面+白描边+彩色外描边+硬投影。
+动效:30fps;逐字弹出过冲 1.2→1,隔 2 帧;表情贴错落弹入;横幅斜甩带拖影;重拍 1 帧白闪;印章 1.6 倍砸落;彩条斜扫 6 帧转场。
+实现:DOM+SVG,多重描边,spring 缩放旋转,conic-gradient 放射底。
+不要:单层描边;线性匀速;全片一套字效;字挡主体。
+内容:{在这里写你的内容}</pre>
+      <pre data-l=en hidden>Style: variety-show captions, 9:16; full-bleed live footage underneath, a different caption kit per emotional beat.
+Look: #FFE14A #EC2580 #3ED3EE, #1C1D5D outlines; starbursts, rotating sunburst bg, diagonal-stripe bg, cutout subject with white sticker border.
+Type: extra-bold rounded; gradient fill + white stroke + colored outer stroke + hard drop shadow.
+Motion: 30fps; per-character pop-in overshoot 1.2→1, 2-frame stagger; emoji stickers pop in staggered; banners swing in tilted with motion smear; 1-frame white flash on hits; stamps slam from 1.6×; 6-frame diagonal color-band wipe transitions.
+Build: DOM+SVG, stacked strokes, spring-driven scale/rotate, conic-gradient sunburst.
+Avoid: single-layer stroke; linear easing; one caption kit for the whole piece; text covering the subject.
+Content: {your content here}</pre>
     </div>
-    <details><summary>拆解要点</summary><ul><li>主花字是逐字弹簧弹出:005 只出现第一个字且带闪光,006 各字大小/高度仍错落未定,008 落位后四角星闪点出现。</li><li>情绪分段换配色:001-014 暖黄粉(惬意),015-019 切青蓝白+问号/汗滴/竖排字(尴尬),021-027 名牌+红色警示条(登场/紧张),028-032 粉黄放射漫画版(震惊)。</li><li>段间转场是斜向三色条纹扫屏+标题牌闪现,带重度横向运动模糊(020);名牌胶囊进场同样有运动模糊(021)。</li><li>镜头语言:每段素材缓慢推近,025-027 是一次急推大特写;警示条底色在 024 为红、026-027 变粉,推测为交替闪烁。</li><li>高潮 028 为首字巨大砸下、次字小且模糊追入,029 定格为红字+爆炸星+撕纸抠像+抖动线,032 顶部再掉落仪表贴纸。</li></ul></details>
+    <details><summary>已剥离的内容层(提示词里不含这些)</summary><div class=gones><span class=gone>三只猫</span><span class=gone>节目名与集数角标文字</span><span class=gone>嘉宾名牌与人设标签</span><span class=gone>前方高能等具体字幕</span><span class=gone>充电电池小图</span><span class=gone>发量检测仪表</span><span class=gone>认证印章文字</span><span class=gone>下期见收尾语</span></div></details>
+    <details><summary>逐帧证据 + 运动曲线</summary><ul><li>motion.txt 运动帧 300/302、静止帧 0→30fps 全帧连续动,无抽帧</li><li>f011-017 字幕逐字出现,每字约 1-2 帧间隔,新字先放大再回落(f014 末字小而偏移)</li><li>f117-127 青白斜纹+桃红/黄/青彩条斜扫,角标居中放大后带运动模糊飞回左上角(f122-123 硬切)</li><li>f146-150 警示横幅倾斜甩入带拖影,f151-180 横幅底色红/粉交替闪烁;f158/f165/f173 单帧泛白+推镜,f180 全白帧切入放射光芒底</li><li>f251-256 圆形印章从约 1.6 倍虚影砸落到位;f181-187 爆炸星内大字逐字弹出</li></ul><img class=motion loading=lazy src="images/15-motion.webp" alt="相邻帧变化量曲线"></details>
     <a class=md href="prompts/15-variety-show-captions.md">Markdown 版 →</a>
   </div>
 </article>
