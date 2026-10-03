@@ -1,6 +1,6 @@
 # 15 种视频风格 · 与内容无关的提示词图鉴
 
-👉 **在线图鉴(带截图、一键复制):打开仓库里的 `index.html`,或看 GitHub Pages。**
+👉 **在线图鉴(带截图、一键复制):https://chenyuxiaojin.github.io/opus55-video-style-prompts/**
 
 样片来自 [@VincentWei93 的展示视频](https://x.com/VincentWei93/status/2104957548797604116),15 种风格全部由 Claude Opus 5.5 写代码制作。本仓库把每种风格交给一个独立 AI 子 agent 逐帧观察,只提取配色、形状、材质、排版、动效节奏、实现手法等**与具体内容无关**的部分,写成可直接复用的提示词(中 / 英)。
 
